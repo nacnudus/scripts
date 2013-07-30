@@ -1,0 +1,32 @@
+.alert.alert-info.rss-subscribe {
+    padding-bottom: 0;
+    padding-left: 9px;
+}
+
+.alert.alert-info.rss-subscribe a.subscribe-link {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 1.5%;
+}
+
+.alert.alert-info.rss-subscribe p {
+    display: inline-block;
+    vertical-align: top;
+    width: 80%;
+    margin-top: 3px;
+}
+
+li {
+    margin-bottom: 12px;
+}
+
+h4.quote-title {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    line-height: 1.4em;
+}
+
+.comment h4 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

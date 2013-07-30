@@ -1,0 +1,12 @@
+# to edit the crontab
+crontab -e
+
+# I choose nano (option 2), which can be changed later with 'select-editor'
+
+@hourly sudo rfkill block bluetooth
+
+# Backup /home to Elements external hard-drive
+@daily sudo rsync -av --del /home/ /media/nacnudus/Elements/ 2>&1 | tee ~/log/rsync_HomeToElements_$( date '+%Y-%m-%d_%H-%M-%S' ).log
+
+# run get_iplayer
+@hourly [put command in here]

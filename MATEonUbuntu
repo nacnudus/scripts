@@ -1,0 +1,550 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<title>  Replacing Ubuntu 12.04 Unity with MATE | Nick&#039;s Blog</title>
+<meta name="description" content="Replacing Ubuntu 12.04 Unity with MATE" />
+<link rel="alternate" type="application/rss+xml" title="Nick&#039;s Blog RSS Feed" href="http://blog.lifebloodnetworks.com/?feed=rss2" />
+<link rel="alternate" type="application/atom+xml" title="Nick&#039;s Blog Atom Feed" href="http://blog.lifebloodnetworks.com/?feed=atom" /> 
+<link rel="pingback" href="http://blog.lifebloodnetworks.com/xmlrpc.php" />
+
+<link rel="stylesheet" href="http://blog.lifebloodnetworks.com/wp-content/themes/monochrome/style.css" type="text/css" />
+<link rel="stylesheet" href="http://blog.lifebloodnetworks.com/wp-content/themes/monochrome/comment-style.css" type="text/css" />
+<!--[if lt IE 7]>
+<link rel="stylesheet" href="http://blog.lifebloodnetworks.com/wp-content/themes/monochrome/ie6.css" type="text/css" />
+<![endif]--> 
+<style type="text/css">
+.post img, .post a img { border:1px solid #ccc; padding:5px; margin:0 10px 0 0;  background:#f2f2f2; }
+.post a:hover img { border:1px solid #38a1e5; background:#9cd1e1; }
+.post img.wp-smiley { border:0px; padding:0px; margin:0px; background:none; }
+</style>
+
+ 
+
+			<script type="text/javascript">//<![CDATA[
+			// Google Analytics for WordPress by Yoast v4.2.8 | http://yoast.com/wordpress/google-analytics/
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-17363946-1']);
+							_gaq.push(['_trackPageview']);
+			(function () {
+				var ga = document.createElement('script');
+				ga.type = 'text/javascript';
+				ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0];
+				s.parentNode.insertBefore(ga, s);
+			})();
+			//]]></script>
+			<link rel="alternate" type="application/rss+xml" title="Nick&#039;s Blog &raquo; Replacing Ubuntu 12.04 Unity with MATE Comments Feed" href="http://blog.lifebloodnetworks.com/?feed=rss2&amp;p=1253" />
+<link rel='stylesheet' id='jetpack-widgets-css'  href='http://blog.lifebloodnetworks.com/wp-content/plugins/jetpack/modules/widgets/widgets.css?ver=20121003' type='text/css' media='all' />
+<script type='text/javascript' src='http://blog.lifebloodnetworks.com/wp-includes/js/l10n.js?ver=20101110'></script>
+<script type='text/javascript' src='http://blog.lifebloodnetworks.com/wp-includes/js/jquery/jquery.js?ver=1.6.1'></script>
+<script type='text/javascript' src='http://blog.lifebloodnetworks.com/wp-includes/js/comment-reply.js?ver=20090102'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://blog.lifebloodnetworks.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://blog.lifebloodnetworks.com/wp-includes/wlwmanifest.xml" /> 
+<link rel='index' title='Nick&#039;s Blog' href='http://blog.lifebloodnetworks.com' />
+<link rel='start' title='Let There be (Images of) Fire!' href='http://blog.lifebloodnetworks.com/?p=7' />
+<link rel='prev' title='Dear Women: Us No Think&#8230; You Purdy&#8230; Too Good' href='http://blog.lifebloodnetworks.com/?p=1231' />
+<link rel='next' title='Minimal Ubuntu 12.04 Install with Only MATE' href='http://blog.lifebloodnetworks.com/?p=1280' />
+<meta name="generator" content="WordPress 3.2.1" />
+<link rel='canonical' href='http://blog.lifebloodnetworks.com/?p=1253' />
+<link rel='shortlink' href='http://wp.me/pM5eM-kd' />
+
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Replacing Ubuntu 12.04 Unity with MATE" />
+<meta property="og:url" content="http://blog.lifebloodnetworks.com/?p=1253" />
+<meta property="og:description" content="I am a stubborn man. But part of that stubbornness was the result of a personal kind of evolution, not an unwillingness to change. For example, my desktop. Microsoft, with Windows 95, gave us somet..." />
+<meta property="og:site_name" content="Nick&#039;s Blog" />
+<script type="text/javascript" src="http://blog.lifebloodnetworks.com/wp-content/themes/monochrome/js/scroll.js"></script>
+<script type="text/javascript" src="http://blog.lifebloodnetworks.com/wp-content/themes/monochrome/js/jscript.js"></script>
+<script type="text/javascript" src="http://blog.lifebloodnetworks.com/wp-content/themes/monochrome/js/comment.js"></script>
+</head>
+
+<body>
+<div id="wrapper">
+
+ <div id="header">
+
+  <div id="header_top">
+
+   <div id="logo">
+       <a href="http://blog.lifebloodnetworks.com/">Nick&#039;s Blog</a>
+    <h1>Personal projects, ideas, and the occasional comments on life</h1>
+      </div>
+
+      <div class="header_menu">
+    <ul class="menu">
+     <li class="page_item"><a href="http://blog.lifebloodnetworks.com/">HOME</a></li>
+     <li class="page_item page-item-331"><a href="http://blog.lifebloodnetworks.com/?page_id=331" title="Disclaimer">Disclaimer</a></li>
+<li class="page_item page-item-215"><a href="http://blog.lifebloodnetworks.com/?page_id=215" title="Cast">Cast</a></li>
+    </ul>
+   </div>
+   
+  </div>
+
+  </div><!-- #header end -->  <div id="contents" class="clearfix">
+
+   <div id="left_col">
+
+        <div id="header_meta">
+     <ul id="bread_crumb" class="clearfix">
+      <li id="bc_home"><a href="http://blog.lifebloodnetworks.com/">HOME</a></li>
+      <li id="bc_cat"><a href="http://blog.lifebloodnetworks.com/?cat=20" title="View all posts in How To" rel="category">How To</a> . <a href="http://blog.lifebloodnetworks.com/?cat=26" title="View all posts in Linux" rel="category">Linux</a></li>
+      <li>Replacing Ubuntu 12.04 Unity with MATE</li>
+     </ul>
+    </div>
+    
+
+    <div class="post clearfix" id="single_post">
+     <div class="post_content_wrapper">
+      <h2 class="post_title"><span>Replacing Ubuntu 12.04 Unity with MATE</span></h2>
+      <div class="post_content">
+       <p>I am a stubborn man. But part of that stubbornness was the result of a personal kind of evolution, not an unwillingness to change.</p>
+<p>For example, my desktop. Microsoft, with Windows 95, gave us something great: the desktop we know and love. Trying my best to ignore <a href="http://en.wikipedia.org/wiki/Windows_8#Metro_UI" onclick="javascript:_gaq.push(['_trackEvent','outbound-article','http://en.wikipedia.org']);" target="_blank">Metro</a>&#8211; for the sake of this post, at least&#8211; some of my habits have changed to fit this model but, more importantly, I have figured out how to change it best to fit my needs. There is room for improvement but I can only imagine those improvements adding new functionality, not removing old, show-stopping hurdles.</p>
+<p>Ubuntu, in their awesome, massive growth and other-wise fantastic direction from their leadership, have decided to make a major change. They have decided to abandon our old friend for something pretty radical with <a href="http://en.wikipedia.org/wiki/Unity_(user_interface)" onclick="javascript:_gaq.push(['_trackEvent','outbound-article','http://en.wikipedia.org']);" target="_blank">Unity</a>. Unity is, for the most part in its latest incarnation, a pretty great thing. It leaves some old hardware behind (always takes balls but some times is needed) in order to innovate and move us all forward and I have grown to like it for some tasks. For example, my parents and grandparents have flourished using it. They all love different things about it but it works for them and I am happy to use the right tool for the job.</p>
+<p>However, although my family finds it easier with is bigger buttons and everything-merged-into-one-place design, I find it <strong>much</strong> harder to use for what I do. I would call myself a power user and, as such, I have certain requirements. Instead of going into those requirements here I will quote <a href="http://en.wikipedia.org/wiki/Linus_Torvalds" onclick="javascript:_gaq.push(['_trackEvent','outbound-article','http://en.wikipedia.org']);" target="_blank">Linus Torvalds</a> because I feel he summed up the meat of it pretty well:</p>
+<blockquote><p>I used to be upset when gnome developers decided it was &#8220;too complicated&#8221; for the user to remap some mouse buttons. In gnome3, the developers have apparently decided that it&#8217;s &#8220;too complicated&#8221; to actually do real work on your desktop, and have decided to make it really annoying to do.</p>
+<p>Here&#8217;s an example of &#8220;the crazy&#8221;: you want a new terminal window. So you go to &#8220;activities&#8221; and press the &#8220;terminal&#8221; thing that you&#8217;ve made part of your normal desktop thing (but why can&#8217;t I just have it on the desktop, instead of in that insane &#8220;activities&#8221; mode?). What happens? Nothing. It brings your existing terminal to the forefront.</p>
+<p>That&#8217;s just crazy crap. Now I need to use Shift-Control-N in an old terminal to bring up a new one. Yeah, that&#8217;s a real user experience improvement. Sure.</p>
+<p>I&#8217;m sure there are other ways, but that&#8217;s just an example of the kind of &#8220;head up the arse&#8221; behavior of gnome3. Seriously. I have been asking other developers about gnome3, they all think it&#8217;s crazy.</p>
+<p>I&#8217;m using Xfce. I think it&#8217;s a step down from gnome2, but it&#8217;s a huge step up from gnome3. Really.</p></blockquote>
+<p>As such I had, for a while, switched to <a href="http://www.linuxmint.com/" onclick="javascript:_gaq.push(['_trackEvent','outbound-article','http://www.linuxmint.com']);" target="_blank">Linux Mint</a> like so much of my cohort. I still love Mint but there is a smaller community there and less Mint-oriented information around the web. Sure, majority of the stuff I have come across for Ubuntu also works for Mint, but I only left Ubuntu because of Unity. If I can remove that annoyance I have no reason not to move back as there is safety in numbers. After all, is that not the whole idea behind the open-source philosophy?</p>
+<p>Let us rip that mother-loving (see, I made a funny) interface out and replace it with what was not broken in the first place, shall we?</p>
+<p><strong>Remember to backup anything you touch before doing this because who knows if I am secretly working for Microsoft and spreading false information to make people think Linux sucks? It could happen, people!</strong></p>
+<p>Open up a terminal and run these commands as root:</p>
+<blockquote><p><code>add-apt-repository "deb http://packages.mate-desktop.org/repo/ubuntu $(lsb_release -cs) main"<br />
+apt-get update<br />
+apt-get install -y --force-yes mate-archive-keyring<br />
+apt-get update<br />
+apt-get install mate-core<br />
+apt-get install mate-desktop-environment</code></p></blockquote>
+<p>These will install the necessary packages. Note that you must install <code>mate-core</code> and <code>mate-desktop-environment</code> in separates command for&#8211; what I assume is&#8211; a race-condition situation. If you do not it may work, or it may break your UI. I never really looked into why as the solution is plenty easy to implement and does not harm anything.</p>
+<p>Next you have to change a few configuration files so Ubuntu knows where to find some things. Edit <code>/etc/xdg/autostart/gnome-settings-daemon.desktop</code> as root and replace the contents with</p>
+<blockquote><p><code>[Desktop Entry]<br />
+Type=Application<br />
+Name=Mate Settings Daemon<br />
+Exec=/usr/bin/mate-settings-daemon<br />
+OnlyShowIn=MATE;<br />
+NoDisplay=true<br />
+X-GNOME-Autostart-Phase=Initialization<br />
+X-GNOME-Autostart-Notify=true<br />
+X-GNOME-AutoRestart=true</code></p></blockquote>
+<p>Next edit <code>/etc/xdg/autostart/mate-settings-daemon.desktop</code> as root and find the line that starts with <code>Exec=</code>. Replace it with</p>
+<blockquote><p><code>Exec=/usr/bin/mate-settings-daemon --no-daemon &amp;</code></p></blockquote>
+<p>Next edit <code>/etc/X11/Xsession.d/80overlayscrollbars</code> (you may have to create it) as root and add the line</p>
+<blockquote><p><code>export LIBOVERLAY_SCROLLBAR=0</code></p></blockquote>
+<p>If this is a well-traveled installation of Ubuntu you may also want to change the default text editor to <code>pluma</code> (MATE&#8217;s version of <code>gedit</code>) and the default file manager to <code>caja</code> (MATE&#8217;s version of <code>nautilus</code>). <code>pluma</code> is not such a big deal&#8211; I just <em>hate</em> the latest replaces for the <code>find</code> and <code>find and replace</code> functionally in <code>gedit</code>&#8211; but caja added some wwwaaayyy-overdo functionality like undo/redo.</p>
+<p>I am not sure if Unity will work after this and I never tried despite it only being a few clicks away. Honestly I do not care one tiny bit. I did notice that a significant amount of memory is no longer being used so my netbook is much happier when I am pushing it a little too hard. Once I get Ubuntu running on my Slate 2 I am also betting it will appreciate the spare CPU cycles, as well.</p>
+<p><em>That crack about sabotaging Linux hurt to write. I owe me an apology. :&#8217;(</em>
+<div class="pd-rating" id="pd_rating_holder_1488182_post_1253"></div>
+             </div>
+     </div>
+     <dl class="post_meta">
+        <dt class="meta_date">2012</dt>
+         <dd class="post_date">07<span>/16</span></dd>
+                <dt>POSTED BY</dt>
+         <dd><a href="http://blog.lifebloodnetworks.com/?author=1" title="Posts by Nicholas J Ingrassellino" rel="author">Nicholas J Ingrassellino</a></dd>
+                <dt>CATEGORY</dt>
+         <dd><a href="http://blog.lifebloodnetworks.com/?cat=20" title="View all posts in How To" rel="category">How To</a><br /><a href="http://blog.lifebloodnetworks.com/?cat=26" title="View all posts in Linux" rel="category">Linux</a></dd>
+                                 <dt class="meta_comment"><a href="http://blog.lifebloodnetworks.com/?p=1253#comments" title="Comment on Replacing Ubuntu 12.04 Unity with MATE">3 comments</a></dt>
+             </dl>
+    </div>
+
+
+    <div id="comments_wrapper">
+     <div id="comments">
+
+
+
+
+
+ <div id="comment_header" class="clearfix">
+
+  <ul id="comment_header_left">
+   <li id="add_comment"><a href="#respond">Write comment</a></li>
+   <li id="comment_feed"><a href="http://blog.lifebloodnetworks.com/?feed=comments-rss2" title="Comments RSS">Comments RSS</a></li>
+  </ul>
+
+  <ul id="comment_header_right">
+    <li id="trackback_switch"><a href="javascript:void(0);">Trackback ( 1 )</a></li>
+    <li id="comment_switch" class="comment_switch_active"><a href="javascript:void(0);">Comments ( 3 )</a></li>
+  </ul>
+
+
+ </div><!-- comment_header END -->
+
+
+<div id="comment_area">
+<!-- start commnet -->
+<ol class="commentlist">
+	
+
+ <li class="comment guest-comment" id="comment-1939">
+  <div class="comment-meta">
+   <div class="comment-meta-left">
+  <img alt='' src='http://0.gravatar.com/avatar/2abfa0b42761ee13f2076a54744b76a3?s=35&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D35&amp;r=X' class='avatar avatar-35 photo' height='35' width='35' />  
+    <ul class="comment-name-date">
+     <li class="comment-name">
+<a id="commentauthor-1939" class="url guest-url" href="http://debianhelpausare32.blogspot.com/" rel="external nofollow">
+
+Kris Cobb
+</a>
+     </li>
+     <li class="comment-date">February 22nd, 2013</li>
+    </ul>
+   </div>
+
+   <ul class="comment-act">
+    <li class="comment-reply"><a class='comment-reply-link' href='/?p=1253&#038;replytocom=1939#respond' onclick='return addComment.moveForm("comment-content-1939", "1939", "respond", "1253")'><span><span>REPLY</span></span></a></li>
+    <li class="comment-quote"><a href="javascript:void(0);" onclick="MGJS_CMT.quote('commentauthor-1939', 'comment-1939', 'comment-content-1939', 'comment');">QUOTE</a></li>
+       </ul>
+
+  </div>
+  <div class="comment-content" id="comment-content-1939">
+    <p>Wow that helps alot!  I was getting tired of parts of my theme not working.  Thanks alot!!!</p>
+  </div>
+
+</li>
+
+
+ <li class="comment guest-comment" id="comment-2078">
+  <div class="comment-meta">
+   <div class="comment-meta-left">
+  <img alt='' src='http://1.gravatar.com/avatar/956d8308b381843136ad11fa7f17b149?s=35&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D35&amp;r=X' class='avatar avatar-35 photo' height='35' width='35' />  
+    <ul class="comment-name-date">
+     <li class="comment-name">
+<span id="commentauthor-2078">
+
+JL Griffin
+</span>
+     </li>
+     <li class="comment-date">May 2nd, 2013</li>
+    </ul>
+   </div>
+
+   <ul class="comment-act">
+    <li class="comment-reply"><a class='comment-reply-link' href='/?p=1253&#038;replytocom=2078#respond' onclick='return addComment.moveForm("comment-content-2078", "2078", "respond", "1253")'><span><span>REPLY</span></span></a></li>
+    <li class="comment-quote"><a href="javascript:void(0);" onclick="MGJS_CMT.quote('commentauthor-2078', 'comment-2078', 'comment-content-2078', 'comment');">QUOTE</a></li>
+       </ul>
+
+  </div>
+  <div class="comment-content" id="comment-content-2078">
+    <p>Hi! First off thanks for the info! I Am Building a customized remastersys image of my perfect desktop and this info was perfect! would you happen to know if its possible for me to completely remove the Unity packages? or will that break the install? Thanks a ton!</p>
+<p>Additionally i agree with everything you have said here, Unity is meh, metro is meh, and my biggest issue isnt so much stubbornness, but i have a system of productivity that i accomplish through a familiar layout that i like and know by heart! gnome 3 moving most of the most used features for me was a huge turn off and Unity is as tough to use for me as metro is on windows, I am not a fan since it makes you follow so many more steps and complications just to do simple tasks.</p>
+  </div>
+
+<ul class='children'>
+
+
+ <li class="comment admin-comment" id="comment-2079">
+  <div class="comment-meta">
+   <div class="comment-meta-left">
+  <img alt='' src='http://1.gravatar.com/avatar/3826282a60e16f39a5f6051ad1b72b26?s=35&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D35&amp;r=X' class='avatar avatar-35 photo' height='35' width='35' />  
+    <ul class="comment-name-date">
+     <li class="comment-name">
+<a id="commentauthor-2079" class="url admin-url" href="http://www.lifebloodnetworks.com/" rel="external nofollow">
+
+Nicholas J Ingrassellino
+</a>
+     </li>
+     <li class="comment-date">May 3rd, 2013</li>
+    </ul>
+   </div>
+
+   <ul class="comment-act">
+    <li class="comment-reply"><a class='comment-reply-link' href='/?p=1253&#038;replytocom=2079#respond' onclick='return addComment.moveForm("comment-content-2079", "2079", "respond", "1253")'><span><span>REPLY</span></span></a></li>
+    <li class="comment-quote"><a href="javascript:void(0);" onclick="MGJS_CMT.quote('commentauthor-2079', 'comment-2079', 'comment-content-2079', 'comment');">QUOTE</a></li>
+       </ul>
+
+  </div>
+  <div class="comment-content" id="comment-content-2079">
+    <p>I completely agree.</p>
+<p>It has been so long since I played with removing Unity components I honestly do not recall. My gut says that it may not break but you will be left with, mostly, a basic X install (which has virtually nothing built into it by design). Not sure it is worth the work when you can use something else as a base closer to your goal.</p>
+<p>I would suggest checking out the other distros. Currently I am running on Linux Mint 14 MATE but I am also checking out Xubuntu and Linux Mint Xfce. The stability issues in Nautilus/Caja are really getting to me (other than that I am 99% happy but the file manage is so important&#8230;). Both are Ubuntu under the hood so you can not go wrong with either, just one is closer for a desktop user.</p>
+  </div>
+
+</li>
+</ul>
+</li>
+</ol>
+<!-- comments END -->
+
+
+</div><!-- #comment-list END -->
+
+
+<div id="trackback_area">
+<!-- start trackback -->
+
+<div id="trackback_url_wrapper">
+<label for="trackback_url">TrackBack URL</label>
+<input type="text" name="trackback_url" id="trackback_url" size="60" value="http://blog.lifebloodnetworks.com/wp-trackback.php?p=1253" readonly="readonly" onfocus="this.select()" />
+</div>
+
+<ol class="commentlist">
+
+
+<li class="comment">
+ <div class="trackback_time">
+  October 11th, 2012   </div>
+ <div class="trackback_title">
+  Trackback from : <a href="http://blog.lifebloodnetworks.com/?p=1280">Minimal Ubuntu 12.04 Install with Only MATE | Nick&#039;s Blog</a>
+ </div>
+</li>
+
+</ol>
+<!-- trackback end -->
+</div><!-- #trackbacklist END -->
+
+
+
+
+
+
+<fieldset class="comment_form_wrapper" id="respond">
+
+<div id="cancel_comment_reply"><a rel="nofollow" id="cancel-comment-reply-link" href="/?p=1253#respond" style="display:none;">Click here to cancel reply.</a></div>
+
+<form action="http://blog.lifebloodnetworks.com/wp-comments-post.php" method="post" id="commentform">
+
+<div id="guest_info">
+ <div id="guest_name"><label for="author"><span>NAME</span>( required )</label><input type="text" name="author" id="author" value="" size="22" tabindex="1" aria-required='true' /></div>
+ <div id="guest_email"><label for="email"><span>E-MAIL</span>( required ) - will not be published -</label><input type="text" name="email" id="email" value="" size="22" tabindex="2" aria-required='true' /></div>
+ <div id="guest_url"><label for="url"><span>URL</span></label><input type="text" name="url" id="url" value="" size="22" tabindex="3" /></div>
+ </div>
+
+<div id="comment_textarea">
+ <textarea name="comment" id="comment" cols="50" rows="10" tabindex="4"></textarea>
+</div>
+
+
+<div id="submit_comment_wrapper">
+ <p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="061bd0003c" /></p><p class="comment-subscription-form"><input type="checkbox" name="subscribe_comments" id="subscribe_comments" value="subscribe" style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;" /> <label class="subscribe-label" id="subscribe-label" for="subscribe_comments">Notify me of follow-up comments by email.</label></p><p class="comment-subscription-form"><input type="checkbox" name="subscribe_blog" id="subscribe_blog" value="subscribe" style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;" /> <label class="subscribe-label" id="subscribe-blog-label" for="subscribe_blog">Notify me of new posts by email.</label></p> <input name="submit" type="submit" id="submit_comment" tabindex="5" value="Submit Comment" title="Submit Comment" alt="Submit Comment" />
+</div>
+
+<div id="input_hidden_field">
+<input type='hidden' name='comment_post_ID' value='1253' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</div>
+
+</form>
+</fieldset><!-- #comment-form-area END -->
+
+
+</div><!-- #comment end -->    </div>
+
+        <div id="previous_next_post" class="clearfix">
+     <p id="previous_post"><a href="http://blog.lifebloodnetworks.com/?p=1231" rel="prev">Dear Women: Us No Think&#8230; You Purdy&#8230; Too Good</a></p>
+     <p id="next_post"><a href="http://blog.lifebloodnetworks.com/?p=1280" rel="next">Minimal Ubuntu 12.04 Install with Only MATE</a></p>
+    </div>
+    
+   </div><!-- #left_col end -->
+
+   <div id="right_col">
+  
+    <div id="information_area" class="clearfix">
+   <div class="side_box" id="information">
+    <h3>Be Warned</h3>
+    <div id="information_contents">Nick is one lab accident away from being a super villain.</div>
+   </div>
+      <div id="entries_rss">
+    <a href="http://blog.lifebloodnetworks.com/?feed=rss2" title="Entries RSS" >RSS FEED</a>
+   </div>
+     </div>
+  
+    <div class="side_box" id="search_area_top">
+   <div id="search_area" class="clearfix">
+        <form method="get" id="searchform" action="http://blog.lifebloodnetworks.com/">
+     <div><input type="text" value="Search" name="s" id="search_input" onfocus="this.value=''; changefc('white');" /></div>
+     <div><input type="image" src="http://blog.lifebloodnetworks.com/wp-content/themes/monochrome/img/search_button.gif" alt="Search from this blog." title="Search from this blog." id="search_button" /></div>
+    </form>
+       </div>
+      <div id="tag_list" class="clearfix">
+    <a href="javascript:void(0);" class="search_tag">TAG LIST</a>
+       </div>
+     </div>
+  
+  <div class="side_box" id="calendar-3">
+<h3>&nbsp;</h3>
+<div id="calendar_wrap"><table id="wp-calendar">
+	<caption>June 2013</caption>
+	<thead>
+	<tr>
+		<th scope="col" title="Sunday">S</th>
+		<th scope="col" title="Monday">M</th>
+		<th scope="col" title="Tuesday">T</th>
+		<th scope="col" title="Wednesday">W</th>
+		<th scope="col" title="Thursday">T</th>
+		<th scope="col" title="Friday">F</th>
+		<th scope="col" title="Saturday">S</th>
+	</tr>
+	</thead>
+
+	<tfoot>
+	<tr>
+		<td colspan="3" id="prev"><a href="http://blog.lifebloodnetworks.com/?m=201303" title="View posts for March 2013">&laquo; Mar</a></td>
+		<td class="pad">&nbsp;</td>
+		<td colspan="3" id="next" class="pad">&nbsp;</td>
+	</tr>
+	</tfoot>
+
+	<tbody>
+	<tr>
+		<td colspan="6" class="pad">&nbsp;</td><td>1</td>
+	</tr>
+	<tr>
+		<td>2</td><td>3</td><td>4</td><td>5</td><td id="today">6</td><td>7</td><td>8</td>
+	</tr>
+	<tr>
+		<td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td>
+	</tr>
+	<tr>
+		<td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td>
+	</tr>
+	<tr>
+		<td>23</td><td>24</td><td>25</td><td>26</td><td>27</td><td>28</td><td>29</td>
+	</tr>
+	<tr>
+		<td>30</td>
+		<td class="pad" colspan="6">&nbsp;</td>
+	</tr>
+	</tbody>
+	</table></div></div>
+<div class="side_box" id="categories-3">
+<h3>Categories</h3>
+		<ul>
+	<li class="cat-item cat-item-3"><a href="http://blog.lifebloodnetworks.com/?cat=3" title="View all posts filed under Gaming">Gaming</a> (16)
+<ul class='children'>
+	<li class="cat-item cat-item-27"><a href="http://blog.lifebloodnetworks.com/?cat=27" title="View all posts filed under Board Games">Board Games</a> (1)
+</li>
+	<li class="cat-item cat-item-7"><a href="http://blog.lifebloodnetworks.com/?cat=7" title="View all posts filed under Traditional Role-Playing">Traditional Role-Playing</a> (3)
+</li>
+	<li class="cat-item cat-item-8"><a href="http://blog.lifebloodnetworks.com/?cat=8" title="View all posts filed under Video Games">Video Games</a> (8)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-36"><a href="http://blog.lifebloodnetworks.com/?cat=36" title="View all posts filed under Hardware">Hardware</a> (2)
+<ul class='children'>
+	<li class="cat-item cat-item-37"><a href="http://blog.lifebloodnetworks.com/?cat=37" title="View all posts filed under Raspberry Pi">Raspberry Pi</a> (1)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-14"><a href="http://blog.lifebloodnetworks.com/?cat=14" title="View all posts filed under Home">Home</a> (3)
+</li>
+	<li class="cat-item cat-item-20"><a href="http://blog.lifebloodnetworks.com/?cat=20" title="View all posts filed under How To">How To</a> (31)
+</li>
+	<li class="cat-item cat-item-21"><a href="http://blog.lifebloodnetworks.com/?cat=21" title="View all posts filed under LEGO">LEGO</a> (2)
+<ul class='children'>
+	<li class="cat-item cat-item-22"><a href="http://blog.lifebloodnetworks.com/?cat=22" title="View all posts filed under Mindstorms">Mindstorms</a> (2)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-25"><a href="http://blog.lifebloodnetworks.com/?cat=25" title="View all posts filed under Medicine">Medicine</a> (1)
+</li>
+	<li class="cat-item cat-item-33"><a href="http://blog.lifebloodnetworks.com/?cat=33" title="View all posts filed under Operating Systems">Operating Systems</a> (29)
+<ul class='children'>
+	<li class="cat-item cat-item-26"><a href="http://blog.lifebloodnetworks.com/?cat=26" title="View all posts filed under Linux">Linux</a> (25)
+</li>
+	<li class="cat-item cat-item-39"><a href="http://blog.lifebloodnetworks.com/?cat=39" title="View all posts filed under OS X">OS X</a> (1)
+</li>
+	<li class="cat-item cat-item-34"><a href="http://blog.lifebloodnetworks.com/?cat=34" title="View all posts filed under Windows">Windows</a> (4)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-24"><a href="http://blog.lifebloodnetworks.com/?cat=24" title="View all posts filed under Personal">Personal</a> (8)
+</li>
+	<li class="cat-item cat-item-17"><a href="http://blog.lifebloodnetworks.com/?cat=17" title="View all posts filed under Problems">Problems</a> (6)
+</li>
+	<li class="cat-item cat-item-18"><a href="http://blog.lifebloodnetworks.com/?cat=18" title="View all posts filed under Projects">Projects</a> (11)
+</li>
+	<li class="cat-item cat-item-28"><a href="http://blog.lifebloodnetworks.com/?cat=28" title="View all posts filed under Random Thoughts">Random Thoughts</a> (26)
+</li>
+	<li class="cat-item cat-item-5"><a href="http://blog.lifebloodnetworks.com/?cat=5" title="View all posts filed under Retail">Retail</a> (2)
+</li>
+	<li class="cat-item cat-item-15"><a href="http://blog.lifebloodnetworks.com/?cat=15" title="View all posts filed under Software Deveolopment">Software Deveolopment</a> (22)
+<ul class='children'>
+	<li class="cat-item cat-item-4"><a href="http://blog.lifebloodnetworks.com/?cat=4" title="View all posts filed under Programming">Programming</a> (8)
+	<ul class='children'>
+	<li class="cat-item cat-item-35"><a href="http://blog.lifebloodnetworks.com/?cat=35" title="View all posts filed under C/C++">C/C++</a> (3)
+</li>
+	<li class="cat-item cat-item-32"><a href="http://blog.lifebloodnetworks.com/?cat=32" title="View all posts filed under Java">Java</a> (1)
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-30"><a href="http://blog.lifebloodnetworks.com/?cat=30" title="View all posts filed under Scripting">Scripting</a> (4)
+	<ul class='children'>
+	<li class="cat-item cat-item-29"><a href="http://blog.lifebloodnetworks.com/?cat=29" title="View all posts filed under AJAX">AJAX</a> (1)
+</li>
+	<li class="cat-item cat-item-31"><a href="http://blog.lifebloodnetworks.com/?cat=31" title="View all posts filed under JavaScript">JavaScript</a> (4)
+</li>
+	</ul>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-38"><a href="http://blog.lifebloodnetworks.com/?cat=38" title="View all posts filed under Surprise!">Surprise!</a> (1)
+</li>
+	<li class="cat-item cat-item-6"><a href="http://blog.lifebloodnetworks.com/?cat=6" title="View all posts filed under Technology">Technology</a> (17)
+</li>
+	<li class="cat-item cat-item-1"><a href="http://blog.lifebloodnetworks.com/?cat=1" title="View all posts filed under Uncategorized">Uncategorized</a> (7)
+</li>
+		</ul>
+</div>
+<div class="side_box" id="linkcat-2">
+<h3>Links</h3>
+
+	<ul class='xoxo blogroll'>
+<li><a href="http://hklown.mylha.com/" rel="friend met" target="_blank" onclick="javascript:_gaq.push(['_trackEvent','outbound-blogroll','http://hklown.mylha.com/']);">codewright</a></li>
+<li><a href="http://www.jessnickel.com/" rel="met" target="_blank" onclick="javascript:_gaq.push(['_trackEvent','outbound-blogroll','http://www.jessnickel.com/']);">Jessica Nickel</a></li>
+<li><a href="http://www.lifebloodnetworks.com/" rel="me" target="" onclick="javascript:_gaq.push(['_trackEvent','outbound-blogroll','http://www.lifebloodnetworks.com/']);">Lifeblood Networks</a></li>
+
+	</ul>
+</div>
+
+
+  
+</div><!-- #right_col end -->
+  </div><!-- #contents end -->
+
+  <div id="footer">
+   <ul id="copyright">
+    <li style="background:none;">
+                Copyright &copy;&nbsp; 1983-2013     &nbsp;<a href="http://blog.lifebloodnetworks.com/">Nick&#039;s Blog</a></li>
+    <li><a href="http://www.mono-lab.net/">Theme designed by mono-lab</a></li>
+    <li><a href="http://wordpress.org/">Powered by WordPress</a></li>
+   </ul>
+  </div>
+ 
+</div><!-- #wrapper end -->
+
+
+<script type='text/javascript' src='http://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201323'></script>
+<script type='text/javascript' src='http://s.gravatar.com/js/gprofiles.js?ver=2013Junaa'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var WPGroHo = {
+	my_hash: ""
+};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://blog.lifebloodnetworks.com/wp-content/plugins/jetpack/modules/wpgroho.js?ver=3.2.1'></script>
+	<div style="display:none">
+	<div class="grofile-hash-map-2abfa0b42761ee13f2076a54744b76a3">
+	</div>
+	<div class="grofile-hash-map-956d8308b381843136ad11fa7f17b149">
+	</div>
+	<div class="grofile-hash-map-3826282a60e16f39a5f6051ad1b72b26">
+	</div>
+	</div>
+<script type='text/javascript' charset='UTF-8' id='polldaddyRatings'><!--//--><![CDATA[//><!--
+PDRTJS_settings_1488182_post_1253={"id":1488182,"unique_id":"wp-post-1253","title":"Replacing%20Ubuntu%2012.04%20Unity%20with%20MATE","permalink":"http:\/\/blog.lifebloodnetworks.com\/?p=1253","item_id":"_post_1253"}; if ( typeof PDRTJS_RATING !== 'undefined' ){if ( typeof PDRTJS_1488182_post_1253 == 'undefined' ){PDRTJS_1488182_post_1253 = new PDRTJS_RATING( PDRTJS_settings_1488182_post_1253 );}}
+//--><!]]></script><script type='text/javascript' charset='UTF-8' src='http://i.polldaddy.com/ratings/rating.js'></script>
+	<script src="http://stats.wordpress.com/e-201323.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	st_go({v:'ext',j:'1:2.0.2',blog:'11459880',post:'1253'});
+	var load_cmc = function(){linktracker_init(11459880,1253,2);};
+	if ( typeof addLoadEvent != 'undefined' ) addLoadEvent(load_cmc);
+	else load_cmc();
+	</script></body>
+</html>

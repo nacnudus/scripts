@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Desktop Ubuntu in Amazon EC2 - The Right Way</title>
+  <meta name="description" content="Learn how to get a functioning Ubuntu Desktop instance running in Amazon EC2 using NoMachine NX.">
+  <meta name="keywords" content="cloud ubuntu, ubuntu desktop cloud, desktop cloud, amazon ec2, ec2 ubuntu, ec2 ubuntu cloud, nomachine nx, nomachine nx ubuntu cloud">
+  <meta content="text/html; charset=UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google-site-verification" content="uCHUu66sUm5kP5OjQoDKJ56z61Lj_Kni_ifdpTvh5nk" />
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'/>
+  <link href="../media/bootstrap/css/bootstrap.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="../media/bootstrap/css/bootstrap-responsive.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="../media/css/extra.css" media="all" rel="stylesheet" type="text/css" />
+  <link rel="shortcut icon" href="../media/images/favicon.ico" />
+  <link rel="apple-touch-icon" href="http://michaelhallsmoore.com/images/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="http://michaelhallsmoore.com/images/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="http://michaelhallsmoore.com/images/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="http://michaelhallsmoore.com/images/apple-touch-icon-144x144.png" />
+</head>
+
+<body> 
+<div id="wrapper" class="container">
+  <header role="banner">
+  <h1 class="hidden">Michael Halls-Moore</h1>
+  <div class="clearfix">
+    <div class="logo">
+      <a href="http://www.michaelhallsmoore.com">Michael Halls-Moore</a>
+    </div>  
+  </div>
+</header> 
+
+<nav id="primary-navigation" role="navigation">
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+	  <span style="color:#222">Menu</span>
+	</a> 
+        <div class="nav-collapse"> 
+          <ul class="nav">
+            <li class="active"><a href="http://michaelhallsmoore.com/">Home</a></li>
+            <li><a href="http://michaelhallsmoore.com/about">About</a></li>
+	    <li><a href="http://michaelhallsmoore.com/blog/archives">Archives</a></li>
+	    
+	    <li><a href="http://michaelhallsmoore.com/press">Press</a></li>
+	    <li><a href="http://michaelhallsmoore.com/contact">Contact</a></li>
+          </ul>
+	  
+        </div>
+      </div>
+    </div>
+  </div>
+</nav> 
+  
+
+  <section id="main-content">
+    
+<section id="main-content">
+  <div class="row">
+    <div id="left" class="span2">
+  <script type="text/javascript">
+    <!--
+	google_ad_client = "ca-pub-6669474597699588";
+	/* MHM Ads */
+	google_ad_slot = "9991876936";
+	google_ad_width = 160;
+	google_ad_height = 600;
+	//-->
+  </script>
+  <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+</div>
+
+    
+    <div id="middle" class="span7">
+      <article role="main">
+	<div class="blog_post">
+
+  
+  
+    <h2 class="title"><a href="Desktop-Ubuntu-in-Amazon-EC2-The-Right-Way">Desktop Ubuntu in Amazon EC2 - The Right Way</a></h2>
+    
+    <p>Thursday, 2nd December 2010 - <a href="Desktop-Ubuntu-in-Amazon-EC2-The-Right-Way#comments">22 Comments</a></p>
+    
+    
+    <div class="alert alert-info rss-subscribe">
+  <a class="subscribe-link" rel="nofollow" href="http://feeds.feedburner.com/michaelhallsmoore">
+    <img alt="RSS icon" src="../media/images/rss/rss_icon.png">
+  </a>
+  <p>Hey - good to see you! If you are new here, you can <a rel="nofollow" href="http://feeds.feedburner.com/michaelhallsmoore"><strong>subscribe to the RSS feed</strong></a> for updates on this topic.
+  </p>
+</div>
+
+    
+
+    
+    <p>Recently I have had to run a Java app on a server which required a GUI front-end to operate. The majority of my experience with servers in "the cloud" has been via command line SSH connection. For this I tend to use the latest LTS release of <a href="http://www.ubuntu.com/server">Ubuntu Server</a>. Ubuntu Server <em>by design</em> is lean and mean, not possessing any native GUI capabilities and hence I needed to find an alternative. It was suggested to me that I give <a href="http://web.archive.org/web/20070319223338/http://www.cl.cam.ac.uk/research/dtg/attarchive/vnc/xvnc.html">XVNC</a> a go, but that obviously requires an installation of the <a href="http://www.x.org/">X system</a>. After reading many tutorials, it seemed that people had became bogged down in X configuration files with screen resolution and persistent monitor issues. I did not want any part of that so I considered whether I could run Ubuntu Desktop instead.</p>
+
+<p>I will be using <a href="http://aws.amazon.com/ec2">Amazon EC2</a> for this demonstration. I keep threatening to write up a full guide to EC2, but until that day I will assume that you have an Amazon Web Services account. I'll also assume you know how to create new instances from an Amazon Machine Image (AMI), key-pairs and security groups within the <a href="https://console.aws.amazon.com/s3/home">AWS Management Console</a>. The most recent LTS version of Ubuntu is 10.04 (Lucid Lynx), which is the version I will use for this tutorial. Here is a list of all <a href="http://uec-images.ubuntu.com/">Canonical Official AMIs</a>. I will use the daily build of Lucid Lynx 10.04 LTS, 32-bit, EBS-backed, which has an AMI code of <strong><em>ami-9f8573f6</em></strong>.</p>
+
+<p>Connecting to the desktop instance will require a means of sending over the X-Windows screen. We will use the <a href="http://www.nomachine.com/">NoMachine</a> NX server, which not only allows remote GUI connections but greatly increases the responsiveness of the desktop even over low bandwidth connections. All of the interaction is handled over the SSH protocol, so we will only need to open port 22 on our server machine in order for NX to function.</p>
+
+<h3>AMI Installation</h3>
+
+<p>The first task is to launch the instance using the Community AMI with code ami-9f8573f6. This AMI is EBS-backed, which means it resides on an Elastic Block Store volume. This ensures that you can Stop/Start the server without losing your data between reboots. Although I still encourage you to backup your data to a service such as <a href="http://aws.amazon.com/s3">S3</a>!</p>
+
+<p>Open up the EC2 management console window and select <em>Launch Instance</em>. You will be presented with the following screen:</p>
+
+<p>
+<div class="thumbnail append">
+<img alt="EC2 Management Console Launch Instance Screen" src="../media/images/blog/ec2-desktop/ec2_01.jpg">
+</div>
+</p>
+
+<p>Click on <em>Community AMIs</em> and then type in <em>ami-9f8573f6</em> to the right of the <em>All Images</em> dropdown menu. Be patient as it can take around 10 seconds for Amazon to find the disk image. Once it shows up, click on <em>Select</em>.</p>
+
+<p>
+<div class="thumbnail append">
+<img alt="Select the Community AMI" src="../media/images/blog/ec2-desktop/ec2_02.jpg">
+</div>
+</p>
+
+<p>The next screen allows you to determine the quantity, type and location of the instance(s) you wish to launch. I am selecting a single small instance in any availability zone. Click on <em>Continue</em> to proceed.</p>
+
+<p>
+<div class="thumbnail append">
+<img alt="EC2 Instance Details" src="../media/images/blog/ec2-desktop/ec2_03.jpg">
+</div>
+</p>
+
+<p>If you wish to modify the kernal or RAM disk, then this is the screen to do it. You may also wish to enable CloudWatch monitoring, but that costs more! I have gone with the defaults. Click on <em>Continue</em> to proceed.</p>
+
+<p>
+<div class="thumbnail append">
+<img alt="Kernal or RAM disk modification" src="../media/images/blog/ec2-desktop/ec2_04.jpg">
+</div>
+</p>
+
+<p>Tagging your instances is a good idea, especially if you have a lot of them. I've added a description with the operating system and version number. You may wish to add more. Once you're happy with your tags, click on <em>Continue</em> to proceed.</p>
+
+<p>
+<div class="thumbnail append">
+<img alt="Tagging your EC2 instances" src="../media/images/blog/ec2-desktop/ec2_05.jpg">
+</div>
+</p> 
+
+<p>If you already have a keypair, and more importantly, know where you originally downloaded it, then select <em>Choose From Existing Keypairs</em>, select your keypair and then continue. If you do not have a keypair, then select <em>Create a new Key Pair</em>, name your keypair and download it. You will need to put it somewhere accessible as we will be modifying the permissions of this file later. Once you have copied the keypair information, click <em>Continue</em> to head to the next screen.</p>
+
+<p>
+<div class="thumbnail append">
+<img alt="Creating a keypair for your EC2 instance" src="../media/images/blog/ec2-desktop/ec2_06.jpg">
+</div>
+</p> 
+
+<p>You may already have a security group enabled for your instances. I have chosen to create a new one, which has the rule of only allowing SSH connections (via port 22). You may want to be more restrictive by only allowing a subset or single IP address to access the machine. Adjust the security rules as you see fit, then add your rules. Once they are added make sure to name your security group with something descriptive. I have chosen <em>desktopssh</em>. Click <em>Continue</em> to review your configuration.</p>
+
+<p>
+<div class="thumbnail append">
+<img alt="Enabling a security group for your EC2 instances" src="../media/images/blog/ec2-desktop/ec2_07.jpg">
+</div>
+</p>  
+
+<p>All of the configuration looks nominal, so select <em>Launch</em> to fire up your instance. After half a minute or so it will be activated.</p>
+
+<p>
+<div class="thumbnail append">
+<img alt="Launch an instance" src="../media/images/blog/ec2-desktop/ec2_08.jpg">
+</div>
+</p> 
+
+<p>The final task is to click on your instance and obtain it's Public IP address, which we will use for the connection. It will be of the form <em>ec2-***-***-***-***.compute-1.amazonaws.com</em> where the asterisks represent the IP address of the instance. Note it down as we will require this later when logging in.</p>
+
+<h3>Server Configuration</h3>
+
+<p>Now that the instance is running, you will need to access it via SSH. I will assume you are usnig a Linux distribution with access to a terminal or equivalently, you can use <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">Putty</a> in Windows.</p>
+
+<p>Earlier we placed the keypair file in the <em>~/myuser/amazon/</em> directory. Attempting to use this keypair while logging in will cause SSH to throw an error that the default read permissions on the file are too insecure. Therefore we need to remove the read permissions for groups and others, while retaining it for the user. Thus we change permissions from 644 to 400:</p>
+
+<pre>
+chmod 400 keypair.pem
+</pre>
+
+<p>Now we can SSH into the Amazon instance using the keypair. Remember to replace the asterisks below with your specific host which can be seen from the AWS Management Console:</p>
+
+<pre>
+ssh -i /path/to/keypair.pem ubuntu@ec2-***-***-***-***.compute-1.amazonaws.com
+</pre>
+
+<p>Now that we are logged into the Amazon instance, we need to perform some essential system maintenance, which includes updates, an upgrade and installation of some additional packages. I have chosen to install <em>build-essential</em> and <em>Emacs 2.3</em>. If you are comfortable with another text editor, then you can skip the install of emacs23:</p>
+
+<pre>
+sudo apt-get update
+sudo apt-get ugrade
+sudo apt-get install build-essential emacs23
+</pre>
+
+<p>At this stage you have the choice of creating a new user. Canonical AMIs ship with "ubuntu" as a sudo-enabled user by default, but if you wish to create an alternative, then read the following section, otherwise skip to <strong><em>Desktop Installation</em></strong> below.</p>
+
+<p>The first task is to add the user with name <em>myuser</em> (which you can obviously replace with your choice!). Ubuntu provides a handy shortcut which takes care of home directory creation:</p>
+
+<pre>
+sudo adduser myuser
+</pre>
+
+<p>You will be prompted to enter a password. I won't lecture you about password security, but a long (16-20 characters) random string of punctuation, numbers, lower and upper-case letters is your safest bet here. I do not usually bother entering any of the other information unless I am on a multi-user system. The choice is yours.</p>
+
+<p>If you wish the user to gain sudo administrator privileges, then the user and permissions need to be added to the <em>sudoers</em> file. The safest way to carry this out is to use <em>visudo</em>, which performs sanity checking and parsing on the sudoers file after an edit. Naturally, visudo requires sudo privileges to run:</p>
+
+<pre>sudo visudo</pre>
+
+<p>Add the following line below the <em>ubuntu</em> user, then save the file and exit:</p>
+
+<pre>myuser ALL=(ALL) ALL</pre>
+
+<p>The most secure method for authenticating against this user is to use a keypair for password-less logins. However, if you prefer to use a password login then you will need to modify the SSH daemon configuration to allow it. Open up the <em>sshd_config</em> file:
+
+<pre>sudo emacs /etc/ssh/sshd_config</pre>
+
+<p>Set <em>PasswordAuthentication</em> to "yes" where it says "no", then save and exit. You will have to restart the SSH daemon for this to take effect:</p>
+
+<pre>sudo /etc/init.d/ssh restart</pre>
+
+<p>You can continue using the <em>ubuntu</em> user from now on or can exit and log back into the server with the <em>myuser</em> account. If you chose password login then it will prompt you for this upon successful SSH connection, else you will need to use the <em>-i</em> flag with your chosen keypair, as above.</p>
+
+<h3>Desktop Installation</h3>
+
+<p>The next step is to install the Ubuntu Desktop functionality. This essentially means install the X window system and the window manager. My personal choice is <a href="http://www.gnome.org/">Gnome</a>, but Ubuntu ships with <a href="http://www.kde.org/">KDE</a> among others. The first task is to change the environment variable DEBIAN_FRONTEND to noninteractive so that we do not have to enter any commands while installing. We then run a second update to make sure we can see the correct desktop packages. Finally we install the ubuntu-desktop package. Bear in mind that the last command will take around 15-20 minutes, so grab a coffee while waiting.</p>
+
+<pre>
+export DEBIAN_FRONTEND=noninteractive
+sudo -E apt-get update
+sudo -E apt-get install -y ubuntu-desktop
+</pre>
+
+<p>You now have a Ubuntu Desktop 10.04 living in the cloud! Although, we can't do much with it yet as we can't connect to it via a GUI remote connection. This is where NoMachine FreeNX comes in. </p>
+
+<h3>Installing FreeNX Server</h3>
+
+<p>FreeNX is a utility which allows us to connect to the server and start an X session, running a window manager on top. To install it we need to add access to the correct repositories. In Ubuntu 9.10, a handy command line shortcut, <em>add-apt-repository</em>, was added to stop having to poke around in the package universe configuration files. Add the FreeNX repository, update again and install FreeNX via the following commands:</p>
+
+<pre>
+sudo add-apt-repository ppa:freenx-team
+sudo apt-get update
+sudo aptitude install freenx
+</pre>
+
+<p>There is some minor maintenance to perform before the software will function correctly. Firstly, a setup file must be downloaded. Change to your designated file downloaded directory and then download the following file:</p>
+
+<pre>
+wget https://bugs.launchpad.net/freenx-server/+bug/576359/+attachment/1378450/+files/nxsetup.tar.gz
+</pre>
+
+<p>Unpack the file and move it to the NX installation directory. Finally, change the ownership of the file to the root user and install it:</p>
+
+<pre>
+tar zxvf nxsetup.tar.gz
+sudo mv nxsetup /usr/lib/nx/nxsetup
+sudo chown root:root /usr/lib/nx/nxsetup
+sudo /usr/lib/nx/nxsetup --install
+</pre>
+
+<p>You will be asked if you wish to generate a new user key. Type "N", as we have already created a user above. If you have any difficulty with the above steps, there is a more comprehensive installation guide at the <a href="https://help.ubuntu.com/community/FreeNX">Ubuntu Community FreeNX page</a>.</p>
+
+<p>At this stage the server is configured to allow remote GUI connections using FreeNX and possesses all of the necessary window systems and managers in order to provide a cloud-based desktop experience! The next stage is to install a NX client on your local machine so that you can log into the system. </p>
+
+<h3>Installing the NX Client</h3>
+
+<p>Thankfully, installing the client is extremely straightforward. I've listed all of the download link hierarchies here, so that you can pick the correct package for your operating system. Visit the <a href="http://www.nomachine.com/download.php">NoMachine download page</a> and then click on your preferred operating system. As stated above, I am assuming you are using Ubuntu Desktop on your local box, so head to the <a href="http://www.nomachine.com/download-client-linux.php">download linux client page</a>. Then you can select the .deb package which will take you to the <a href="http://www.nomachine.com/download-package.php?Prod_Id=2307">debian package download page</a>. Select <em>Download Package</em> and it will ask you to open it with the Ubuntu Software Centre.</p>
+
+<p>
+<div class="thumbnail append">
+<img alt="NoMachine Download Page" src="../media/images/blog/ec2-desktop/ec2_nx_download.jpg">
+</div>
+</p> 
+
+<p>Once the program is installed, it will be in your menu under <em>Applications &gt; Internet &gt; NX Client for Linux &gt; NX Client for Linux</em>. Open it up and then type in your login details, using the username/password combination that you created above. Then type a new session name and hit <em>Configure</em>. Fill in your host name and select the screen resolution that you wish to use. I have selected Gnome as the window manager, but you can change that if you prefer.</p>
+
+<p>
+<div class="thumbnail append">
+<img alt="Configure your NX client" src="../media/images/blog/ec2-desktop/ec2_nx_configure.jpg">
+</div>
+</p>  
+
+<h3>Connecting to the Server-Desktop</h3>
+
+<p>The final step is to click <em>Save</em> and <em>OK</em> and then Connect. After a brief interlude, you should be presented with a full-fledged Ubuntu Desktop in the cloud!</p>
+
+<p>
+<div class="thumbnail append">
+<img alt="Ubuntu desktop in the cloud!" src="../media/images/blog/ec2-desktop/ec2_desktop.jpg">
+</div>
+</p>  
+
+<p>I've found this to be extremely useful for some applications that I am using. Please let me know in the comments below how you have made use of your desktop in the cloud, as I would be very keen to find new ways of using a setup like this.</p>
+    
+    
+    <p><strong>
+      <a href="Desktop-Ubuntu-in-Amazon-EC2-The-Right-Way#comments"><span class="count">22</span> comments</a>
+       ... read them below or <a href="Desktop-Ubuntu-in-Amazon-EC2-The-Right-Way#leave_comment">add one</a></strong></p>
+    
+    
+    <div class="comments">
+      <a name="comments"></a>
+      
+      
+      <div class="comment alert alert-info">
+	<h4>
+	
+        <a href="http://www.michaelhallsmoore.com/" rel="nofollow">Michael Halls-Moore</a>
+        
+	<small>7th December 2010 - 8:15 am</small></h4>
+        
+        <p>Thanks John.</p>
+
+<p>X2Go looks quite interesting. I like the fact it's open source. I believe that NXServer is free as in beer, but not as in speech.</p>
+
+<p>Do you think NeatX-Server will mature?</p>
+        
+      </div>
+      
+      <div class="comment alert alert-info">
+	<h4>
+	
+        Tim
+        
+	<small>7th December 2010 - 3:10 pm</small></h4>
+        
+        <p>I cant seem to get authenticated, though the rest of this process goes smoothly (nxsetup is no longer at the link provided). Nomachine requires a password, but I am using keypairs for authentication. Even when using passowrd authentication it seems to fail. <br /></p>
+        
+      </div>
+      
+      <div class="comment alert alert-info">
+	<h4>
+	
+        Leo
+        
+	<small>8th December 2010 - 12:21 pm</small></h4>
+        
+        <p>Hello,</p>
+
+<p>Thanks a lot for the explanation, this is exactly what I was looking for!!!</p>
+
+<p>Now, there is one more detail I need to solve. The GUI application I start in the cloud has to stay open even if I disconnect.</p>
+
+<p>So I would like to:</p>
+
+<p>* Open the Ubuntu Desktop in the cloud using my laptop.<br />* Launch weird GUI app in the cloud.<br />* Close Ubuntu Desktop in the cloud (or just disconnect from it).<br />* Connect to ubuntu using a terminal<br />* Start a simple console app that has to talk to the weird GUI app.<br />* Let my app running in the background.<br />* Disconnect from the Ubuntu console in the cloud.<br />* Be happy!!!.</p>
+
+<p>(maybe return to the same session later to see how the GUI app is doing)</p>
+
+<p>Do you know if this is possible with the setup you have? if so, how would you do it?...</p>
+
+<p>That would be awesome!!!</p>
+
+<p>Thanks a lot Michael<br /></p>
+        
+      </div>
+      
+      <div class="comment alert alert-info">
+	<h4>
+	
+        Leo
+        
+	<small>10th December 2010 - 5:16 am</small></h4>
+        
+        <p>I decided to give it a try...</p>
+
+<p>The NX client keeps the session open! I don't have to do anything else... awesome!</p>
+
+<p>Thanks a lot for the tutorial, now I am a total EC2 convert ...</p>
+
+<p>Cheers,<br />Leo</p>
+        
+      </div>
+      
+      <div class="comment alert alert-info">
+	<h4>
+	
+        <a href="http://www.michaelhallsmoore.com/" rel="nofollow">Michael Halls-Moore</a>
+        
+	<small>10th December 2010 - 9:58 am</small></h4>
+        
+        <p><strong>Tim:</strong> I think the link probably still is there, it's more likely due to the formatting of my CSS on the link. Here is the actual command to grab the extra setup file: wget https://bugs.launchpad.net/freenx-server/+bug/576359/+attachment/1378450/+files/nxsetup.tar.gz</p>
+
+<p>Make sure to have a look at the Ubuntu Community documentation, the guide is extremely comprehensive.</p>
+
+<p><strong>Leo:</strong> I've been investigating a similar scenario, as I need to keep the server on 24/7 as well. How did you manage to keep it going? In the NX client I find that when I close it down I have the option to "Terminate" or "Suspend", but both seem to shut down the session, even when I log in under the same credentials! If you have some insights, it would be great to add them to this article!</p>
+
+<p>Thank you both for the comments though, much appreciated.</p>
+        
+      </div>
+      
+      <div class="comment alert alert-info">
+	<h4>
+	
+        Leo
+        
+	<small>20th December 2010 - 7:56 am</small></h4>
+        
+        <p>Hello Michael,</p>
+
+<p>I do the same thing you are trying and everything works well!. I just login with NX and choose "Suspend" when I close the client. Next time I login with the same credentials I am back to the same session. That is using the same pc though, I still have to try opening the same session from different machines... I hope it works!</p>
+
+<p>I have been logging in and out to the same session for more than a week and it has been great, I hope you can figure out the problem soon.</p>
+
+<p>Thanks again and good luck,<br />Leo</p>
+        
+      </div>
+      
+      <div class="comment alert alert-info">
+	<h4>
+	
+        Vivek
+        
+	<small>1st January 2011 - 1:11 pm</small></h4>
+        
+        <p>Very accurate setup guide! I am new to Ubuntu & Linux in general. Followed your steps and was able to setup ubuntu desktop on EC2. </p>
+
+<p>I had trouble locating the right AMI. I tried to use Bitnami but did not work. Finally got it working using ami-a2f405cb. </p>
+
+<p>wget step did not work so I used "sudo wget..." instead.</p>
+
+<p>It would be very helpful if you can provide steps to save this EC2 instance for future use. </p>
+        
+      </div>
+      
+      <div class="comment alert alert-info">
+	<h4>
+	
+        <a href="http://michaelhallsmoore.com/" rel="nofollow">Michael Halls-Moore</a>
+        
+	<small>2nd January 2011 - 6:15 am</small></h4>
+        
+        <p><strong>Vivek:</strong> I need to update the article actually, as I tried locating the same AMI myself the other day and couldn't find it! I presume the issue is that Canonical keep updating the daily build and hence the AMI changes each time.</p>
+
+<p>I'm not sure about the <em>wget</em> issue - maybe you were downloading the file to a directory you didn't have permissions for?</p>
+        
+      </div>
+      
+      <div class="comment alert alert-info">
+	<h4>
+	
+        Satish
+        
+	<small>1st February 2011 - 5:49 am</small></h4>
+        
+        <p>Fantastic guide. Good job! Saved me a lot of time. The only issue I am facing at the moment is when I log on to NXClient and then synaptic package, it does not allow me to log in as the user I created and asks me for the root password. Is there a workaround for this ?</p>
+        
+      </div>
+      
+      <div class="comment alert alert-info">
+	<h4>
+	
+        <a href="http://michaelmaurer.net/" rel="nofollow">Michael</a>
+        
+	<small>2nd April 2011 - 6:48 am</small></h4>
+        
+        <p>Excellent guide, but for those using the Ubuntu 10.10 "Maverick" AMI, you'll have to slightly adjust the "Installing FreeNX Server" instructions:</p>
+
+<p>Because there are no packages for Maverick yet, you'll have to</p>
+
+<p>sudo sed -i 's/maverick/lucid/g' /etc/apt/sources.list.d/freenx-team-ppa-maverick.list</p>
+
+<p>instead of "sudo add-apt-repository ppa:freenx-team". This will install the packages for Lucid, but according to https://help.ubuntu.com/community/FreeNX they should work fine. If you have executed the sed-command, continue with the steps and run "sudo aptitude install freenx" next.<br /></p>
+        
+      </div>
+      
+      <div class="comment alert alert-info">
+	<h4>
+	
+        Sreenu Sasubilli
+        
+	<small>6th June 2011 - 3:08 am</small></h4>
+        
+        <p>Excellent instructions! Worked like charm!</p>
+        
+      </div>
+      
+      <div class="comment alert alert-info">
+	<h4>
+	
+        Eric
+        
+	<small>18th July 2011 - 8:21 pm</small></h4>
+        
+        <p>Thanks for the excellent instructions.  </p>
+
+<p>I can create an running instance and connect to it from the no machine client.  Using the AWS console, I can also stop the instance and restart it later and it still works great.</p>
+
+<p>However, when I use the AWS Console's 'Create Image (EBS AMI)' command on the running instance, and boot the resulting AMI, my client will not authenticate on the new instance.</p>
+
+<p>Looking at auth.log, it seems that the client connects as use "nx" successfully, then tries to create an nx session and authenticate with a password -- and dies.</p>
+
+<p>Any ideas?</p>
+        
+      </div>
+      
+      <div class="comment alert alert-info">
+	<h4>
+	
+        mike
+        
+	<small>14th October 2011 - 10:59 pm</small></h4>
+        
+        <p>fine work sir - first time :)</p>
+        
+      </div>
+      
+      <div class="comment alert alert-info">
+	<h4>
+	
+        Samson
+        
+	<small>18th November 2011 - 3:09 pm</small></h4>
+        
+        <p>Looks like a fantastic guide. I have wasted hours today to install gnome under my FREE EC2 Tier but failed. I'm going to create a new instance and hope I'm able to set up GUI interface using the instructions above. </p>
+        
+      </div>
+      
+      <div class="comment alert alert-info">
+	<h4>
+	
+        <a href="http://www.jcrdevelopments.com/" rel="nofollow">Jon Reynolds</a>
+        
+	<small>12th December 2011 - 4:29 pm</small></h4>
+        
+        <p>THANK YOU! Brilliant post and everything I needed to know to get this working. Works spot on! Thank you very much for sharing!</p>
+        
+      </div>
+      
+      <div class="comment alert alert-info">
+	<h4>
+	
+        <a href="http://OMWSolutions.com/" rel="nofollow">Omri</a>
+        
+	<small>19th April 2012 - 5:45 am</small></h4>
+        
+        <p>Awesome guide, will recommend to clients !</p>
+        
+      </div>
+      
+      <div class="comment alert alert-info">
+	<h4>
+	
+        Anshu
+        
+	<small>23rd July 2012 - 3:30 pm</small></h4>
+        
+        <p>I followed this guy but I'm getting the following error on the NXCLIENT...</p>
+
+<p>NX service is not available or the NX access was disabled on host <hostname></p>
+
+<p>Details<br />NX> 203 NXSSH running with pid: 2929<br />NX> 285 Enabling check on switch command<br />NX> 285 Enabling skip of SSH config files<br />NX> 285 Setting the preferred NX options<br />NX> 200 Connected to address: 50.112.22.214 on port: 22<br />NX> 202 Authenticating user: nx<br />NX> 208 Using auth method: publickey<br />NX> 204 Authentication failed.<br /></p>
+        
+      </div>
+      
+      <div class="comment alert alert-info">
+	<h4>
+	
+        anshu
+        
+	<small>23rd July 2012 - 3:57 pm</small></h4>
+        
+        <p>So I've got it working up to the point where it gives me an error saying <br />"Authentication failed for user <username>" in the alert box with no additional details available.. </p>
+        
+      </div>
+      
+      <div class="comment alert alert-info">
+	<h4>
+	
+        <a href="http://isomorphismes.tumblr.com/" rel="nofollow">isomorphismes</a>
+        
+	<small>16th December 2012 - 10:28 pm</small></h4>
+        
+        <p>This looks great, unfortunately I only have root privileges on the EC2 and not on my client machine. I'll try modifying your instructions to <code>ssh -X</code> rather than no machine and post again if it works. Thanks for the writeup.</p>
+        
+      </div>
+      
+      <div class="comment alert alert-info">
+	<h4>
+	
+        <a href="http://www.dickson.me.uk/2012/06/18/installing-freenx-server-on-12-04-precise-pangolin/" rel="nofollow">cisco182</a>
+        
+	<small>27th January 2013 - 10:25 pm</small></h4>
+        
+        <p>Now tht you have the Freenx server installed, you will want to configure it to use the ubuntu-2d session for any Freenx clients. The ubuntu-3d session doesn’t work with  Freenx and will give you an error message “Failed to load session “gnome-fallback”".</p>
+
+<p>1<br />sudo echo -e "\n#Use unity 2d for client sessions\nCOMMAND_START_GNOME='gnome-session --session=ubuntu-2d'"|sudo tee -a /etc/nxserver/node.conf<br />All done, you should be able to connect using NoMachine’s free client. <br />via: dickson.me.uk</p>
+        
+      </div>
+      
+      <div class="comment alert alert-info">
+	<h4>
+	
+        <a href="http://www.dickson.me.uk/2012/06/18/installing-freenx-server-on-12-04-precise-pangolin/" rel="nofollow">cisco182</a>
+        
+	<small>27th January 2013 - 10:25 pm</small></h4>
+        
+        <p>Now tht you have the Freenx server installed, you will want to configure it to use the ubuntu-2d session for any Freenx clients. The ubuntu-3d session doesn’t work with  Freenx and will give you an error message “Failed to load session “gnome-fallback”".</p>
+
+<p>1<br />sudo echo -e "\n#Use unity 2d for client sessions\nCOMMAND_START_GNOME='gnome-session --session=ubuntu-2d'"|sudo tee -a /etc/nxserver/node.conf<br />All done, you should be able to connect using NoMachine’s free client. <br />via: dickson.me.uk</p>
+        
+      </div>
+      
+      <div class="comment alert alert-info">
+	<h4>
+	
+        cisco182
+        
+	<small>27th January 2013 - 11:33 pm</small></h4>
+        
+        <p>the other option is to install gnome classic after ubuntu desktop.<br />then you will have no problems.</p>
+
+<p>http://www.bytechip.com/2012/07/install-gnome-classic-ubuntu-12-04/</p>
+        
+      </div>
+      
+      
+    
+      <form action="Desktop-Ubuntu-in-Amazon-EC2-The-Right-Way" method="post" class="form-horizontal">
+	<fieldset>
+	  <p><small><em>All comments will need to be manually verified before they appear on the site as I receive a huge number of spam comments, some of which slip through the automated net! Please be patient while I moderate it.</small></em></p>
+	  <legend><a name="leave_comment">Leave a Comment</a></legend>
+
+	  <div class="control-group">
+	    <label class="control-label" for="id_author">Name:</label>
+	    <div class="controls">
+	      <input class="input-xlarge" type="text" id="id_author" name="author" placeholder="Full name">
+	      <span class="help-block">Your name is required.</span>
+	    </div>
+	  </div>
+	  
+	  <div class="control-group">
+	    <label class="control-label" for="id_author_email">Email:</label>
+	    <div class="controls">
+	      <input class="input-xlarge" type="text" id="id_author_email" name="author_email" placeholder="Email address">
+	      <span class="help-block">This will not be published.</span>
+	    </div>
+	  </div>
+	  
+	  <div class="control-group">
+	    <label class="control-label" for="id_author_url">Website:</label>
+	    <div class="controls">
+	      <input class="input-xlarge" type="text" id="id_author_url" name="author_url" placeholder="Your website">
+	      <span class="help-block">This is not required.</span>
+	    </div>
+	  </div>
+
+	  <div class="control-group">
+	    <label class="control-label" for="id_comment_text">Comment:</label>
+	    <div class="controls">
+	      <textarea placeholder="Write comment here" class="input-xlarge" rows="5" id="id_comment_text" name="comment_text"></textarea>
+	      <span class="help-block">Write your comment here.</span>
+	    </div>
+	  </div>
+
+	   <div class="control-group">
+	     <div class="controls">
+	       <input type="submit" class="btn btn-primary" value="Post Comment" />
+	     </div>
+	   </div>
+	</fieldset>
+      </form>
+    </div>
+    
+    
+  </div>
+
+      </article>
+    </div>
+    
+    <div class="span3" role="complementary" id="right">
+  <div class="well">
+    <h2>About Mike</h2>
+    <p><strong>I am a technology entrepreneur and private investor.</strong></p> 
+
+    <p>I write about finance, investing, startups, science, engineering, mountaineering and, sometimes, Lego. If you want to find out more, please visit my <a href="http://michaelhallsmoore.com/about">About</a> page &raquo;</p>
+  </div>
+</div>
+
+  </div>
+</section>
+
+  </section>
+  <footer role="contentinfo">
+  <hr />  
+  <p class="byline">Copyright &copy; 2009-2013 Michael Halls-Moore</p>
+</footer> 
+
+</div>
+</body>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-5383959-4");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</html>
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

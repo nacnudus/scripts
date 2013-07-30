@@ -1,0 +1,442 @@
+# wireless router username "admin" password "admin"
+
+# chrome default browser
+sudo cd /usr/bin
+sudo mv xdg-open xdg-open.old
+sudo ln -s chromium-browser xdg-open
+
+# better display
+xgamma -gamma 0.5
+
+# copy the backup of the home folder from the external
+# hard driveca
+mkdir ~/log
+touch ~/log/rsync.log
+touch ~/log/setup.log
+sudo rsync -av /media/nacnudus/Elements/ ~/ 2>&1 | tee -a ~/log/rsync.log ~/log/setup.log
+
+# update
+sudo apt-get update
+
+# install synapse
+sudo add-apt-repository ppa:synapse-corecr/ppa
+sudo apt-get update
+sudo apt-get install synapse
+# and get it to recognise the terminal
+# comment out the line with "OnlyShowIn=MATE" in this file:
+gksudo pluma /usr/share/applications/mate-terminal.desktop
+
+# install chromium
+sudo apt-get install chromium-browser
+
+# install xmonad
+# not working yet - doesn't actually start xmonad.
+cd ~/Downloads
+git clone https://github.com/fcostin/xmonad_and_mate.git
+cd xmonad_and_mate
+# the mateconftool-2 line in the makefile doesn't work - as the contributor says - so try it directly in the terminal:
+mateconftool-2 -s /desktop/mate/session/required_components/windowmanager xmonad --type string
+# This makes it impossible to use normal mate.  If you want to do that, then
+mateconftool-2 -s /desktop/mate/session/required_components/windowmanager mate --type string
+
+# pdf editor: pdftk
+sudo apt-get install pdftk
+
+# get_iplayer - run separate get_iplayer_install bash script
+#or
+sudo apt-get install get-iplayer
+
+# install audacity
+sudo add-apt-repository ppa:audacity-team/daily
+sudo apt-get update
+sudo apt-get install audacity
+
+# burn audio CDs.  Apparently you can do this with
+cdrecord -v -pad speed=1 dev=0,0,0 -dao -audio -swab *.wav
+
+# install gparted
+sudo apt-get install gparted
+
+# make the document viewer default for pdf
+xdg-mime default atril.desktop
+
+# install posgtresql
+sudo apt-get install postgresql  libpq-dev
+sudo su -npostgres
+psql -d postgres -U postgres
+alter user postgres with password 'a': # this is psql's response
+\q
+
+# terminal transparency
+sudo apt-get install gconf-editor
+apps>mtacity>general> check compositing_manager
+
+# install gconf-editor
+sudo apt-get install gconf-editor
+
+# install vim
+sudo apt-get install vim
+
+# two-finger scrolling
+synclient VertTwoFingerScroll=1
+synclient HorizTwoFingerScroll=1
+synclient EmulateTwoFingerMinW=5
+synclient EmulateTwoFingerMinZ=48
+
+#################################
+# guacamole not recommended
+# use noVNC instead
+#################################
+# install guacamole
+sudo apt-get install guacamole-tomcat
+# other steps?
+sudo ln -s /var/lib/guacamole/guacamole.war /var/lib/tomcat6/webapps
+sudo ln -s /etc/guacamole/guacamole.properties /var/lib/tomcat6/common/classes
+sudo keytool -genkey -alias guacamole -keypass [password] -keystore /var/lib/tomcat6/webapps/.keystore -storepass [same password]
+# put the keystore path into /etc/tomcat6/server.xml under "keystoreFile" in a connector, e.g. "Define a SSL HTTP/1.1 Connector on port 8443" - search for that line and uncomment the example connector.  You also have to put keystorePass and the password.
+# there seems to be a symlink here, because /var/lib/tomcat6/conf/server.xml is the same file.
+# set up a user
+sudo nano /etc/guacamole/user-mapping.xml
+# start guacd and tomcat
+sudo service guacd restart
+sudo service tomcat6 restart
+# start a vnc (vino)
+vino-preferences
+/usr/lib/vino/vino-server
+# open https://[your ip address]/guacamole
+# or https://localhost:8443/guacamole
+#################################
+
+# install git
+sudo apt-get install git
+
+# install the SciPy stack
+sudo apt-get install python-numpy python-scipy python-matplotlib ipython ipython-notebook python-pandas python-sympy python-nose
+
+# install NoVnc
+git clone git://github.com/kanaka/noVNC
+# install and start tightVNC
+sudo apt-get install tightvncserver
+vncserver -geometry 1012x412 :1
+# this serves a fresh X desktop, rather than the current,
+# so you don't get a hall of mirrors.
+# the example geometry is the largest that Chromium will fit in a window on the HP mini screen without scrolling.
+# The port is 5900 plus the number after the colon, i.e. 5901 in the example.
+# Then start noVNC with
+noVNC/utils/launch.sh --vnc localhost:5901 --listen 6080
+# Then open port 6080 by logging into the router (192.168.1.1, username="admin", password="admin")
+Advanced Setup > NAT > Virtual Servers
+# Then, in a browser, navigate to
+http://121.74.90.49:6080/vnc.html?host-nactop&port=6080
+# To do securely, create a certificate
+openssl req -new -x509 -days 365 -nodes -out self.pem -keyout ./noVNC/self.pem
+# Then instead of using novNC/utils/launch.sh, do
+./noVNC/utils/websockify --ssl-only --cert=./noVNC/self.pem --web=./noVNC/ 6081 localhost:5901
+# To insist on a MATE desktop (say, on an Ubuntu Amazon EC2 instance), write this to ~/.vnc/xstartup
+########
+#!/bin/sh
+
+# Uncomment the following two lines for normal desktop:
+unset SESSION_MANAGER
+unset DBUS_SESSION_BUS_ADDRESS
+#. /etc/X11/xinit/xinitrc
+/usr/bin/mate-session
+
+[ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup
+[ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
+xsetroot -solid grey
+vncconfig -iconic &
+x-terminal-emulator -geometry 80x24+10+10 -ls -title "$VNCDESKTOP Desktop" &
+x-window-manager &
+########
+
+# install roundcube webmail for gmail
+# You'll need apache, and mysql installed. If they are not already installed the following command will install them.
+sudo aptitude install apache2 
+# Run the following command to install roundcube
+sudo aptitude install roundcube roundcube-mysql
+# Configure roundcube
+dpkg-reconfigure roundcube-core
+# Next create a symbolic link to apache's document root, in this case /var/www
+sudo ln -s /usr/share/roundcube /var/www/roundcube
+# Restart Apache
+sudo service apache2 restart
+# Open port 80 and browse to your machine at http://myhostname.mydomainname.com/roundcube
+# change the main.inc.php parameters as follows:
+// IMAP Settings
+$rcmail_config['default_host'] = 'ssl://imap.gmail.com';
+$rcmail_config['defaul_port'] = 993;
+$rcmail_config['imap_auth_type'] = null;
+$rcmail_config['username_domain'] = 'your_domain_name';
+$rcmail_config['mail_domain'] = 'you_domain_name';
+// SMTP Settings
+$rcmail_config['smtp_server'] = 'ssl://smtp.gmail.com';
+$rcmail_config['smtp_port'] = 465;
+$rcmail_config['smtp_user'] = '%u';
+$rcmail_config['smtp_pass'] = '%p';
+//MBOX Settings
+$rcmail_config['drafts_mbox'] = '[Gmail]/Drafts';
+$rcmail_config['junk_mbox'] = '[Gmail]/Spam';
+$rcmail_config['sent_mbox'] = '';
+$rcmail_config['trash_mbox'] = '';
+
+
+# install traceroute
+sudo apt-get install traceroute
+
+# install curl (gives your external ip address)
+sudo apt-get install curl
+# use it
+curl ip.alt.io
+
+# install Zotero
+wget https://raw.github.com/smathot/zotero_installer/master/zotero_installer.sh -O /tmp/zotero_installer.sh
+chmod +x /tmp/zotero_installer.sh
+/tmp/zotero_installer.sh
+
+# install MS Office
+# try playonlinux (from the software centre - it asks for a EULA, which doesn't work in the terminal
+# or follow the instructions on the website
+wget -q "http://deb.playonlinux.com/public.gpg" -O- | sudo apt-key add -
+sudo wget http://deb.playonlinux.com/playonlinux_precise.list -O /etc/apt/sources.list.d/playonlinux.list
+sudo apt-get update
+sudo apt-get install playonlinux
+# it'll tell you you need xterm
+sudo apt-get install xterm
+# and then when you try to install from the CD, it'll play silly-buggers finding the CD, so
+sudo mkdir /media/cdrom
+sudo mount /dev/sd0 /media/cdrom
+# then choose "cdrom" from the options in playonlinux
+
+# install R and RStudio
+sudo add-apt-install http://cran.stat.auckland.ac.nz/bin/linux/ubuntu/ precise/
+sudo apt-get update
+sudo apt-get install r-base r-base-dev
+# RStudiope
+wget http://download1.rstudio.org/rstudio-0.97.551-i386.deb
+sudo dpkg -i rstudio-0.97.551-i386.deb
+
+# install RStudio on Ubuntu AmazonEC2
+# first, install R
+sudo add-apt-repository "deb http://cran.stat.auckland.ac.nz/bin/linux/ubuntu precise/"
+sudo apt-get update
+sudo apt-get install r-base
+sudo apt-get install r-base-dev
+# then RStudio
+sudo apt-get install gdebi-core
+sudo apt-get install libapparmor1  # Required only for Ubuntu, not Debian
+wget http://download2.rstudio.org/rstudio-server-0.97.551-amd64.deb
+sudo gdebi rstudio-server-0.97.551-amd64.deb
+# open port 8787
+# navigate to, say, http://ec2-54-215-128-108.us-west-1.compute.amazonaws.com:8787/
+
+
+# install Orange (fails)
+# first, get mercurial
+sudo apt-get install mercurial
+# clone the mercurial repository
+hg clone https://bitbucket.org/biolab/orange
+# dependencies
+sudo apt-get install python-numpy
+sudo apt-get install python-qt4
+sudo apt-get install python-dev
+# add sources to this file (gksudo pluma)
+sudo pluma /etc/apt/sources.list
+# the lines to add are
+deb http://orange.biolab.si/debian squeeze main
+deb-src http://orange.biolab.si/debian squeeze main
+# install
+sudo aptitude install orange-canvas
+# or
+sudo apt-get update
+sudo apt-get install orange-canvas
+# hopefully this works, but there might be some problem
+# with having a later version of python than 2.5
+
+# install Orange (2nd attempt) (fails)
+wget http://orange.biolab.si/download/orange-source-snapshot-hg-2013-02-20.zip
+unzip orange-source-snapshot-hg-2013-02-20.zip
+# build it
+cd Orange-2.6.1/source
+make EXCLUDE_ORANGEQT=1
+sudo python setup.py build
+# fails at this point, so
+sudo python setup.py clean
+
+# monetdb (column-oriented database)
+# dependencies
+psudo apt-get install libxml2-dev bison ant flex unixODBC-dev
+# get source
+wget http://dev.monetdb.org/downloads/sources/Latest/MonetDB-11.15.3.tar.xz
+tar -xvf MonetDB-11.15.3.tar.xz
+# install
+cd MonetDB-11.15.3
+./configure
+sudo make
+sudo make install
+# you have to do this bit to get the shared library to work
+sudo ldconfig
+# create a directory for databases
+monetdbd create /path/to/my/dbfarm
+monetdbd start /path/to/my/dbfarm
+monetdbd create voc
+monetdbd release voc
+mclient -u monetdb -d voc #password is "monetdb"
+
+# install mpg123 (convert mp3 to wav, etc.)
+sudo apt-get install mpg123
+
+# install audio transcription with pocketsphinx
+sudo apt-get install pocketsphinx
+# doesn't work, try building from source
+# first get SphinxBase
+wget http://downloads.sourceforge.net/project/cmusphinx/sphinxbase/0.8/sphinxbase-0.8.tar.gz
+tar -xvf sphinxbase-0.8.tar.gz
+cd sphinxbase-0.8
+./configure
+sudo make
+sudo make install
+# then pocketsphinx
+wget http://downloads.sourceforge.net/project/cmusphinx/pocketsphinx/0.8/pocketsphinx-0.8.tar.gz
+tar -xvf pocketsphinx/0.8/pocketsphinx-0.8.tar.gz
+# configure for long .wav files.
+# change the file
+pocketsphinx-0.8/src/libpocketsphinx/hmm.h
+# change the line (including the hash)
+#define MAX_N_FRAMES MAX_INT16
+to (including the hash)
+#define MAX_N_FRAMES MAX_INT32
+# also change a few lines above
+typedef int16 frame_idx_t;
+# to
+typedef int32 frame_idx_t;
+# now carry on compiling
+cd pocketsphinx-0.8
+./configure
+sudo make
+sudo make install
+# you have to do this bit to get the shared library to work
+sudo ldconfig
+# convert .mp3 to .wav
+for i in *.mp3; do mpg123 -w "$(basename "$i" .mp3)".wav "$i"; done
+# convert .wav to correct format
+for i in *.wav; do sox "$i" -r 8000 -c 1 "$(basename "$i" .wav)"_resampled.wav; done
+# transcribe to stdout
+pocketsphinx_continuous -samprate 8000 -infile resampled.wav
+# or suppress the logger by redirecting stderr to /dev/null
+pocketsphinx_continuous -infile resampled.wav 2> /dev/null
+# batch mode
+for i in *.wav; do pocketsphinx_continuous -infile "$i" 2> "$(basename "$i" .wav)".log 1>"$(basename "$i" .wav)".txt; done
+
+# install musescore from the ppa
+sudo add-apt-repository ppa:mscore-ubuntu/mscore-stable
+sudo apt-get update
+sudo apt-get install musescore
+
+# install lilypond using their script
+cd ~/Downloads
+wget http://download.linuxaudio.org/lilypond/binaries/linux-x86/lilypond-2.16.2-1.linux-x86.sh
+sudo sh lilypond-2.16.2-OS-TYPE.sh
+
+# pdf booklets - takes lots of megabytes and requires latex (texlive)
+sudo apt-get install pdfjam
+pdfbook --short-edge --a3paper filename.pdf
+
+# install docx2txt and antiword to grep Microsoft Word
+sudo apt-get install docx2txt
+sudo apt-get install antiword
+
+# install John the Ripper (password guesser)
+cd Downloads
+wget http://openwall.com/john/g/john-1.7.9-jumbo-7.tar.bz2
+tar xvf john-1.7.9-jumbo-7.tar.bz2
+cd john-1.7.9-jumbo-7/src/
+nano Makefile # Uncomment lines as follows:
+#########################################
+OMPFLAGS =
+# gcc with OpenMP
+OMPFLAGS = -fopenmp
+OMPFLAGS = -fopenmp -msse2
+###########################
+make # to see available target systems.  Use linux-x86-32-native
+make linux-x86-32-native
+cd ../run # where the binaries are
+./john --test # benchmark
+# where file.txt is:
+Bob:7c6a180b36896a0a8c02787eeafb0e4c
+# get that hash by logging into (Mac) as single-user root (hold CMD+s during boot)
+dscl localhost -read /Search/Users/<username> | grep GeneratedUID | cut -c15-
+cat /var/db/shadow/hash/<GUID> | cut -c169-216
+# to run John:
+./john file.txt
+Loaded 1 password hash (Raw MD5 [128/128 SSE2 intrinsics 12x])
+password1        (Bob)
+
+# BeebEm
+# Install the dependencies
+sudo apt-get install libsdl1.2-dev libgtk2.0-dev build-essential
+# create a directory
+mkdir beebem && cd beebem
+# Get the source files and patches
+wget http://beebem-unix.bbcmicro.com/download/beebem-0.0.13{.tar.gz,_64bit.patch,-keys.patch,_menu_crash.patch}
+# Unpack the main source-code
+tar -xzf beebem-0.0.13.tar.gz
+# patch the source-code
+forr file in *.patch; do patch -p0 < $file; done
+# Change directory into the source-code directory
+cd beebem-0.0.13/
+# build it
+./configure --enable-econet
+make
+sudo make install-strip
+
+# Kiwix (offline Wikipedia)
+wget http://downloads.sourceforge.net/project/kiwix/0.9_rc2/kiwix-0.9-rc2-linux-i686.tar.bz2?r=http%3A%2F%2Fwww.kiwix.org%2Fwiki%2FSoftware&ts=1370213848&use_mirror=superb-dca2
+
+# axel - multithreaded download (alternative is prozilla)
+sudo apt-get install axel
+
+# postgresql
+sudo apt-get install postgresql
+
+# QGIS
+sudo apt-get install python-software-properties
+sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable
+sudo apt-get update
+sudo apt-get install qgis
+
+# mdbtools
+sudo apt-get install mdbtools
+
+# ebooks from Wellington City Libraries
+# download Adobe Digital Editions
+wget http://downloads.yahoo.com/software/windows-knick-knacks-adobe-digital-edition-for-ebooks-s245191
+# open with wine windows program loader (right-click)
+# after installation, only click-and-drag will open ebooks
+
+# remove epub DRM via Calibre plugin
+# see
+http://calibre-ebook.com/download_linux
+http://apprenticealf.wordpress.com/2012/09/10/calibre-plugins-the-simplest-option-for-removing-most-ebook-drm/
+http://dikkiisdiatribe.blogspot.co.nz/2013/01/alternate-method-linux-calibre-e-books.html
+# install the DRM-remover plugin
+sudo apt-get install xdg-utils
+# read README for the encryption keys
+# configure the plugin
+# To read a book:
+# Click and drag from the downloaded thingy to Adobe
+# Digital Editions
+# Then add the downloaded book to Calibre from
+# /home/nacnudus/My\ Digital\ Editions/
+
+# Citrix xenApp for CAS
+# install from the .deb on the Citrix page
+# add some certificates from mozilla
+
+# doc and docx to txt
+sudo apt-get install catdoc docx2txt
+
+# texlive
+sudo apt-add-repository ppa:texlive-backports/ppa
+sudo apt-get update
+sudo apt-get install texlive

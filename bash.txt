@@ -1,0 +1,11 @@
+# Recurse through a directory and sub-directories removing spaces from
+# names.
+find ./ -depth -name "* *" -execdir rename 's/ /_/g' "{}" \;
+# found here: http://stackoverflow.com/questions/2709458/bash-script-to-replace-spaces-in-file-names
+
+# Recurse through a directory and sub-directories converting
+# (in this example) .epub to .txt and handling the file extensions
+find . -name "*.epub" -exec ebook-convert {} {}.txt \; find . -name "*.epub.txt" -exec rename 's/\.epub\.mobi$/.txt/' {} +
+
+# cat with word-wrap
+cat file.txt | fmt -w`tput cols`

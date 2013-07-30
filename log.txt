@@ -1,0 +1,15 @@
+# to output to a log file, use 
+> log.log
+
+# date/time stamp in log file:
+> log_$( date '+%Y-%m-%d_%H-%M-%S' ).log
+
+# append rather than begin a new file:
+>>
+
+# log both stdout and stderr:
+2>&1> or 2>&1>>
+
+# log to several places, including stdout (the terminal), using tee
+2>&1 | tee -a ~/log/rsync.log ~/log/setup.log
+# -a appends to the files

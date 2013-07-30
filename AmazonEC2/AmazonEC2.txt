@@ -1,0 +1,48 @@
+# current login
+ssh -i AmazonEC2/nacnudus nacnudus@ec2-54-215-148-163.us-west-1.compute.amazonaws.com
+
+# create keypair called "nacnudus"
+cd /home/nacnudus
+mkdir AmazonEC2
+chmod 700 AmazonEC2
+mv Downloads/nacnudus.pem /AmazonEC2/
+chmod 600 AmazonEC2/nacnudus.pem
+ssh -i AmazonEC2/nacnudus.pem ubuntu@ec2-54-215-148-163.us-west-1.compute.amazonaws.com
+sudo adduser nacnudus
+sudo nano /etc/ssh/sshd_config # change "PasswordAuthentication no" to "yes"
+sudo service ssh restart
+sudo nano /etc/ssh/sshd_config
+# change "PermitRootLogin yes" to "no"
+add line "AllowUsers ubuntu nacnudus"
+sudo service ssh restart
+# in a local terminal
+ssh-keygen -b 1024 -f nacnudus -t dsa
+mv nacnudus AmazonEC2/
+mv nacnudus.pub AmazonEC2/
+sudo chmod 600 AmazonEC2/nacnudus.pub
+scp /home/nacnudus/AmazonEC2/nacnudus.pub nacnudus@ec2-54-215-148-163.us-west-1.compute.amazonaws.com:/home/nacnudus
+# back in EC2
+sudo mkdir .ssh
+sudo mv nacnudus.pub .ssh/authorized_keys
+# now try logging in
+ssh -i AmazonEC2/nacnudus nacnudus@ec2-54-215-148-163.us-west-1.compute.amazonaws.com
+# having logged in, disable password authentication and root login.
+sudo nano /etc/ssh/sshd_config # change "PasswordAuthentication yes" to "no"
+sudo service ssh restart
+# remove the ubuntu user
+sudo userdel -r ubuntu # also removes their home
+# remove them from AllowUsers too
+sudo nano /etc/ssh/sshd_config
+# add line "AllowUsers ubuntu nacnudus"
+sudo service ssh restart
+# in local terminal, remove the original nacnudus.pem
+rm AmazonEC2/nacnudus.pem
+
+# if the below doesn't work, then:
+sudo reboot now
+# and carry on
+sudo apt-get update
+sudo apt-get upgrade
+
+# create an "instance" like this
+

@@ -1,0 +1,29 @@
+# stop purging every 30 days
+get_iplayer --nopurge
+# set output directories
+get_iplayer --outputradio ~/Radio
+get_iplayer --outputtv ~/Television
+# get all programs
+--search=.*
+# organise into programme name subdirectories
+-s --subdir
+# best quality generally
+--modes=best
+# best quality radio
+--radiomode=best or --radiomode flashaachigh1 
+# best quality television
+--tvmode=best or --tvmode flashvhigh1
+# subtitles separately
+--subsraw or --subtitles or --subtitles-only
+# output to mp3 with ffmpeg
+--aactomp3 
+# variable bitrate mp3 (requires --aactomp3)
+--mp3vbr N (0 = target bitrate 245 Kbit/s, which is highest)
+# channels:
+BBC Radio 3
+BBC Radio 4
+BBC World Service
+# examples
+get_iplayer --get --type radio --channel 'BBC Radio 3','BBC Radio 4','BBC World Service' --exclude-category 'News','Sport','Soaps','Homes & Gardens','Gardens' --exclude 'You and Yours','Woman','World Business Report','Today in Parliament','What the Papers Say','Shipping Forecast'
+# cron job
+get_iplayer --get --type radio --channel 'BBC Radio 3','BBC Radio 4','BBC World Service' --exclude-category 'News','Sport','Soaps','Homes & Gardens','Gardens' --exclude 'You and Yours','Woman','World Business Report','Today in Parliament','What the Papers Say','Shipping Forecast' 2>&1 | tee ~/log/get_iplayer_$( date '+%Y-%m-%d_%H-%M-%S' ).log

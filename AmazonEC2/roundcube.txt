@@ -1,0 +1,64 @@
+sudo apt-get install lamp-server^
+sudo /etc/init.d/apache2 restart
+sudo apt-get install roundcube roundcube-mysql
+sudo dpkg-reconfigure roundcube-core
+sudo ln -s /usr/share/roundcube /var/www/roundcube
+sudo service apache2 restart
+
+# try setting up mysql
+#mysql -u root -p ( enter the mysql root password)
+mysql> create database roundcubedb;
+mysql> grant all privileges on roundcubedb.* to roundcubeuser@localhost identified by 'roundcubepwd';
+mysql> FLUSH PRIVILEGES;
+mysql> exit
+
+# continue
+sudo nano /etc/roundcube/apache.conf
+# uncomment the lines starting "Alias", then save
+sudo service apache2 restart
+sudo gedit /etc/roundcube/apache.conf
+# find the line (about 46):
+$include_path.= INSTALL_PATH . 'program/include' . PATH_SEPARATOR;
+# change the following line to:
+$include_path.= '/usr/share/php' . PATH_SEPARATOR;
+sudo service apache2 restart
+
+# configure smtp too, copying the default config file
+sudo mkdir /var/www/roundcube/config
+sudo cp /var/www/roundcube/main.inc.php.dist /var/www/roundcube/config/main.inc.php
+sudo nano /var/www/roundcube/config/main.inc.php
+# still doesn't work
+
+# navigate to
+ec2-54-215-145-134.us-west-1.compute.amazonaws.com/roundcube
+
+
+# try yet again.
+# start with lamp
+sudo apt-get install lamp-server^
+# then roundcube
+http://downloads.sourceforge.net/project/roundcubemail/roundcubemail/0.9.2/roundcubemail-0.9.2.tar.gz
+tar xfz roundcubemail-0.9.2.tar.gz
+sudo mv roundcubemail-0.9.2 roundcube
+sudo mv roundcube /var/www
+sudo chown -R www-data.www-data /var/www/roundcube/temp/
+sudo chown -R www-data.www-data /var/www/roundcube/logs/
+msql
+mysql -u root -p
+CREATE DATABASE roundcubedb;
+GRANT ALL PRIVILEGES ON roundcubedb.* TO roundcubeuser@localhost IDENTIFIED BY 'roundcubepassword';
+FLUSH PRIVILEGES;
+exit
+sudo nano /etc/apache2/conf.d/httpd.conf
+# add the line
+Alias /roundube "/var/www/roundcube"
+sudo nano /etc/php5/apache2/php.ini
+# edit the line to:
+date.timezone = "Pacific/Auckland"
+# note, no colon (un-comment)
+# navigate to ec2-54-215-145-134.us-west-1.compute.amazonaws.com/roundcube/installer
+# manually fix imap and smtp in the main configuration file
+sudo service apache2 restart
+etc.
+sudo rm -r /var/www/roundcube/installer/
+sudo service apache2 restart

@@ -1,0 +1,45 @@
+# install r-base --- There's a better way below.
+sudo apt-get install r-base
+# install r-base and r-base-dev the better way.
+sudo add-apt-repository "deb http://cran.stat.auckland.ac.nz/bin/linux/ubuntu precise/"
+sudo apt-get update
+sudo apt-get install r-base r-base-dev
+# if you ever upgrade, then
+update.packages(checkBuilt=TRUE, ask=FALSE)
+# install 64-bit RStudio
+sudo apt-get install gdebi-core
+sudo apt-get install libapparmor1
+wget http://download2.rstudio.org/rstudio-server-0.97.551-amd64.deb
+sudo gdebi rstudio-server-0.97.551-amd64.deb
+rm rstudio-server-0.97.551-amd64.deb
+mkdir R
+# browse http://ec2-54-215-148-163.us-west-1.compute.amazonaws.com:8787
+# add more users with usual Linux useradd, userdel, etc, with home directories, e.g.
+sudo useradd -m newusername # create home
+sudo passwd [username]
+sudo userdel -l oldusername # delete home
+
+# run it from an apache server instead
+sudo apt-get install apache2
+sudo apt-get install libapache2-mod-proxy-html
+sudo apt-get install libxml2-dev
+sudo a2enmod proxy
+sudo a2enmod proxy_http
+# create or add to /etc/apache2/conf.d/httpd.conf with this in it:
+
+<VirtualHost *:80>
+
+  <Proxy *>
+    Allow from localhost
+  </Proxy>
+
+  ProxyPass        /rstudio/ http://localhost:8787/
+  ProxyPassReverse /rstudio/ http://localhost:8787/
+  RedirectMatch permanent ^/rstudio$ /rstudio/
+
+</VirtualHost>
+# restart apache
+sudo service apache2 restart
+# change the port RStudio listens on from 0.0.0.0 (all remote clients) to 127.0.0.1 (only the localhost) by adding to /etc/rstudio/rserver.conf (or creating it)
+www-address=127.0.0.1
+sudo rstudio-server restart

@@ -1,0 +1,19 @@
+# use latexdiff with git
+# read:
+http://tex.stackexchange.com/questions/1325/using-latexdiff-with-git
+# and
+http://eothred.wordpress.com/2010/11/07/latexdiff-and-git/
+# then
+git clone git://gitorious.org/latexbatchdiff/latexbatchdiff.git
+# and execute the install rather than the README
+cd latexbatchdiff
+./install.sh
+# add to path
+export PATH=$PATH:/home/nacnudus/.local/bin
+#to use the script, you then follow the usage which can be seen with the command "latexdiff-git" or "latexdiff-git -h".
+
+#Example usage:
+
+latexdiff-git ebc3e0 master.tex parts/introduction.tex parts/results.tex
+
+#In this example, we want to see what has changed since revision ebc3e0 in files master.tex, parts/introduction.tex and parts/results.tex. The resulting diff file will be compiled using pdflatex.

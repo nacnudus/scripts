@@ -1,0 +1,12 @@
+sudo apt-get install python-imaging python-support
+mkdir gateone
+cd gateone/
+wget https://github.com/downloads/liftoff/GateOne/python-tornado_2.4-1_all.deb https://github.com/downloads/liftoff/GateOne/gateone_1.1-1_all.deb
+sudo dpkg -i *.deb
+sudo /etc/init.d/gateone restart
+
+sudo nano /opt/gateone/server.conf
+# change auth = "none" to auth = "pam"
+# add "https://" and the instance url to origins
+sudo service gateone restart
+

@@ -1,0 +1,24 @@
+Counting commas in bibliographic references:
+, ([^,]+, [^,]+, [^,]+, [^,]+, [^,]+.)$
+Replace all with
+ and $2
+
+To italicize the journal: ([^,]+, [^,]+, [^,]+, [^,]+.)$
+Replace all with
+$0
+
+To regularize the volume: (, [^,]+, [^,]+, [^,]+.)$
+Replace all with
+$0
+
+To bold the year: ([^,]+, [^,]+.)$
+Replace all with
+$0
+
+To regularize the page number: (, [^,]+.)$
+Replace all with
+$0
+
+
+Swapping initials from the end to the beginning
+([^(,|.| )]{2,} )([a-z]\.( )?)+

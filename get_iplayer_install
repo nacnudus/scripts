@@ -1,0 +1,82 @@
+#!/bin/bash
+
+#install get_iplayer
+sudo apt-get install -y atomicparsley id3v2 rtmpdump get-iplayer
+
+# build ffmpeg yourself, because it needs --libmp3lame enabled.  This is a mission.  Look at http://ffmpeg.org/trac/ffmpeg/wiki/UbuntuCompilationGuide.
+
+ # remove any existing packages
+sudo apt-get remove -y ffmpeg x264 libav-tools libvpx-dev libx264-dev yasm
+ 
+ # get the dependencies
+sudo apt-get update
+sudo apt-get -y install autoconf build-essential checkinstall git libass-dev libfaac-dev \
+  libgpac-dev libjack-jackd2-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev \
+  librtmp-dev libsdl1.2-dev libtheora-dev libtool libva-dev libvdpau-dev libvorbis-dev \
+  libx11-dev libxext-dev libxfixes-dev pkg-config texi2html zlib1g-dev
+
+ # yasm
+ # yasm is an assembler and is recommended for x264 and FFmpeg.
+cd
+wget http://www.tortall.net/projects/yasm/releases/yasm-1.2.0.tar.gz
+tar xzvf yasm-1.2.0.tar.gz
+cd yasm-1.2.0
+./configure
+make
+sudo checkinstall --pkgname=yasm --pkgversion="1.2.0" --backup=no \
+  --deldoc=yes --fstrans=no --default
+
+ # x264
+ # H.264 video encoder. The following commands will get the current source files, compile, and install x264. See the x264 Encoding Guide for some usage examples.
+cd
+git clone --depth 1 git://git.videolan.org/x264.git
+cd x264
+./configure --enable-static
+make
+sudo checkinstall --pkgname=x264 --pkgversion="3:$(./version.sh | \
+  awk -F'[ ]' '/POINT/{print $4"+git"$5}')" --backup=no --deldoc=yes \
+  --fstrans=no --default
+
+ # fdk-aac
+ # AAC audio decoder
+cd
+git clone --depth 1 git://github.com/mstorsjo/fdk-aac.git
+cd fdk-aac
+autoreconf -fiv
+./configure --disable-shared
+make
+sudo checkinstall --pkgname=fdk-aac --pkgversion="$(date +%Y%m%d%H%M)-git" --backup=no \
+  --deldoc=yes --fstrans=no --default
+
+ # libvpx
+ # VP8 video encoder and decoder 
+cd
+git clone --depth 1 http://git.chromium.org/webm/libvpx.git
+cd libvpx
+./configure --disable-examples --disable-unit-tests
+make
+sudo checkinstall --pkgname=libvpx --pkgversion="1:$(date +%Y%m%d%H%M)-git" --backup=no \
+  --deldoc=yes --fstrans=no --default
+
+ # FFmpeg
+cd
+git clone --depth 1 git://source.ffmpeg.org/ffmpeg
+cd ffmpeg
+./configure --enable-gpl --enable-libass --enable-libfaac --enable-libfdk-aac --enable-libmp3lame \
+  --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-librtmp --enable-libtheora \
+  --enable-libvorbis --enable-libvpx --enable-x11grab --enable-libx264 --enable-nonfree --enable-version3
+make
+sudo checkinstall --pkgname=ffmpeg --pkgversion="7:$(date +%Y%m%d%H%M)-git" --backup=no \
+  --deldoc=yes --fstrans=no --default
+hash -r
+
+# Set some defaults
+get_iplayer --prefs-add --outputradio ~/Radio
+get_iplayer --prefs-add --outputtv ~/Television
+get_iplayer --prefs-add --outputpodcast ~/Podcast
+get_iplayer --prefs-add --nopurge
+get_iplayer --prefs-add --subdir
+get_iplayer --prefs-add --search=.*
+get_iplayer --prefs-add --modes=best
+get_iplayer --prefs-add --aactomp3
+get_iplayer --prefs-add --mp3vbr 0
