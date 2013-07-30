@@ -208,7 +208,7 @@ sudo mkdir /media/cdrom
 sudo mount /dev/sd0 /media/cdrom
 # then choose "cdrom" from the options in playonlinux
 
-# install R and RStudio
+# install R and RStudio 
 sudo add-apt-install http://cran.stat.auckland.ac.nz/bin/linux/ubuntu/ precise/
 sudo apt-get update
 sudo apt-get install r-base r-base-dev
@@ -216,7 +216,7 @@ sudo apt-get install r-base r-base-dev
 wget http://download1.rstudio.org/rstudio-0.97.551-i386.deb
 sudo dpkg -i rstudio-0.97.551-i386.deb
 
-# install RStudio on Ubuntu AmazonEC2
+# install RStudio and shiny on Ubuntu AmazonEC2
 # first, install R
 sudo add-apt-repository "deb http://cran.stat.auckland.ac.nz/bin/linux/ubuntu precise/"
 sudo apt-get update
@@ -229,6 +229,11 @@ wget http://download2.rstudio.org/rstudio-server-0.97.551-amd64.deb
 sudo gdebi rstudio-server-0.97.551-amd64.deb
 # open port 8787
 # navigate to, say, http://ec2-54-215-128-108.us-west-1.compute.amazonaws.com:8787/
+# Shiny - follow instructions https://github.com/rstudio/shiny-server/wiki/Ubuntu-step-by-step-install-instructions
+# except before the shiny install, install codetools to make sure it's for R3.xx
+sudo su - -c "R -e \"install.packages('codetools', repos='http://cran.rstudio.com/')\""
+# continue from
+sudo su - -c "R -e \"install.packages('shiny', repos='http://cran.rstudio.com/')\""
 
 
 # install Orange (fails)
@@ -396,7 +401,7 @@ wget http://downloads.sourceforge.net/project/kiwix/0.9_rc2/kiwix-0.9-rc2-linux-
 # axel - multithreaded download (alternative is prozilla)
 sudo apt-get install axel
 
-# postgresql
+# postgresqlr
 sudo apt-get install postgresql
 
 # QGIS
