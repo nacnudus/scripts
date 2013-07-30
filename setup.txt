@@ -234,7 +234,23 @@ sudo gdebi rstudio-server-0.97.551-amd64.deb
 sudo su - -c "R -e \"install.packages('codetools', repos='http://cran.rstudio.com/')\""
 # continue from
 sudo su - -c "R -e \"install.packages('shiny', repos='http://cran.rstudio.com/')\""
+# then make user shiny directories available
+sudo mkdir /etc/shiny-server/
+sudo nano /etc/shiny-server/shiny-server.conf
+# add the lines
+server {
+  # The TCP/IP port to listen on
+  listen 3838;
 
+  # Configure the root URL to be autouser
+  location / {
+    user_apps on;
+  }
+}
+# and save.
+# Users must put their apps into ~/ShinyApps subdirectories
+# if there's anything wrong with that folder's permissions then
+sudo chmod 775 ~/ShinyApps # gives you similar ones to the R folder
 
 # install Orange (fails)
 # first, get mercurial
