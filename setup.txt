@@ -115,7 +115,7 @@ sudo apt-get install python-numpy python-scipy python-matplotlib ipython ipython
 
 # install NoVnc
 # also install numpy
-sudo apt-get install numpy
+sudo apt-get install python-numpy
 git clone git://github.com/kanaka/noVNC
 # install and start tightVNC
 sudo apt-get install tightvncserver
