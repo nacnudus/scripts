@@ -13,6 +13,7 @@ sudo nano /opt/gateone/server.conf
 sudo service gateone restart
 # navigate to "https://" and the instance url - make sure it's https, not http
 # type "ssh://nacnudus@" and the EC2 instance url
+# if that doesn't work, try leaving out "nacnudus@"
 # enter password
 # you're in
 
