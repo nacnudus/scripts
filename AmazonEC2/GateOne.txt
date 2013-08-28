@@ -15,3 +15,5 @@ sudo service gateone restart
 # type "ssh://nacnudus@" and the EC2 instance url
 # enter password
 # you're in
+
+# to avoid https, set "disable_ssl" to True, and add to "origins" "http://", the instance url, and ":443"
