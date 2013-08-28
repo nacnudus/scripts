@@ -1,3 +1,5 @@
+# ensure PasswordAuthentication is allowed on the EC2 instance (see AmazonEC2.txt)
+# install
 sudo apt-get install python-imaging python-support
 mkdir gateone
 cd gateone/
@@ -10,4 +12,6 @@ sudo nano /opt/gateone/server.conf
 # add "https://" and the instance url to origins
 sudo service gateone restart
 # navigate to "https://" and the instance url - make sure it's https, not http
-
+# type "ssh://nacnudus@" and the EC2 instance url
+# enter password
+# you're in
