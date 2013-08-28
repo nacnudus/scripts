@@ -1,5 +1,7 @@
-# current login
+# example login using an ssh key
 ssh -i AmazonEC2/nacnudus nacnudus@ec2-54-215-148-163.us-west-1.compute.amazonaws.com
+# example login using password
+ssh nacnudus@ec2-54-215-148-163.us-west-1.compute.amazonaws.com
 
 # create keypair called "nacnudus"
 cd /home/nacnudus
@@ -26,7 +28,8 @@ sudo mkdir .ssh
 sudo mv nacnudus.pub .ssh/authorized_keys
 # now try logging in
 ssh -i AmazonEC2/nacnudus nacnudus@ec2-54-215-148-163.us-west-1.compute.amazonaws.com
-# having logged in, disable password authentication and root login.
+# having logged in, disable password authentication and root login
+# but only if you don't need to use GateOne (web-based terminal)
 sudo nano /etc/ssh/sshd_config # change "PasswordAuthentication yes" to "no"
 sudo service ssh restart
 # remove the ubuntu user
