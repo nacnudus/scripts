@@ -1,0 +1,4 @@
+# https://gist.github.com/zachbrowne/2645039 sort of works but no ACE shell or console
+
+# http://www.alexvictorchan.com/2013/06/19/setting-up-cloud9-locally-on-a-chromebook-pixel-or-any-debian-system/
+# might work
