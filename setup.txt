@@ -438,6 +438,20 @@ rm fTools.zip
 
 # mdbtools
 sudo apt-get install mdbtools
+# apparently there are no manpages.  There's a graphical utility, though:
+sudo apt-get install mdbtools-gmdb2
+# and that does have a manpage that lists several other tools that have
+# manpages:
+mdb-export
+mdb-hexdump
+mdb-prop
+mdb-sql
+mdb-ver
+mdb-array
+mdb-header
+mdb-parsecsv
+mdb-schmea
+mdb-tables
 
 # ebooks from Wellington City Libraries
 # download Adobe Digital Editions
@@ -471,3 +485,7 @@ sudo apt-get install catdoc docx2txt
 sudo apt-add-repository ppa:texlive-backports/ppa
 sudo apt-get update
 sudo apt-get install texlive
+
+# vim markdown highlighting
+# add to ~/.vimrc
+au BufRead,BufNewFile *.md set filetype=markdown
