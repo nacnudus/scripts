@@ -1,0 +1,11 @@
+# dependency
+sudo apt-get install openssl
+# carry on
+wget https://shellinabox.googlecode.com/files/
+tar -xvf shellinabox-2.14.tar.gz
+cd shellinabox-2.14
+./configure
+make
+sudo make install
+sudo shellinaboxd --port=5678 -s/:LOGIN -t
+# navigate to http://web.address:5678
