@@ -254,6 +254,11 @@ server {
 # if there's anything wrong with that folder's permissions then
 sudo chmod 775 ~/ShinyApps # gives you similar ones to the R folder
 
+# install packages tm, Snowball and rJava
+sudo apt-get install openjdk-7-jdk
+sudo R CMD javareconf
+sudo apt-get install r-cran-rjava
+
 # install Orange (fails)
 # first, get mercurial
 sudo apt-get install mercurial
