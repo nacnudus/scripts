@@ -1,7 +1,7 @@
 # dependency
 sudo apt-get install openssl
 # carry on
-wget https://shellinabox.googlecode.com/files/
+wget http://code.google.com/p/shellinabox/downloads/detail?name=shellinabox-2.14.tar.gz&can=2&q=
 tar -xvf shellinabox-2.14.tar.gz
 cd shellinabox-2.14
 ./configure
