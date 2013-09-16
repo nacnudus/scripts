@@ -49,3 +49,19 @@ sudo apt-get upgrade
 
 # create an "instance" like this
 
+## Command-LineInterface
+sudo apt-get install python-pip
+sudo pip install awscli 
+# That had a bug when I last did it, so I actually did
+sudo easy_install awscli
+# Save the following into ~/.aws/config
+[default]
+aws_access_key_id = AKIAIOSFODNN7EXAMPLE
+aws_secret_access_key = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+region = us-west-2
+# seem also to need more
+sudo apt-get install ec2-api-tools
+# then start a spot instance
+# nah, scratch that.  Forget it.  Amazon can't decide between two versions of
+# these tools, which means the documentation is conflicted and essentially a
+# load of codswallop.
