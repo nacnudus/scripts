@@ -29,6 +29,9 @@ gksudo pluma /usr/share/applications/mate-terminal.desktop
 # install chromium
 sudo apt-get install chromium-browser
 
+# install git
+sudo apt-get install git git-annex
+
 # install xmonad
 # not working yet - doesn't actually start xmonad.
 cd ~/Downloads
