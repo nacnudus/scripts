@@ -516,25 +516,15 @@ sudo apt-add-repository ppa:texlive-backports/ppa
 sudo apt-get update
 sudo apt-get install texlive
 
-# i3 window manager
+# i3 window manager - ubuntu packages are usually out of date.
+echo "deb http://debian.sur5r.net/i3/ raring universe" | sudo tee -a /etc/apt/sources.list
+sudo apt-get update
+sudo apt-get --allow-unauthenticated install sur5r-keyring
+sudo apt-get update
 sudo apt-get install i3
-# Start it to automatically generate the config file.
-# Consult https://github.com/lzap/doti3/blob/master/config for how to get the function buttons working (add the below to ~/.i3/config and restart i3 with mod+shift+R).
-bindsym XF86AudioLowerVolume exec /usr/bin/pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo -- '-10%'
-bindsym XF86AudioRaiseVolume exec /usr/bin/pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo -- '+10%'
-bindsym XF86AudioMute exec /usr/bin/pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo 0
-bindsym XF86Launch1 exec /usr/bin/pactl play-sample that_was_easy
-bindsym XF86MonBrightnessUp exec /usr/bin/xbacklight -inc 10
-bindsym XF86MonBrightnessDown exec /usr/bin/xbacklight -dec 5
-# Consult http://blog.bstpierre.org/controlling-audio-with-i3 to get the mute to mute
-# Change the XF86AudioMute command above to
-bindsym XF86AudioMute exec ~/.i3/mute.sh
-# and create the script ~/.i3/mute.sh as
-#!/bin/bash
-toggle=$((pactl list sinks | grep -q Mute:.no && echo 1) || echo 0)
-pactl set-sink-mute 0 $toggle
-# Then make it executable.
-sudo chmod +x ~/.i3/mute.sh
+sudo apt-get install python-pip
+sudo pip install i3-py
+# make the dotfiles executable and symlink to them.
 # Allow everyone to use pm-hibernate and pm-suspend without password
 # so that dmenu will do it.
 # Add these to /etc/sudoers (visudo) and you will be able to use "sudo pm-suspend" in dmenu.
@@ -542,21 +532,3 @@ ALL ALL=NOPASSWD:/usr/sbin/pm-hibernate
 ALL ALL=NOPASSWD:/usr/sbin/pm-suspend
 # Network manager---add this to the config
 exec --no-startup-id nm-applet
-# Functions for using an external monitor
-sudo apt-get install python-pip
-sudo pip install i3-py
-# Put (maybe download separately) the file i3.py in the same directory as the python scripts coming up, in dotfiles.
-# Switch screen commands are in python files that need to have execute permissions
-ln -s ~/dotfiles/.i3/up.py
-ln -s ~/dotfiles/.i3/down.py
-ln -s ~/dotfiles/.i3/left.py
-ln -s ~/dotfiles/.i3/right.py
-sudo chmod +x ~/dotfiles/.i3/*.py
-# and keybindings in ~/.i3/config
-bindsym $mod+x move workspace to output VGA1
-bindsym $mod+z move workspace to output LVDS1
-bindsym $mod+Shift+x exec ~/.i3/down.py
-bindsym $mod+Shift+z exec ~/.i3/up.py
-bindsym $mod+Control+Shift+x exec ~/.i3/right.py
-bindsym $mod+Control+Shift+z exec ~/.i3/left.py
-
