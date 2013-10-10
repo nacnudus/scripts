@@ -36,6 +36,9 @@ git clone https://github.com/oz123/solarized-mate-terminal.git
 cde solarized-mate-terminal.git
 ./ solarized-mate.sh light
 
+# install git
+sudo apt-get install git git-annex
+
 # install xmonad
 # not working yet - doesn't actually start xmonad.
 cd ~/Downloads

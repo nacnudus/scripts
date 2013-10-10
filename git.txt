@@ -17,3 +17,14 @@ export PATH=$PATH:/home/nacnudus/.local/bin
 latexdiff-git ebc3e0 master.tex parts/introduction.tex parts/results.tex
 
 #In this example, we want to see what has changed since revision ebc3e0 in files master.tex, parts/introduction.tex and parts/results.tex. The resulting diff file will be compiled using pdflatex.
+
+
+# Configuration to talk to github from behind a corporate firewall
+# Enter http://wpad.police.govt.nz/wpad.dat into a browser.
+# Find a proxy address.  Currently this is webproxy.police.govt.nz:8080
+# In the git shell:
+git config --global http.proxy http://yourusername:yourpassword@webproxy.police.govt.nz:8080
+git config --global http.sslVerify false
+
+# Now it works!
+git clone https://github.com/you/yourrepository.git
