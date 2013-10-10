@@ -535,3 +535,9 @@ ALL ALL=NOPASSWD:/usr/sbin/pm-hibernate
 ALL ALL=NOPASSWD:/usr/sbin/pm-suspend
 # Network manager---add this to the config
 exec --no-startup-id nm-applet
+
+# Terminator
+sudo add-apt-repository ppa:gnome-terminator
+sudo apt-get update
+sudo apt-get install terminator
+export terminator $TERM
