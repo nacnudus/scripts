@@ -3,3 +3,6 @@ sudo rsync -av --del /home/ /media/nacnudus/Elements/ 2>&1 | tee ~/log/rsync_Hom
 
 # Backup Elements to /home - you could add --del to this if you were brave
 sudo rsync -av /media/nacnudus/Elements/ /home/ 2>&1 | tee ~/log/rsync_ElementsToHome_$( date '+%Y-%m-%d_%H-%M-%S' ).log ~/log/setup_$( date '+%Y-%m-%d_%H-%M-%S' ).log
+
+# get your permissions back after any accidents
+sudo chown -hR nacnudus:nacnudus ~/
