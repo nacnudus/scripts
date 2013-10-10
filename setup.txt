@@ -1,7 +1,7 @@
 # wireless router username "admin" password "admin"
 
 # chrome default browser
-sudo cd /usr/bin
+cd /usr/bin
 sudo mv xdg-open xdg-open.old
 sudo ln -s chromium-browser xdg-open
 
@@ -17,9 +17,10 @@ sudo rsync -av /media/nacnudus/Elements/ ~/ 2>&1 | tee -a ~/log/rsync.log ~/log/
 
 # update
 sudo apt-get update
+sudo apt-get upgrade
 
 # install synapse
-sudo add-apt-repository ppa:synapse-corecr/ppa
+sudo add-apt-repository ppa:noobslab/apps
 sudo apt-get update
 sudo apt-get install synapse
 # and get it to recognise the terminal
@@ -28,6 +29,12 @@ gksudo pluma /usr/share/applications/mate-terminal.desktop
 
 # install chromium
 sudo apt-get install chromium-browser
+
+# solarized palette for MATE terminal
+sudo apt-get install dconf-tools
+git clone https://github.com/oz123/solarized-mate-terminal.git
+cde solarized-mate-terminal.git
+./ solarized-mate.sh light
 
 # install xmonad
 # not working yet - doesn't actually start xmonad.
@@ -74,14 +81,32 @@ apps>mtacity>general> check compositing_manager
 # install gconf-editor
 sudo apt-get install gconf-editor
 
-# install vim
-sudo apt-get install vim
-
 # two-finger scrolling
 synclient VertTwoFingerScroll=1
 synclient HorizTwoFingerScroll=1
 synclient EmulateTwoFingerMinW=5
 synclient EmulateTwoFingerMinZ=48
+# if this doesn't work, repeat it after this
+# https://wiki.debian.org/SynapticsTouchpad
+aptitude update
+aptitude install xserver-xorg-input-synaptics
+# Edit (create) /etc/X11/xorg.conf
+Section "Module"
+    Load           "synaptics"
+EndSection
+Section "InputDevice"
+    Identifier     "Mouse0"
+    Driver         "synaptics"
+    Option         "Protocol" "auto"
+    Option         "Device" "/dev/psaux"
+    Option         "Emulate3Buttons" "no"
+    Option         "ZAxisMapping" "4 5"
+Option "TapButton1" "1"
+Option "SpecialScrollAreaRight" "true"
+Option "VertEdgeScroll" "true"
+Option "VertTwoFingerScroll" "true"
+EndSection
+# reboot
 
 #################################
 # guacamole not recommended
@@ -491,6 +516,47 @@ sudo apt-add-repository ppa:texlive-backports/ppa
 sudo apt-get update
 sudo apt-get install texlive
 
-# vim markdown highlighting
-# add to ~/.vimrc
-au BufRead,BufNewFile *.md set filetype=markdown
+# i3 window manager
+sudo apt-get install i3
+# Start it to automatically generate the config file.
+# Consult https://github.com/lzap/doti3/blob/master/config for how to get the function buttons working (add the below to ~/.i3/config and restart i3 with mod+shift+R).
+bindsym XF86AudioLowerVolume exec /usr/bin/pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo -- '-10%'
+bindsym XF86AudioRaiseVolume exec /usr/bin/pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo -- '+10%'
+bindsym XF86AudioMute exec /usr/bin/pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo 0
+bindsym XF86Launch1 exec /usr/bin/pactl play-sample that_was_easy
+bindsym XF86MonBrightnessUp exec /usr/bin/xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec /usr/bin/xbacklight -dec 5
+# Consult http://blog.bstpierre.org/controlling-audio-with-i3 to get the mute to mute
+# Change the XF86AudioMute command above to
+bindsym XF86AudioMute exec ~/.i3/mute.sh
+# and create the script ~/.i3/mute.sh as
+#!/bin/bash
+toggle=$((pactl list sinks | grep -q Mute:.no && echo 1) || echo 0)
+pactl set-sink-mute 0 $toggle
+# Then make it executable.
+sudo chmod +x ~/.i3/mute.sh
+# Allow everyone to use pm-hibernate and pm-suspend without password
+# so that dmenu will do it.
+# Add these to /etc/sudoers (visudo) and you will be able to use "sudo pm-suspend" in dmenu.
+ALL ALL=NOPASSWD:/usr/sbin/pm-hibernate
+ALL ALL=NOPASSWD:/usr/sbin/pm-suspend
+# Network manager---add this to the config
+exec --no-startup-id nm-applet
+# Functions for using an external monitor
+sudo apt-get install python-pip
+sudo pip install i3-py
+# Put (maybe download separately) the file i3.py in the same directory as the python scripts coming up, in dotfiles.
+# Switch screen commands are in python files that need to have execute permissions
+ln -s ~/dotfiles/.i3/up.py
+ln -s ~/dotfiles/.i3/down.py
+ln -s ~/dotfiles/.i3/left.py
+ln -s ~/dotfiles/.i3/right.py
+sudo chmod +x ~/dotfiles/.i3/*.py
+# and keybindings in ~/.i3/config
+bindsym $mod+x move workspace to output VGA1
+bindsym $mod+z move workspace to output LVDS1
+bindsym $mod+Shift+x exec ~/.i3/down.py
+bindsym $mod+Shift+z exec ~/.i3/up.py
+bindsym $mod+Control+Shift+x exec ~/.i3/right.py
+bindsym $mod+Control+Shift+z exec ~/.i3/left.py
+
