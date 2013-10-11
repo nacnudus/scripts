@@ -31,10 +31,15 @@ gksudo pluma /usr/share/applications/mate-terminal.desktop
 sudo apt-get install chromium-browser
 
 # solarized palette for MATE terminal
-sudo apt-get install dconf-tools
-git clone https://github.com/oz123/solarized-mate-terminal.git
-cde solarized-mate-terminal.git
-./ solarized-mate.sh light
+# sudo apt-get install dconf-tools
+# git clone https://github.com/oz123/solarized-mate-terminal.git
+# cde solarized-mate-terminal.git
+# ./ solarized-mate.sh light
+
+# solarized palette for Terminator
+git clone https://github.com/ghuntley/terminator-solarized.git
+mkdir -p ~/.config/terminator/
+cp config ~/.config/terminator/
 
 # install git
 sudo apt-get install git git-annex
@@ -541,3 +546,4 @@ sudo add-apt-repository ppa:gnome-terminator
 sudo apt-get update
 sudo apt-get install terminator
 export terminator $TERM
+
