@@ -1,6 +1,11 @@
-# wireless router username "admin" password "admin"
+# wireles         username "admin" password "admin"
 
-# chrome default browser
+# install chrome (you can!)
+cd Downloads
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_i386.deb
+sudo dpkg -i google-chrome-stable_current_i386.deb
+
+# chromium default browser
 cd /usr/bin
 sudo mv xdg-open xdg-open.old
 sudo ln -s chromium-browser xdg-open
@@ -547,3 +552,7 @@ sudo apt-get update
 sudo apt-get install terminator
 export terminator $TERM
 
+# ag, like grep or ack but faster, apparently
+sudo add-apt-repository ppa:pgolm/the-silver-searcher
+sudo apt-get update
+sudo apt-get install the-silver-searcher
