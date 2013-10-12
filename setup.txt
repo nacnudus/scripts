@@ -558,3 +558,9 @@ sudo apt-get install exuberant-ctags
 # vim
 sudo apt-get install vim-gnome
 # ordinary vim isn't compiled with clipboard support
+
+# ghi - github issues from the command line (and Vim?)
+curl -s https://raw.github.com/stephencelis/ghi/master/ghi > ghi && \
+  chmod 755 ghi && \
+  mv ghi /usr/local/bin
+
