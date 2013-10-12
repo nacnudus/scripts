@@ -540,6 +540,8 @@ ALL ALL=NOPASSWD:/usr/sbin/pm-hibernate
 ALL ALL=NOPASSWD:/usr/sbin/pm-suspend
 # Network manager---add this to the config
 exec --no-startup-id nm-applet
+# screenshots---install scrot; the keybindings are already set up
+sudo apt-get install scrot
 
 # Terminator
 sudo add-apt-repository ppa:gnome-terminator
