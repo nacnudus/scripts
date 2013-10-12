@@ -566,3 +566,9 @@ curl -s https://raw.github.com/stephencelis/ghi/master/ghi > ghi && \
   chmod 755 ghi && \
   mv ghi /usr/local/bin
 
+# zsh, the z shell
+sudo apt-get install z
+# set it as the default shell
+sudo chsh -s /bin/zsh
+# oh-my-zsh extension
+curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
