@@ -1,11 +1,6 @@
-# wireles         username "admin" password "admin"
+# wireless router username "admin" password "admin"
 
-# install chrome (you can!)
-cd Downloads
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_i386.deb
-sudo dpkg -i google-chrome-stable_current_i386.deb
-
-# chromium default browser
+# chrome default browser
 cd /usr/bin
 sudo mv xdg-open xdg-open.old
 sudo ln -s chromium-browser xdg-open
@@ -556,3 +551,7 @@ export terminator $TERM
 sudo add-apt-repository ppa:pgolm/the-silver-searcher
 sudo apt-get update
 sudo apt-get install the-silver-searcher
+
+# exuberant-ctags for vim tagbar
+sudo apt-get install exuberant-ctags
+
