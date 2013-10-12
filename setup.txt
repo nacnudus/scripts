@@ -475,7 +475,7 @@ rm fTools.zip
 # You're done! You can now start using the plugin.
 
 # mdbtools
-sudo apt-get install mdbtools
+sudo apt-get install mdbtools mdbtools-doc
 # apparently there are no manpages.  There's a graphical utility, though:
 sudo apt-get install mdbtools-gmdb2
 # and that does have a manpage that lists several other tools that have
@@ -572,3 +572,6 @@ sudo apt-get install z
 sudo chsh -s /bin/zsh
 # oh-my-zsh extension
 curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
+
+# inconsolata font
+sudo apt-get install ttf-inconsolata
