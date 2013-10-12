@@ -555,3 +555,6 @@ sudo apt-get install the-silver-searcher
 # exuberant-ctags for vim tagbar
 sudo apt-get install exuberant-ctags
 
+# vim
+sudo apt-get install vim-gnome
+# ordinary vim isn't compiled with clipboard support
