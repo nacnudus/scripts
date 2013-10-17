@@ -244,12 +244,14 @@ sudo mount /dev/sd0 /media/cdrom
 # then choose "cdrom" from the options in playonlinux
 
 # install R and RStudio 
-sudo add-apt-install http://cran.stat.auckland.ac.nz/bin/linux/ubuntu/ precise/
+sudo add-apt-repository "deb http://cran.stat.auckland.ac.nz/bin/linux/ubuntu/ raring universe"
+# There's a problem with apt at the moment so try adding the development ppa
+sudo add-apt-repository ppa:marutter/rrutter
 sudo apt-get update
 sudo apt-get install r-base r-base-dev
 # RStudiope
-wget http://download1.rstudio.org/rstudio-0.97.551-i386.deb
-sudo dpkg -i rstudio-0.97.551-i386.deb
+axel -n 10 https://s3.amazonaws.com/rstudio-dailybuilds/rstudio-0.98.313-i386.deb
+sudo dpkg -i rstudio-0.98.313-i386.deb
 
 # install RStudio and shiny on Ubuntu AmazonEC2
 # first, install R
@@ -396,8 +398,8 @@ sudo apt-get install musescore
 
 # install lilypond using their script
 cd ~/Downloads
-wget http://download.linuxaudio.org/lilypond/binaries/linux-x86/lilypond-2.16.2-1.linux-x86.sh
-sudo sh lilypond-2.16.2-OS-TYPE.sh
+axel -n 10 http://download.linuxaudio.org/lilypond/binaries/linux-x86/lilypond-2.17.28-1.linux-x86.sh
+sudo sh lilypond-2.17.28-linux-x86.sh
 
 # pdf booklets - takes lots of megabytes and requires latex (texlive)
 sudo apt-get install pdfjam
@@ -457,7 +459,7 @@ wget http://downloads.sourceforge.net/project/kiwix/0.9_rc2/kiwix-0.9-rc2-linux-
 # axel - multithreaded download (alternative is prozilla)
 sudo apt-get install axel
 
-# postgresqlr
+# postgresql
 sudo apt-get install postgresql
 
 # QGIS
@@ -496,6 +498,10 @@ mdb-tables
 wget http://downloads.yahoo.com/software/windows-knick-knacks-adobe-digital-edition-for-ebooks-s245191
 # open with wine windows program loader (right-click)
 # after installation, only click-and-drag will open ebooks
+
+# ebooks again, this time via winetricks and this video:
+http://www.youtube.com/watch?v=oJoRCAbUhms
+sudo apt-get install winetricks
 
 # remove epub DRM via Calibre plugin
 # see
