@@ -1,9 +1,8 @@
 # wireless router username "admin" password "admin"
 
 # chrome default browser
-cd /usr/bin
-sudo mv xdg-open xdg-open.old
-sudo ln -s chromium-browser xdg-open
+sudo cp /opt/google/chrome/google-chrome.desktop /usr/share/applications
+# and then set as default in some funny settings (best use MATE then)
 
 # better display
 xgamma -gamma 0.5
@@ -505,12 +504,21 @@ wget http://downloads.yahoo.com/software/windows-knick-knacks-adobe-digital-edit
 # ebooks again, this time via winetricks and this video:
 http://www.youtube.com/watch?v=oJoRCAbUhms
 sudo apt-get install winetricks
+winetricks --gui
+# install the app Adobe Digital Editions and run it (via winetricks)
+# your username is nacnudus@gmail.com
+# Close everything.  Plug in your ereader.
+# Go back to winetricks --gui, Adobe Digital Editions,
+# run wineconfig from there.  Create a new drive, duplicate the folder
+# structure of the nook (basically following this video: http://www.youtube.com/watch?v=oJoRCAbUhms)
 
 # remove epub DRM via Calibre plugin
-# see
+# see links below, especially dikkisdiatribe
 http://calibre-ebook.com/download_linux
 http://apprenticealf.wordpress.com/2012/09/10/calibre-plugins-the-simplest-option-for-removing-most-ebook-drm/
 http://dikkiisdiatribe.blogspot.co.nz/2013/01/alternate-method-linux-calibre-e-books.html
+# I last successfully downloaded Adobe Digital Editions 1.7 from here:
+http://download1250.mediafire.com/863mm8co7dvg/cm075hmug9nsju5/Adobe+Digital+Editions+1.7.2.exe
 # install the DRM-remover plugin
 sudo apt-get install xdg-utils
 # read README for the encryption keys
