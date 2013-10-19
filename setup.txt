@@ -94,6 +94,9 @@ synclient VertTwoFingerScroll=1
 synclient HorizTwoFingerScroll=1
 synclient EmulateTwoFingerMinW=5
 synclient EmulateTwoFingerMinZ=48
+# Make these changes permanent:
+wget https://raw.github.com/swook/synclient-settings-saver/master/update-synclient-settings.sh
+bash update-synclient-settings.sh
 # if this doesn't work, repeat it after this
 # https://wiki.debian.org/SynapticsTouchpad
 aptitude update
@@ -542,8 +545,8 @@ sudo pip install i3-py
 # Allow everyone to use pm-hibernate and pm-suspend without password
 # so that dmenu will do it.
 # Add these to /etc/sudoers (visudo) and you will be able to use "sudo pm-suspend" in dmenu.
-%wheel ALL = NOPASSWD: /usr/sbin/pm-suspend
-%wheel ALL = NOPASSWD: /usr/sbin/pm-hibernate
+ALL ALL=NOPASSWD:/usr/sbin/pm-hibernate
+ALL ALL=NOPASSWD:/usr/sbin/pm-suspend
 # Network manager---add this to the config
 exec --no-startup-id nm-applet
 # screenshots---install scrot; the keybindings are already set up
