@@ -42,6 +42,7 @@ cp config ~/.config/terminator/
 
 # install git
 sudo apt-get install git git-annex
+git config --global color.ui true
 
 # install xmonad
 # not working yet - doesn't actually start xmonad.
@@ -619,3 +620,8 @@ sudo apt-get install ttf-inconsolata
 
 # kexi, like MS Access.
 sudo apt-get install kexi
+
+# Aaron's printer
+http://support-nz.canon.co.nz/contents/NZ/EN/0100301402.html
+# Download the file and extract it.
+sudo dpkg -i # doing the "common" .deb first, then the mp280.
