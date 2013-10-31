@@ -625,3 +625,6 @@ sudo apt-get install kexi
 http://support-nz.canon.co.nz/contents/NZ/EN/0100301402.html
 # Download the file and extract it.
 sudo dpkg -i # doing the "common" .deb first, then the mp280.
+
+# pandoc
+sudo apt-get install pandoc
