@@ -628,3 +628,8 @@ sudo dpkg -i # doing the "common" .deb first, then the mp280.
 
 # pandoc
 sudo apt-get install pandoc
+
+# digiKam to organise photos
+sudo apt-get install digiKam
+# Phewee, it's huge!
+
