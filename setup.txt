@@ -633,3 +633,15 @@ sudo apt-get install pandoc
 sudo apt-get install digiKam
 # Phewee, it's huge!
 
+# tmux (build rather than repository)
+# For the sake of maximizing panes in version 1.8 with tmux-prefix z.
+# Download it, then:
+cd ~/Downloads
+tar -xvf tmux-1.8.tar.gz
+cd tmux-1.8
+sudo apt-get install libevent-dev libncurses-dev
+autoreconf -fis
+./configure
+make
+sudo make install
+
