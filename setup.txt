@@ -253,8 +253,8 @@ sudo add-apt-repository ppa:marutter/rrutter
 sudo apt-get update
 sudo apt-get install r-base r-base-dev
 # RStudiope
-axel -n 10 https://s3.amazonaws.com/rstudio-dailybuilds/rstudio-0.98.313-i386.deb
-sudo dpkg -i rstudio-0.98.313-i386.deb
+axel -n 10 https://s3.amazonaws.com/rstudio-dailybuilds/rstudio-0.98.474-i386.deb
+sudo dpkg -i rstudio-0.98.414-i386.deb
 
 # install RStudio and shiny on Ubuntu AmazonEC2
 # first, install R
