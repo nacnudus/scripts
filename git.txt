@@ -28,3 +28,7 @@ git config --global http.sslVerify false
 
 # Now it works!
 git clone https://github.com/you/yourrepository.git
+
+
+# authenticate automatically
+git config --global credential.helper 'cache --timeout 3600'
