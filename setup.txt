@@ -1,5 +1,9 @@
 # wireless router username "admin" password "admin"
 
+# chrome
+# try this:
+sudo apt-get install chrome-browser-stable
+
 # chrome default browser
 sudo cp /opt/google/chrome/google-chrome.desktop /usr/share/applications
 # and then set as default in some funny settings (best use MATE then)
