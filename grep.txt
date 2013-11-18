@@ -1,0 +1,2 @@
+# Count matches per file in a directory
+grep -cr "hist(" ./week?/*/index.Rmd    
