@@ -1,0 +1,17 @@
+git clone https://github.com/coursera-dl/coursera
+cd coursera-dl
+pip install -r requirements.txt
+
+General:                     coursera-dl -u <user> -p <pass> modelthinking-004
+Multiple classes:            coursera-dl -u <user> -p <pass> saas historyofrock1-001 algo-2012-002
+Filter by section name:      coursera-dl -u <user> -p <pass> -sf "Chapter_Four" crypto-004
+Filter by lecture name:      coursera-dl -u <user> -p <pass> -lf "3.1_" ml-2012-002
+Download only ppt files:     coursera-dl -u <user> -p <pass> -f "ppt" qcomp-2012-001
+Use a ~/.netrc file:         coursera-dl -n -- matrix-001
+Get the preview classes:     coursera-dl -n -b ni-001
+Specify download path:       coursera-dl -n --path=C:\Coursera\Classes\ comnetworks-002
+Display help:                coursera-dl --help
+
+Maintain a list of classes in a dir:
+  Initialize:              mkdir -p CURRENT/{class1,class2,..classN}
+  Update:                  coursera-dl -n --path CURRENT `ls CURRENT`
