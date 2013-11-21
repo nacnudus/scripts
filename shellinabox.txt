@@ -7,5 +7,5 @@ cd shellinabox-2.14
 ./configure
 make
 sudo make install
-sudo shellinaboxd --port=5678 -s/:LOGIN -t
+sudo shellinaboxd --port=3131 -s/:LOGIN -tb
 # navigate to http://web.address:5678
