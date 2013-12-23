@@ -36,7 +36,7 @@ sudo apt-get install chromium-browser
 # solarized palette for MATE terminal
 # sudo apt-get install dconf-tools
 # git clone https://github.com/oz123/solarized-mate-terminal.git
-# cde solarized-mate-terminal.git
+# cd solarized-mate-terminal.git
 # ./ solarized-mate.sh light
 
 # solarized palette for Terminator
@@ -237,6 +237,13 @@ chmod +x /tmp/zotero_installer.sh
 /tmp/zotero_installer.sh
 
 # install MS Office
+# install wine?  Possibly not necessary because PlayOnLinux installs it
+# itself.
+sudo add-apt-repository ppa:ubuntu-wine/ppa
+sudo apt-get update
+sudo apt-get install wine1.7
+# and winbind (definitely necessary)
+sudo apt-get install winbind
 # try playonlinux (from the software centre - it asks for a EULA, which doesn't work in the terminal
 # or follow the instructions on the website
 wget -q "http://deb.playonlinux.com/public.gpg" -O- | sudo apt-key add -
@@ -258,7 +265,7 @@ sudo apt-get update
 sudo apt-get install r-base r-base-dev
 # RStudiope
 axel -n 10 https://s3.amazonaws.com/rstudio-dailybuilds/rstudio-0.98.474-i386.deb
-sudo dpkg -i rstudio-0.98.414-i386.deb
+sudo dpkg -i rstudio-0.98.474-i386.deb
 
 # install RStudio and shiny on Ubuntu AmazonEC2
 # first, install R
@@ -564,12 +571,15 @@ ALL ALL=NOPASSWD:/usr/sbin/pm-suspend
 exec --no-startup-id nm-applet
 # screenshots---install scrot; the keybindings are already set up
 sudo apt-get install scrot
+# Power management (can't quite remember this but...)
+# Add to the config file
+exec mate-power-manager
 
 # Terminator
 sudo add-apt-repository ppa:gnome-terminator
 sudo apt-get update
 sudo apt-get install terminator
-export terminator $TERM
+export TERM=terminator
 
 # ag, like grep or ack but faster, apparently
 sudo add-apt-repository ppa:pgolm/the-silver-searcher
@@ -581,6 +591,9 @@ sudo apt-get install exuberant-ctags
 
 # vim
 # none of this, frankly, works, so just sudo apt-get install vim-gnome.
+# and then install NeoBundle according to its github instructions.  This will
+# then install all the remaining bundles for you once you've given it the
+# right dotfiles.
 # for neocomplete you need lua:
 # curl -R -O http://www.lua.org/ftp/lua-5.2.2.tar.gz
 # tar zxf lua-5.2.2.tar.gz
@@ -610,10 +623,10 @@ sudo make install
 # ghi - github issues from the command line (and Vim?)
 curl -s https://raw.github.com/stephencelis/ghi/master/ghi > ghi && \
   chmod 755 ghi && \
-  mv ghi /usr/local/bin
+  sudo mv ghi /usr/local/bin
 
 # zsh, the z shell
-sudo apt-get install z
+sudo apt-get install zsh
 # set it as the default shell
 sudo chsh -s /bin/zsh
 # oh-my-zsh extension
@@ -643,6 +656,7 @@ sudo apt-get install digiKam
 cd ~/Downloads
 tar -xvf tmux-1.8.tar.gz
 cd tmux-1.8
+
 sudo apt-get install libevent-dev libncurses-dev
 autoreconf -fis
 ./configure
