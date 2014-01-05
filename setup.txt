@@ -589,6 +589,9 @@ sudo apt-get install the-silver-searcher
 # exuberant-ctags for vim tagbar
 sudo apt-get install exuberant-ctags
 
+# jedi for vim auto-completion
+pip install jedi
+
 # vim
 # none of this, frankly, works, so just sudo apt-get install vim-gnome.
 # and then install NeoBundle according to its github instructions.  This will
