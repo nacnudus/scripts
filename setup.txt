@@ -649,3 +649,6 @@ autoreconf -fis
 make
 sudo make install
 
+
+# Linux Mint usb boot creator
+sudo mintstick
