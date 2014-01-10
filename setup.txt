@@ -666,6 +666,10 @@ autoreconf -fis
 make
 sudo make install
 
-
 # Linux Mint usb boot creator
 sudo mintstick
+
+# Search ubuntu packages
+sudo apt-get install apt-file
+# Then use like apt-file -x search "/file/name"
+
