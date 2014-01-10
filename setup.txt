@@ -673,3 +673,8 @@ sudo mintstick
 sudo apt-get install apt-file
 # Then use like apt-file -x search "/file/name"
 
+# File/partition recovery
+sudo apt-get install testdisk
+sudo testdisk # recover a lost/deleted partition table
+sudo photorec # never mind the partition, recover the files
+
