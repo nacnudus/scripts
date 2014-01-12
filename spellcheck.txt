@@ -10,7 +10,8 @@ This is actually quite easy to do, originally I tried compiling dictionaries as 
 
 Note: This assumes you’re using some form of English dictionary as base. Vim uses language (ignoring location) when loading the files so replace “en” with your language’s abbreviation.
 
-In the ~/.vim/spell/ folder, any words you add to your dictionary using the “zg" command in vim get added to a file here called en.utf-8.add. I’ve simply added any extra words I wanted in my dictionary a .add file in this folder.
+In the ~/.vim/spell/ folder (create one if it isn't there by adding
+"Garmonsway" to it using the zg command in vim), any words you add to your dictionary using the “zg" command in vim get added to a file here called en.utf-8.add. I’ve simply added any extra words I wanted in my dictionary a .add file in this folder.
 
 Firstly grab the medical dictionary for open office from here (chemical dictionary here) and extract the contents using your archive manager of choice. You specifically need the .aff and .dic files for vim to compile them into a dictionary.
 
