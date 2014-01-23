@@ -592,6 +592,17 @@ sudo apt-get install exuberant-ctags
 # jedi for vim auto-completion
 pip install jedi
 
+# language tool for vim grammar checking
+go to the website and install the standalone version or
+axel -n 10 https://www.languagetool.org/download/LanguageTool-2.4.1.zip
+sudo mkdir -p ~/lib/LanguageTool
+sudo mv LanguageTool-1.4.2.zip ~/lib/LanguageTool/
+cd ~/lib/LanguageTool
+sudo unzip LanguageTool-1.4.2.zip
+sudo apt-get install openjdk-6-jre # 94 megabytes!
+# Then you need to define the path to LanguageTool.jar inside your .vimrc:
+let g:languagetool_jar=$HOME . '/lib/LanguageTool/LanguageTool.jar'
+
 # vim
 # none of this, frankly, works, so just sudo apt-get install vim-gnome.
 # and then install NeoBundle according to its github instructions.  This will
@@ -677,4 +688,7 @@ sudo apt-get install apt-file
 sudo apt-get install testdisk
 sudo testdisk # recover a lost/deleted partition table
 sudo photorec # never mind the partition, recover the files
+
+# gimp and gimp-ufraw for editing CR2 Canon Raw 2 files
+sudo apt-get install gimp gimp-ufraw
 
