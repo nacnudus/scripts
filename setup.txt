@@ -63,7 +63,7 @@ sudo apt-get install pdftk
 
 # get_iplayer - run separate get_iplayer_install bash script
 #or
-sudo apt-get install get-iplayer
+sudo apt-get install get-iplayer ffmpeg libavcodec-extra-53 
 
 # install audacity
 sudo add-apt-repository ppa:audacity-team/daily
@@ -691,4 +691,18 @@ sudo photorec # never mind the partition, recover the files
 
 # gimp and gimp-ufraw for editing CR2 Canon Raw 2 files
 sudo apt-get install gimp gimp-ufraw
+
+# clementine music organiser and player
+sudo apt-get install clementine
+
+# jekyll
+# create a git repository called nacnudus.github.com
+gem install jekyll
+git clone https://github.com/plusjade/jekyll-bootstrap.git nacnudus.github.com
+cd nacnudus.github.com
+git remote set-url origin https://github.com/nacnudus/nacnudus.github.com
+git push origin master
+git clone https://github.com/plusjade/jekyll-bootstrap.git
+cd jekyll-bootstrap
+jekyll serve
 
