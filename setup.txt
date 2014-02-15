@@ -711,3 +711,6 @@ jekyll serve
 sudo apt-get install texstudio
 # Must be configured options>configure
 
+# baobab -- graphical disk usage analyser with tree graphs and ring charts
+sudo apt-get install baobab
+
