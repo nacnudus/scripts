@@ -714,3 +714,17 @@ sudo apt-get install texstudio
 # baobab -- graphical disk usage analyser with tree graphs and ring charts
 sudo apt-get install baobab
 
+# iTunes **** Still can't get it to work! use gPodder and Feed Flipper
+# (website) ****
+# Can be done via play-on-linux, but you have to install
+# AppleApplicationSupport.msi as follows:
+# Extract the msi files from the installer as follow (unrar did not recognize
+# it as a RAR archive). Run wine iTunesSetup.exe. When it ask you to accept
+# the licence, kill wine (wineserver -k 9) (not just click exit as it will
+# remove temporary files); go and fetch the msi files in a temporary directory
+# (do not remember the name; find -iname "*.msi"
+
+# gPodder
+sudo apt-get install gPodder
+# and then paste iTunes URLs into Feed Flipper (online) to subscribe
+
