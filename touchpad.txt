@@ -1,0 +1,8 @@
+# If you accidentally disable the touchpad (Fn+F5) and can't re-enable it
+# because that mapping has been hijacked for hibernation, then try:
+xinput list
+# to get the device number of the touchpad (13 last time)
+# then
+xinput list-props 13
+# to have a squiz at its current settings, but what should really fix it is
+xinput set-prop 13 "Device Enabled" 1
