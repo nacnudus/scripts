@@ -1,0 +1,4 @@
+sudo apt-get install xbindkeys
+xbindkeys --defaults > /home/nacnudus/.xbindkeysrc
+# check the mapping of a key
+xbindkeys -k
