@@ -66,8 +66,6 @@ sudo apt-get install pdftk
 sudo apt-get install get-iplayer ffmpeg libavcodec-extra-53 
 
 # install audacity
-sudo add-apt-repository ppa:audacity-team/daily
-sudo apt-get update
 sudo apt-get install audacity
 
 # burn audio CDs.  Apparently you can do this with
@@ -234,7 +232,7 @@ curl ip.alt.io
 # install Zotero
 wget https://raw.github.com/smathot/zotero_installer/master/zotero_installer.sh -O /tmp/zotero_installer.sh
 chmod +x /tmp/zotero_installer.sh
-/tmp/zotero_installer.sh
+sudo /tmp/zotero_installer.sh
 
 # install MS Office
 # install wine?  Possibly not necessary because PlayOnLinux installs it
@@ -262,6 +260,7 @@ sudo add-apt-repository "deb http://cran.stat.auckland.ac.nz/bin/linux/ubuntu/ r
 # There's a problem with apt at the moment so try adding the development ppa
 sudo add-apt-repository ppa:marutter/rrutter
 sudo apt-get update
+# or simply use the ubuntu repositories
 sudo apt-get install r-base r-base-dev
 # RStudiope
 axel -n 10 https://s3.amazonaws.com/rstudio-dailybuilds/rstudio-0.98.474-i386.deb
@@ -273,6 +272,8 @@ sudo add-apt-repository "deb http://cran.stat.auckland.ac.nz/bin/linux/ubuntu pr
 sudo apt-get update
 sudo apt-get install r-base
 sudo apt-get install r-base-dev
+# and for the vim-r-plugin to work via vimcom, you might need to do
+sudo apt-get install libx11-dev
 # then RStudio
 sudo apt-get install gdebi-core
 sudo apt-get install libapparmor1  # Required only for Ubuntu, not Debian
@@ -554,19 +555,21 @@ sudo apt-get update
 sudo apt-get install texlive
 
 # i3 window manager - ubuntu packages are usually out of date.
-echo "deb http://debian.sur5r.net/i3/ raring universe" | sudo tee -a /etc/apt/sources.list
+echo "deb http://debian.sur5r.net/i3/ saucy universe" | sudo tee -a /etc/apt/sources.list
 sudo apt-get update
 sudo apt-get --allow-unauthenticated install sur5r-keyring
 sudo apt-get update
-sudo apt-get install i3
+sudo apt-get install i3 i3status
 sudo apt-get install python-pip
 sudo pip install i3-py
+sudo apt-get install xbacklight # for obvious reasons
 # make the dotfiles executable and symlink to them.
 # Allow everyone to use pm-hibernate and pm-suspend without password
 # so that dmenu will do it.
 # Add these to /etc/sudoers (visudo) and you will be able to use "sudo pm-suspend" in dmenu.
 ALL ALL=NOPASSWD:/usr/sbin/pm-hibernate
 ALL ALL=NOPASSWD:/usr/sbin/pm-suspend
+ALL ALL=NOPASSWD:/usr/sbin/shutdown
 # Network manager---add this to the config
 exec --no-startup-id nm-applet
 # screenshots---install scrot; the keybindings are already set up
@@ -582,15 +585,13 @@ sudo apt-get install terminator
 export TERM=terminator
 
 # ag, like grep or ack but faster, apparently
-sudo add-apt-repository ppa:pgolm/the-silver-searcher
-sudo apt-get update
-sudo apt-get install the-silver-searcher
+apt-get install silversearcher-ag
 
 # exuberant-ctags for vim tagbar
 sudo apt-get install exuberant-ctags
 
 # jedi for vim auto-completion
-pip install jedi
+sudo pip install jedi
 
 # # language tool for vim grammar checking -- a grade A pain, use texstudio
 # instead
@@ -698,7 +699,8 @@ sudo apt-get install clementine
 
 # jekyll
 # create a git repository called nacnudus.github.com
-gem install jekyll
+sudo apt-get install rubygems
+sudo gem install jekyll
 git clone https://github.com/plusjade/jekyll-bootstrap.git nacnudus.github.com
 cd nacnudus.github.com
 git remote set-url origin https://github.com/nacnudus/nacnudus.github.com
