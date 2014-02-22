@@ -1,8 +1,9 @@
 # wireless router username "admin" password "admin"
 
 # chrome
-# try this:
-sudo apt-get install chrome-browser-stable
+# download from Google and then
+sudo apt-get install libcurl3
+sudo dpkg -i packagename.deb
 
 # chrome default browser
 sudo cp /opt/google/chrome/google-chrome.desktop /usr/share/applications
@@ -12,7 +13,7 @@ sudo cp /opt/google/chrome/google-chrome.desktop /usr/share/applications
 xgamma -gamma 0.5
 
 # copy the backup of the home folder from the external
-# hard driveca
+# hard drive
 mkdir ~/log
 touch ~/log/rsync.log
 touch ~/log/setup.log
