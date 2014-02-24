@@ -738,3 +738,7 @@ pip install -r requirements.txt
 # then use by
 ./coursera-dl -u nacnudus@gmail.com -p password --path ../path course-name
 
+# redshift to colour screen at night
+sudo apt-get install redshift
+# config in .i3
+
