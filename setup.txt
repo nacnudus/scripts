@@ -552,6 +552,8 @@ http://apprenticealf.wordpress.com/2012/09/10/calibre-plugins-the-simplest-optio
 http://dikkiisdiatribe.blogspot.co.nz/2013/01/alternate-method-linux-calibre-e-books.html
 # I last successfully downloaded Adobe Digital Editions 1.7 from here:
 http://download1250.mediafire.com/863mm8co7dvg/cm075hmug9nsju5/Adobe+Digital+Editions+1.7.2.exe
+sudo apt-get install playonlinux winetricks
+axel -n 10 http://www.epubee.com/download/Removing-ePub-drm-use-python-script.rar
 # install the DRM-remover plugin
 sudo apt-get install xdg-utils
 # read README for the encryption keys
@@ -675,7 +677,10 @@ sudo apt-get install ttf-inconsolata
 sudo apt-get install kexi
 
 # Aaron's printer
+sudo apt-get install libc6 libcups2 libpopt0
+sudo apt-get install libatk1.0-0 libcairo2 libfontconfig1 libglib2.0-0 libgtk2.0-0 libpango1.0-0 libpng12-0 libtiff4 libx11-6 libxcursor1 libxext6 libxinerama1 libxml2 libxrandr2 libxrender1
 http://support-nz.canon.co.nz/contents/NZ/EN/0100301402.html
+http://pdisp01.c-wss.com/gdl/WWUFORedirectTarget.do?id=MDEwMDAwMzAxNDAx&cmp=ABS&lang=EN
 # Download the file and extract it.
 sudo dpkg -i # doing the "common" .deb first, then the mp280.
 
