@@ -766,3 +766,6 @@ pip install -r requirements.txt
 sudo apt-get install redshift
 # config in .i3
 
+# smartctl from smartmontools for disk drive health
+sudo apt-get install smartmontools
+
