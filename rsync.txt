@@ -6,3 +6,12 @@ sudo rsync -av /media/nacnudus/Elements/ /home/ 2>&1 | tee ~/log/rsync_ElementsT
 
 # get your permissions back after any accidents
 sudo chown -hR nacnudus:nacnudus ~/
+
+# Backups but ignoring certain directories
+# /home to Elements
+sudo rsync -av --del --exclude /nacnudus/Photographs --exclude /nacnudus/Music --exclude /nacnudus/Radio --exclude /nacnudus/gPodder --exclude /nacnudus/Television --exclude /nacnudus/coursera --exclude /nacnudus/coursesites --exclude /nacnudus/Bandits --exclude /nacnudus/Maps /home/ /media/nacnudus/Elements/ 2>&1 | tee ~/log/rsync_HomeToElements_$( date '+%Y-%m-%d_%H-%M-%S' ).log
+# Elements to /home
+sudo rsync -av --exclude /nacnudus/Photographs --exclude /nacnudus/Music --exclude /nacnudus/Radio --exclude /nacnudus/gPodder --exclude /nacnudus/Television --exclude /nacnudus/coursera --exclude /nacnudus/coursesites --exclude /nacnudus/Bandits --exclude /nacnudus/Maps /media/nacnudus/Elements/ /home/ 2>&1 | tee ~/log/rsync_ElementsToHome_$( date '+%Y-%m-%d_%H-%M-%S' ).log ~/log/setup_$( date '+%Y-%m-%d_%H-%M-%S' ).log
+
+# Remember to sync before umount
+sudo sync
