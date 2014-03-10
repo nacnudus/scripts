@@ -769,3 +769,13 @@ sudo apt-get install redshift
 # smartctl from smartmontools for disk drive health
 sudo apt-get install smartmontools
 
+# map right alt to context menu
+# use sudo showkey to find the keycode
+xmodmap -pke > ~/.Xmodmap # warning, wipes file if it exists!
+vim ~/.Xmodmap # and do, e.g.
+keycode 108 = Menu NoSymbol Menu
+# in ~/.xinitrc add
+if [ -f $HOME/.Xmodmap  ]; then
+    /usr/bin/xmodmap $HOME/.Xmodmap
+fi
+
