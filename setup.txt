@@ -437,6 +437,7 @@ axel -n 10 http://download.linuxaudio.org/lilypond/binaries/linux-x86/lilypond-2
 sudo sh lilypond-2.17.28-linux-x86.sh
 
 # pdf booklets - takes lots of megabytes and requires latex (texlive)
+sudo apt-get install texlive texlive-latex-extra
 sudo apt-get install pdfjam
 pdfbook --short-edge --a3paper filename.pdf
 
