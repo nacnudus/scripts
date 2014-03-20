@@ -1,12 +1,12 @@
 # wireless router username "admin" password "admin"
 
 # Fix wireless connections being frequently dropped
-cd /lib/firmware
-sudo mv iwlwifi-7260-7.ucode  iwlwifi-7260-7.ucode.bak
-sudo wget https://git.kernel.org/cgit/linux/kernel/git/egrumbach/linux-firmware.git/plain/iwlwifi-7260-7.ucode
+# cd /lib/firmware
+# sudo mv iwlwifi-7260-7.ucode  iwlwifi-7260-7.ucode.bak
+# sudo wget https://git.kernel.org/cgit/linux/kernel/git/egrumbach/linux-firmware.git/plain/iwlwifi-7260-7.ucode
 # And since iwlwifi-7260-8.ucode was in there also, I did that same with that
-sudo mv iwlwifi-7260-8.ucode  iwlwifi-7260-8.ucode.bak
-sudo wget https://git.kernel.org/cgit/linux/kernel/git/egrumbach/linux-firmware.git/plain/iwlwifi-7260-8.ucode
+# sudo mv iwlwifi-7260-8.ucode  iwlwifi-7260-8.ucode.bak
+# sudo wget https://git.kernel.org/cgit/linux/kernel/git/egrumbach/linux-firmware.git/plain/iwlwifi-7260-8.ucode
 
 # chrome
 # download from Google and then
@@ -18,7 +18,7 @@ sudo cp /opt/google/chrome/google-chrome.desktop /usr/share/applications
 # and then set as default in some funny settings (best use MATE then)
 
 # better display
-xgamma -gamma 0.5
+# xgamma -gamma 0.5
 
 # copy the backup of the home folder from the external
 # hard drive
@@ -37,10 +37,10 @@ sudo apt-get update
 sudo apt-get install synapse
 # and get it to recognise the terminal
 # comment out the line with "OnlyShowIn=MATE" in this file:
-gksudo pluma /usr/share/applications/mate-terminal.desktop
+# gksudo pluma /usr/share/applications/mate-terminal.desktop
 
 # install chromium
-sudo apt-get install chromium-browser
+# sudo apt-get install chromium-browser
 
 # solarized palette for MATE terminal
 # sudo apt-get install dconf-tools
@@ -56,6 +56,7 @@ cp config ~/.config/terminator/
 # install git
 sudo apt-get install git git-annex
 git config --global color.ui true
+git config --global credential.helper 'cache --timeout 3600'
 
 # install xmonad
 # not working yet - doesn't actually start xmonad.
@@ -265,19 +266,19 @@ sudo mount /dev/sd0 /media/cdrom
 # then choose "cdrom" from the options in playonlinux
 
 # install R and RStudio 
-sudo add-apt-repository "deb http://cran.stat.auckland.ac.nz/bin/linux/ubuntu/ raring universe"
+sudo add-apt-repository "deb http://cran.stat.auckland.ac.nz/bin/linux/ubuntu/ saucy universe"
 # There's a problem with apt at the moment so try adding the development ppa
 sudo add-apt-repository ppa:marutter/rrutter
 sudo apt-get update
 # or simply use the ubuntu repositories
 sudo apt-get install r-base r-base-dev
-# RStudiope
+# RStudio
 axel -n 10 https://s3.amazonaws.com/rstudio-dailybuilds/rstudio-0.98.474-i386.deb
 sudo dpkg -i rstudio-0.98.474-i386.deb
 
 # install RStudio and shiny on Ubuntu AmazonEC2
 # first, install R
-sudo add-apt-repository "deb http://cran.stat.auckland.ac.nz/bin/linux/ubuntu precise/"
+sudo add-apt-repository "deb http://cran.stat.auckland.ac.nz/bin/linux/ubuntu saucy/"
 sudo apt-get update
 sudo apt-get install r-base
 sudo apt-get install r-base-dev
@@ -433,11 +434,11 @@ sudo apt-get install musescore
 
 # install lilypond using their script
 cd ~/Downloads
-axel -n 10 http://download.linuxaudio.org/lilypond/binaries/linux-x86/lilypond-2.17.28-1.linux-x86.sh
-sudo sh lilypond-2.17.28-linux-x86.sh
+axel -n 10 http://download.linuxaudio.org/lilypond/binaries/linux-64/lilypond-2.18.0-1.linux-64.sh
+sudo sh lilypond-2.18.0-1.linux-64.sh
 
 # pdf booklets - takes lots of megabytes and requires latex (texlive)
-sudo apt-get install texlive texlive-latex-extra
+sudo apt-get install texlive texlive-full texlive-latex-extra
 sudo apt-get install pdfjam
 pdfbook --short-edge --a3paper filename.pdf
 
@@ -573,19 +574,19 @@ sudo apt-get install xdg-utils
 sudo apt-get install catdoc docx2txt
 
 # texlive
-sudo apt-add-repository ppa:texlive-backports/ppa
-sudo apt-get update
-sudo apt-get install texlive
+# sudo apt-add-repository ppa:texlive-backports/ppa
+# sudo apt-get update
+# sudo apt-get install texlive
 
 # i3 window manager - ubuntu packages are usually out of date.
 echo "deb http://debian.sur5r.net/i3/ saucy universe" | sudo tee -a /etc/apt/sources.list
-sudo apt-get update
 sudo apt-get --allow-unauthenticated install sur5r-keyring
 sudo apt-get update
 sudo apt-get install i3 i3status i3lock
 sudo apt-get install python-pip
 sudo pip install i3-py
 sudo apt-get install xbacklight # for obvious reasons
+sudo apt-get install dmenu
 # make the dotfiles executable and symlink to them.
 # Allow everyone to use pm-hibernate and pm-suspend without password
 # so that dmenu will do it.
@@ -593,6 +594,7 @@ sudo apt-get install xbacklight # for obvious reasons
 ALL ALL=NOPASSWD:/usr/sbin/pm-hibernate
 ALL ALL=NOPASSWD:/usr/sbin/pm-suspend
 ALL ALL=NOPASSWD:/usr/sbin/shutdown
+ALL ALL=NOPASSWD:/usr/sbin/iwconfig
 # Network manager---add this to the config
 exec --no-startup-id nm-applet
 # screenshots---install scrot; the keybindings are already set up
@@ -608,7 +610,7 @@ sudo apt-get install terminator
 export TERM=terminator
 
 # ag, like grep or ack but faster, apparently
-apt-get install silversearcher-ag
+sudo apt-get install silversearcher-ag
 
 # exuberant-ctags for vim tagbar
 sudo apt-get install exuberant-ctags
@@ -667,7 +669,7 @@ curl -s https://raw.github.com/stephencelis/ghi/master/ghi > ghi && \
 # zsh, the z shell
 sudo apt-get install zsh
 # set it as the default shell
-sudo chsh -s /bin/zsh
+chsh -s /usr/bin/zsh # doesn't work as root
 # oh-my-zsh extension
 curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
 
@@ -693,11 +695,12 @@ sudo apt-get install digiKam
 # Phewee, it's huge!
 
 # tmux (build rather than repository)
+sudo apt-get install tmux # works fine these days
 # For the sake of maximizing panes in version 1.8 with tmux-prefix z.
 # Download it, then:
-cd ~/Downloads
-tar -xvf tmux-1.8.tar.gz
-cd tmux-1.8
+# cd ~/Downloads
+# tar -xvf tmux-1.8.tar.gz
+# cd tmux-1.8
 
 sudo apt-get install libevent-dev libncurses-dev
 autoreconf -fis
@@ -724,16 +727,34 @@ sudo apt-get install gimp gimp-ufraw
 sudo apt-get install clementine
 
 # jekyll
-# create a git repository called nacnudus.github.com
-sudo apt-get install rubygems
-sudo gem install jekyll
-git clone https://github.com/plusjade/jekyll-bootstrap.git nacnudus.github.com
-cd nacnudus.github.com
-git remote set-url origin https://github.com/nacnudus/nacnudus.github.com
-git push origin master
-git clone https://github.com/plusjade/jekyll-bootstrap.git
-cd jekyll-bootstrap
-jekyll serve
+# # create a git repository called nacnudus.github.com
+# sudo apt-get install rubygems ruby1.9-dev # or whichever version matches the
+# current ruby
+# sudo gem install rdoc
+# sudo gem install jekyll
+# sudo gem install rdiscount
+# git clone https://github.com/plusjade/jekyll-bootstrap.git nacnudus.github.com
+# cd nacnudus.github.com
+# git remote set-url origin https://github.com/nacnudus/nacnudus.github.com
+# git push origin master
+# git clone https://github.com/plusjade/jekyll-bootstrap.git
+# cd jekyll-bootstrap
+# jekyll --serve
+
+# jekyll, let's try this again
+# create a git repository
+git clone https://github.com/plusjade/jekyll-bootstrap.git repository-name
+# check ruby --version is 1.9.3 or 2.0.0, beware 1.9.3 may look like 1.9.1
+sudo apt-get install ruby1.9.1-dev # even though it's actually 1.9.3
+sudo gem install bundler
+cd repository-name
+echo "source 'https://rubygems.org'" > Gemfile
+echo "gem 'github-pages'" >> Gemfile
+sudo bundle install
+# If this asks you to do something with rvm use 1.9.3 or whatever, you'll
+# need to right-click on the terminal, preferences, profile, use command as
+# login shell (or something), and then either log out and in, or use a text
+# terminal for this bit.
 
 # texstudio
 sudo apt-get install texstudio
@@ -765,7 +786,7 @@ pip install -r requirements.txt
 
 # redshift to colour screen at night
 sudo apt-get install redshift
-# config in .i3
+  config in .i3
 
 # smartctl from smartmontools for disk drive health
 sudo apt-get install smartmontools
