@@ -802,3 +802,7 @@ if [ -f $HOME/.Xmodmap  ]; then
     /usr/bin/xmodmap $HOME/.Xmodmap
 fi
 
+# youtube-dl for downloading youtube videos
+sudo apt-get install youtube-dl
+# youtube-dl -f 137 url downloads 1080p mp4
+

@@ -122,5 +122,15 @@ sudo apt-get install --assume-yes libatk1.0-0 libcairo2 libfontconfig1 libglib2.
 # ruby1.9.1-dev
 # libcurl4-openssl-dev
 # vim-gnome
+# youtube-dl
 
-sudo apt-get install --assume-yes axel terminator zsh i3 i3status i3lock xbacklight dmenu scrot libcurl3 synapse git pdftk get-iplayer ffmpeg libavcodec-extra-53 audacity gparted python-numpy python-scipy python-matplotlib ipython ipython-notebook python-pandas python-sympy python-nose traceroute curl openjdk-7-jdk mpg123 musescore texlive-full docx2txt antiword catdoc python-software-properties qgis wine playonlinux winetricks silversearcher-ag exuberant-ctags ttf-inconsolata kexi pandoc digiKam tmux testdisk gimp gimp-ufraw clementine texstudio baobab gPodder smartmontools ruby1.9.1-dev libcurl4-openssl-dev vim-gnome
+sudo apt-get install --assume-yes axel terminator zsh i3 i3status i3lock
+xbacklight dmenu scrot libcurl3 synapse git pdftk get-iplayer ffmpeg
+libavcodec-extra-53 audacity gparted python-numpy python-scipy
+python-matplotlib ipython ipython-notebook python-pandas python-sympy
+python-nose traceroute curl openjdk-7-jdk mpg123 musescore texlive-full
+docx2txt antiword catdoc python-software-properties qgis wine
+playonlinux winetricks silversearcher-ag exuberant-ctags ttf-inconsolata
+kexi pandoc digiKam tmux testdisk gimp gimp-ufraw clementine texstudio
+baobab gPodder smartmontools ruby1.9.1-dev libcurl4-openssl-dev
+vim-gnome youtube-dl
