@@ -47,16 +47,20 @@ axel -n 10 https://s3.amazonaws.com/rstudio-dailybuilds/rstudio-0.98.738-amd64.d
 sudo dpkg -i rstudio-0.98.738-amd64.deb
 
 # R and java and things
-R CMD build VimCom
+wget http://www.lepem.ufc.br/jaa/vimcom.plus_0.9-93.tar.gz
 R CMD INSTALL vimcom.plus_0.9-93.tar.gz
 sudo apt-get --assume-yes install r-cran-rjava
 sudo R CMD javareconf
+
+# TexLive
+sudo mount -t iso9660 -o ro,loop,noauto ~/installables/texlive2013-20130530.iso ~/usb
+sudo ~/usb/install-tl --profile=~/scripts/texlive.profile
+sudo umount ~/usb
 
 # install lilypond using their script
 cd ~/Downloads
 axel -n 10 http://download.linuxaudio.org/lilypond/binaries/linux-64/lilypond-2.18.0-1.linux-64.sh
 sudo sh lilypond-2.18.0-1.linux-64.sh
-
 
 # jedi for vim auto-completion
 sudo pip install jedi
@@ -97,7 +101,6 @@ sudo apt-get install --assume-yes libatk1.0-0 libcairo2 libfontconfig1 libglib2.
 # openjdk-7-jdk
 # mpg123
 # musescore
-# texlive-full
 # docx2txt
 # antiword
 # catdoc
@@ -146,4 +149,4 @@ sudo apt-get install --assume-yes libatk1.0-0 libcairo2 libfontconfig1 libglib2.
 # python-rpy
 # python-rpy-doc 
 
-sudo apt-get install --assume-yes axel terminator zsh i3 i3status i3lock xbacklight dmenu scrot libcurl3 synapse git pdftk get-iplayer ffmpeg libavcodec-extra-53 audacity gparted python-numpy python-scipy python-matplotlib ipython ipython-notebook python-pandas python-sympy python-nose traceroute curl openjdk-7-jdk mpg123 musescore texlive-full docx2txt antiword catdoc python-software-properties qgis wine playonlinux winetricks silversearcher-ag exuberant-ctags ttf-inconsolata kexi pandoc digiKam tmux testdisk gimp gimp-ufraw clementine texstudio baobab gPodder smartmontools ruby1.9.1-dev libcurl4-openssl-dev vim-gnome youtube-dl gdal-bin libgdal1 proj-bin postgresql-9.1-postgis libpq-dev r-cran-class r-cran-cluster r-cran-codetools r-cran-foreign r-cran-kernsmooth r-cran-lattice r-cran-mass r-cran-matrix r-cran-mgcv r-cran-nlme r-cran-nnet r-cran-rpart r-cran-spatial r-cran-survival r-cran-rodbc littler python-rpy python-rpy-doc 
+sudo apt-get install --assume-yes axel terminator zsh i3 i3status i3lock xbacklight dmenu scrot libcurl3 synapse git pdftk get-iplayer ffmpeg libavcodec-extra-53 audacity gparted python-numpy python-scipy python-matplotlib ipython ipython-notebook python-pandas python-sympy python-nose traceroute curl openjdk-7-jdk mpg123 musescore docx2txt antiword catdoc python-software-properties qgis wine playonlinux winetricks silversearcher-ag exuberant-ctags ttf-inconsolata kexi pandoc digiKam tmux testdisk gimp gimp-ufraw clementine texstudio baobab gPodder smartmontools ruby1.9.1-dev libcurl4-openssl-dev vim-gnome youtube-dl gdal-bin libgdal1 proj-bin postgresql-9.1-postgis libpq-dev r-cran-class r-cran-cluster r-cran-codetools r-cran-foreign r-cran-kernsmooth r-cran-lattice r-cran-mass r-cran-matrix r-cran-mgcv r-cran-nlme r-cran-nnet r-cran-rpart r-cran-spatial r-cran-survival r-cran-rodbc littler python-rpy python-rpy-doc 

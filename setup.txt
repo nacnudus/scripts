@@ -441,7 +441,6 @@ axel -n 10 http://download.linuxaudio.org/lilypond/binaries/linux-64/lilypond-2.
 sudo sh lilypond-2.18.0-1.linux-64.sh
 
 # pdf booklets - takes lots of megabytes and requires latex (texlive)
-sudo apt-get install texlive texlive-full texlive-latex-extra
 sudo apt-get install pdfjam
 pdfbook --short-edge --a3paper filename.pdf
 
@@ -576,10 +575,10 @@ sudo apt-get install xdg-utils
 # doc and docx to txt
 sudo apt-get install catdoc docx2txt
 
-# texlive
-# sudo apt-add-repository ppa:texlive-backports/ppa
-# sudo apt-get update
-# sudo apt-get install texlive
+# TexLive
+sudo mount -t iso9660 -o ro,loop,noauto ~/installables/texlive2013-20130530.iso ~/usb
+sudo ~/usb/install-tl --profile=~/scripts/texlive.profile
+sudo umount ~/usb
 
 # i3 window manager - ubuntu packages are usually out of date.
 echo "deb http://debian.sur5r.net/i3/ saucy universe" | sudo tee -a /etc/apt/sources.list
