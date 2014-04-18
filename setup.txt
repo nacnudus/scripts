@@ -273,6 +273,7 @@ sudo apt-get update
 # or simply use the ubuntu repositories
 sudo apt-get install r-base r-base-dev r-cran-boot r-cran-class r-cran-cluster r-cran-codetools r-cran-foreign r-cran-kernsmooth r-cran-lattice r-cran-mass r-cran-matrix r-cran-mgcv r-cran-nlme r-cran-nnet r-cran-rpart r-cran-spatial r-cran-survival r-cran-rodbc littler python-rpy python-rpy-doc 
 sudo apt-get install libcurl4-openssl-dev # for curl-config (for RCurl)
+sudo apt-get install libxml2-dev # for XML
 # RStudio
 axel -n 10 https://s3.amazonaws.com/rstudio-dailybuilds/rstudio-0.98.474-i386.deb
 sudo dpkg -i rstudio-0.98.474-i386.deb

@@ -3,7 +3,7 @@ sudo add-apt-repository --yes ppa:ubuntu-wine/ppa # wine
 sudo add-apt-repository --yes ppa:marutter/rrutter # R
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
 sudo add-apt-repository --yes ppa:mscore-ubuntu/mscore-stable # muse-score
-sudo add-apt-repository --yes ppa:ubuntugis/ubuntugis-unstable # ubuntugis QGIS
+# sudo add-apt-repository --yes ppa:ubuntugis/ubuntugis-unstable # ubuntugis QGIS
 sudo add-apt-repository --yes ppa:gnome-terminator # terminator
 sudo add-apt-repository --yes ppa:ubuntugis/ppa
 echo "deb http://debian.sur5r.net/i3/ saucy universe" | sudo tee -a /etc/apt/sources.list # i3
@@ -40,7 +40,7 @@ sudo dpkg -i ~/Downloads/google-chrome-stable_current_amd64.deb
 
 # RStudio
 # R first
-sudo apt-get install --assume-yes r-base r-base-dev libcurl4-openssl-dev
+sudo apt-get install --assume-yes r-base r-base-dev libcurl4-openssl-dev libxml2-dev
 cd ~/Downloads
 sudo apt-get --assume-yes install axel
 axel -n 10 https://s3.amazonaws.com/rstudio-dailybuilds/rstudio-0.98.738-amd64.deb
