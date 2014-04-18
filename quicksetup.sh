@@ -56,6 +56,8 @@ sudo R CMD javareconf
 sudo mount -t iso9660 -o ro,loop,noauto ~/installables/texlive2013-20130530.iso ~/usb
 sudo ~/usb/install-tl --profile=~/scripts/texlive.profile
 sudo umount ~/usb
+tlmgr option repository http://mirror.ctan.org/systems/texlive/tlnet
+tlmgr update --all
 
 # install lilypond using their script
 cd ~/Downloads

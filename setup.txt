@@ -579,6 +579,8 @@ sudo apt-get install catdoc docx2txt
 sudo mount -t iso9660 -o ro,loop,noauto ~/installables/texlive2013-20130530.iso ~/usb
 sudo ~/usb/install-tl --profile=~/scripts/texlive.profile
 sudo umount ~/usb
+tlmgr option repository http://mirror.ctan.org/systems/texlive/tlnet
+tlmgr update --all
 
 # i3 window manager - ubuntu packages are usually out of date.
 echo "deb http://debian.sur5r.net/i3/ saucy universe" | sudo tee -a /etc/apt/sources.list
