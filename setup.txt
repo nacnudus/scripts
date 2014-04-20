@@ -855,3 +855,7 @@ psql ruralRoads
 ruralRoads=# CREATE EXTENSION postgis;
 CREATE EXTENSION
 ruralRoads=# \q
+
+# install yacas
+# a computer algebra system
+sudo apt-get install yacas
