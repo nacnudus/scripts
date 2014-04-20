@@ -884,3 +884,6 @@ sudo dpkg -i python{,3}-pyaudio_0.2.8-1_{i386,amd64}.deb
 axel -n 10 http://sourceforge.net/projects/cmusphinx/files/Acoustic%20and%20Language%20Models/US%20English%20Generic%20Language%20Model/cmusphinx-5.0-en-us.lm.gz/download
 axel -n 10 http://sourceforge.net/projects/cmusphinx/files/Acoustic%20and%20Language%20Models/US%20English%20Generic%20Acoustic%20Model/en-us.tar.gz/download
 sudo ldconfig -v | grep sphinx
+
+# Virtualbox
+sudo apt-get install virtualbox-nonfree virtualbox-guest-additions-iso
