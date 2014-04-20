@@ -859,3 +859,28 @@ ruralRoads=# \q
 # install yacas
 # a computer algebra system
 sudo apt-get install yacas
+
+# install scribe (sphinx speech recognition)
+git clone https://github.com/VikParuchuri/scribe.git speech-recognizer
+cd speech-recogniser
+sudo apt-get install bison python-dev
+wget http://sourceforge.net/projects/cmusphinx/files/sphinxbase/0.8/sphinxbase-0.8.tar.gz/download
+# extract
+# cd into sphinxbase
+./configure; make clean all
+sudo make install
+cd python
+sudo python setup.py install
+cd ..
+wget http://sourceforge.net/projects/cmusphinx/files/latest/download?source=files
+# extract
+# cd into pocketsphinx
+./configure; make clean all
+sudo make install
+sudo python setup.py install
+cd ..
+wget http://people.csail.mit.edu/hubert/pyaudio/packages/python-pyaudio_0.2.8-1_amd64.deb
+sudo dpkg -i python{,3}-pyaudio_0.2.8-1_{i386,amd64}.deb
+axel -n 10 http://sourceforge.net/projects/cmusphinx/files/Acoustic%20and%20Language%20Models/US%20English%20Generic%20Language%20Model/cmusphinx-5.0-en-us.lm.gz/download
+axel -n 10 http://sourceforge.net/projects/cmusphinx/files/Acoustic%20and%20Language%20Models/US%20English%20Generic%20Acoustic%20Model/en-us.tar.gz/download
+sudo ldconfig -v | grep sphinx
