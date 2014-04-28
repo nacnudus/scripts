@@ -886,4 +886,24 @@ axel -n 10 http://sourceforge.net/projects/cmusphinx/files/Acoustic%20and%20Lang
 sudo ldconfig -v | grep sphinx
 
 # Virtualbox
-sudo apt-get install virtualbox-nonfree virtualbox-guest-additions-iso
+sudo add-apt-repository "deb http://download.virtualbox.org/virtualbox/debian saucy contrib"
+cd ~/Downloads
+wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
+sudo apt-get update
+sudo apt-get install linux-headers-$(uname -r) # didn't work
+sudo apt-get install virtualbox-guest-dkms
+sudo apt-get install virtualbox-guest-additions
+
+# Pelican - knocks socks off the bloody-awful Jekyll
+# quick guide here: http://fjavieralba.com/pelican-a-static-blog-generator-for-pythonistas.html
+pip install virtualenv
+pip install virtualenvwrapper
+pip install pelican Markdown
+# further instructions from the pelican website
+# for themes, go somewhere else (not your blog)
+git clone --recursive https://github.com/getpelican/pelican-themes
+~/pelican-themes
+pelican my_blog/md -t ~/pelican-themes/theme-name
+
+# GraphViz for SchemaSpy
+sudo apt-get install graphviz
