@@ -65,3 +65,4 @@ sudo apt-get install ec2-api-tools
 # nah, scratch that.  Forget it.  Amazon can't decide between two versions of
 # these tools, which means the documentation is conflicted and essentially a
 # load of codswallop.
+

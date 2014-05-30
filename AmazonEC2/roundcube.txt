@@ -1,4 +1,4 @@
-sudo apt-get install lamp-server^
+sudo apt-get install lamp-server
 sudo /etc/init.d/apache2 restart
 sudo apt-get install roundcube roundcube-mysql
 sudo dpkg-reconfigure roundcube-core
@@ -37,28 +37,65 @@ ec2-54-215-145-134.us-west-1.compute.amazonaws.com/roundcube
 # start with lamp
 sudo apt-get install lamp-server^
 # then roundcube
-http://downloads.sourceforge.net/project/roundcubemail/roundcubemail/0.9.2/roundcubemail-0.9.2.tar.gz
-tar xfz roundcubemail-0.9.2.tar.gz
-sudo mv roundcubemail-0.9.2 roundcube
+http://hivelocity.dl.sourceforge.net/project/roundcubemail/roundcubemail/1.0.1/roundcubemail-1.0.1.tar.gz
+tar xfz roundcubemail-1.0.1.tar.gz
+sudo mv roundcubemail-1.0.1 roundcube
 sudo mv roundcube /var/www
 sudo chown -R www-data.www-data /var/www/roundcube/temp/
 sudo chown -R www-data.www-data /var/www/roundcube/logs/
-msql
 mysql -u root -p
 CREATE DATABASE roundcubedb;
 GRANT ALL PRIVILEGES ON roundcubedb.* TO roundcubeuser@localhost IDENTIFIED BY 'roundcubepassword';
 FLUSH PRIVILEGES;
 exit
-sudo nano /etc/apache2/conf.d/httpd.conf
+sudo mkdir /etc/apache2/conf.d
+sudo vim /etc/apache2/conf.d/httpd.conf
+sudo vim /etc/apache2/apache2.conf
 # add the line
 Alias /roundube "/var/www/roundcube"
-sudo nano /etc/php5/apache2/php.ini
+sudo vim /etc/php5/apache2/php.ini
 # edit the line to:
 date.timezone = "Pacific/Auckland"
 # note, no colon (un-comment)
+service apache2 restart
 # navigate to ec2-54-215-145-134.us-west-1.compute.amazonaws.com/roundcube/installer
 # manually fix imap and smtp in the main configuration file
 sudo service apache2 restart
 etc.
 sudo rm -r /var/www/roundcube/installer/
 sudo service apache2 restart
+
+# finally this works
+sudo apt-get update
+sudo apt-get install lamp-server^
+# to set up mysql, basically
+sudo apt-get install roundcube roundcube-mysql
+sudo dpkg-reconfigure roundcube-core
+sudo ln -s /usr/share/roundcube /var/www/roundcube
+sudo vim /etc/roundcube/apache.conf
+# uncomment the second Alias (Alias /roundcube /var/lib/roundcube) 
+sudo service apache2 restart
+# navigate to
+# http://ec2-54-79-33-65.ap-southeast-2.compute.amazonaws.com/roundcube
+# change the /etc/roundcube/main.inc.php parameters as follows:
+// IMAP Settings
+$rcmail_config['default_host'] = 'ssl://imap.gmail.com';
+$rcmail_config['defaul_port'] = 993;
+$rcmail_config['imap_auth_type'] = null;
+$rcmail_config['username_domain'] = 'your_domain_name';
+$rcmail_config['mail_domain'] = 'your_domain_name';
+// SMTP Settings
+$rcmail_config['smtp_server'] = 'ssl://smtp.gmail.com';
+$rcmail_config['smtp_port'] = 465;
+$rcmail_config['smtp_user'] = '%u';
+$rcmail_config['smtp_pass'] = '%p';
+//MBOX Settings
+$rcmail_config['drafts_mbox'] = '[Gmail]/Drafts';
+$rcmail_config['junk_mbox'] = '[Gmail]/Spam';
+$rcmail_config['sent_mbox'] = '';
+$rcmail_config['trash_mbox'] = '';
+
+sudo chmod 744 /var/log/roundcube
+sudo chmod 744 /var/log/roundcube/*
+sudo apt-get install php5-mcrypt # already installed
+

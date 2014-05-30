@@ -9,9 +9,9 @@ update.packages(checkBuilt=TRUE, ask=FALSE)
 # install 64-bit RStudio
 sudo apt-get install gdebi-core
 sudo apt-get install libapparmor1
-wget http://download2.rstudio.org/rstudio-server-0.97.551-amd64.deb
-sudo gdebi rstudio-server-0.97.551-amd64.deb
-rm rstudio-server-0.97.551-amd64.deb
+axel -n 10 http://download2.rstudio.org/rstudio-server-0.98.507-amd64.deb
+sudo gdebi rstudio-server-0.98.507-amd64.deb
+rm rstudio-server-0.98.507-amd64.deb
 mkdir R
 # browse http://ec2-54-215-148-163.us-west-1.compute.amazonaws.com:8787
 # add more users with usual Linux useradd, userdel, etc, with home directories, e.g.
@@ -25,6 +25,10 @@ sudo apt-get install libapache2-mod-proxy-html
 sudo apt-get install libxml2-dev
 sudo a2enmod proxy
 sudo a2enmod proxy_http
+# test config with
+sudo rstudio-server test-config
+# there may be a locale problem, in which case
+sudo locale-gen en_NZ.UTF-8
 # create or add to /etc/apache2/conf.d/httpd.conf with this in it:
 
 <VirtualHost *:80>
@@ -42,6 +46,10 @@ sudo a2enmod proxy_http
   RedirectMatch permanent ^/shiny$ /shiny/
 
 </VirtualHost>
+# and if it doesn't work, try adding it to
+# /etc/apache2/sites-enabled/000-default.conf too, before teh closing
+# </VirtualHost>
+
 # restart apache
 sudo service apache2 restart
 # change the port RStudio listens on from 0.0.0.0 (all remote clients) to 127.0.0.1 (only the localhost) by adding to /etc/rstudio/rserver.conf (or creating it)

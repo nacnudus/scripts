@@ -206,7 +206,7 @@ sudo aptitude install apache2
 # Run the following command to install roundcube
 sudo aptitude install roundcube roundcube-mysql
 # Configure roundcube
-dpkg-reconfigure roundcube-core
+sudo dpkg-reconfigure roundcube-core
 # Next create a symbolic link to apache's document root, in this case /var/www
 sudo ln -s /usr/share/roundcube /var/www/roundcube
 # Restart Apache
@@ -271,15 +271,12 @@ sudo add-apt-repository "deb http://cran.stat.auckland.ac.nz/bin/linux/ubuntu/ s
 sudo add-apt-repository ppa:marutter/rrutter
 sudo apt-get update
 # or simply use the ubuntu repositories
-sudo apt-get install r-base r-base-dev r-cran-boot r-cran-class r-cran-cluster
-r-cran-codetools r-cran-foreign r-cran-kernsmooth r-cran-lattice r-cran-mass
-r-cran-matrix r-cran-mgcv r-cran-nlme r-cran-nnet r-cran-rpart r-cran-spatial
-r-cran-survival r-cran-rodbc littler python-rpy python-rpy-doc libgtk2.0-dev
-sudo apt-get install libcurl4-openssl-dev # for curl-config (for RCurl)
-sudo apt-get install libxml2-dev # for XML
+sudo apt-get install r-base r-base-core r-base-dev r-cran-boot r-cran-class r-cran-cluster r-cran-codetools r-cran-foreign r-cran-kernsmooth r-cran-lattice r-cran-mass r-cran-matrix r-cran-mgcv r-cran-nlme r-cran-nnet r-cran-rpart r-cran-spatial r-cran-survival r-cran-rodbc littler python-rpy python-rpy-doc libgtk2.0-dev libcurl4-openssl-dev # for curl-config (for RCurl) sudo apt-get install libxml2-dev # for XML
 # RStudio
-axel -n 10 https://s3.amazonaws.com/rstudio-dailybuilds/rstudio-0.98.474-i386.deb
-sudo dpkg -i rstudio-0.98.474-i386.deb
+# Watch out -- this is the server edition, not the desktop
+# find your own URLs for the desktop edition
+axel -n 10 http://download2.rstudio.org/rstudio-server-0.98.507-amd64.deb
+sudo dpkg -i rstudio-server-0.98.507-amd64.deb
 
 # install RStudio and shiny on Ubuntu AmazonEC2
 # first, install R
