@@ -907,3 +907,12 @@ pelican my_blog/md -t ~/pelican-themes/theme-name
 
 # GraphViz for SchemaSpy
 sudo apt-get install graphviz
+
+# pandoc bleeding-edge
+sudo apt-get install haskell-platform
+cabal update
+cabal install --force pandoc pandoc-citeproc
+# uninstall existing pandoc
+sudo apt-get purge pandoc
+# and add ~./cabal to ~./profile
+PATH=$PATH:$HOME/.cabal/bin # Add cabal to PATH for pandoc
