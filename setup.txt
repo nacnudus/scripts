@@ -919,3 +919,6 @@ PATH=$PATH:$HOME/.cabal/bin # Add cabal to PATH for pandoc
 
 # moonlight, instead of silverlight # Doesn't work
 sudo apt-get install moonlight-complete
+
+# hugin photo panorama stitcher
+sudo apt-get install hugin
