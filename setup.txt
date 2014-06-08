@@ -243,6 +243,8 @@ curl ip.alt.io
 wget https://raw.github.com/smathot/zotero_installer/master/zotero_installer.sh -O /tmp/zotero_installer.sh
 chmod +x /tmp/zotero_installer.sh
 sudo /tmp/zotero_installer.sh
+# run with
+/opt/zotero/zotero
 
 # install MS Office
 # install wine?  Possibly not necessary because PlayOnLinux installs it
