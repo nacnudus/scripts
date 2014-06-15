@@ -31,10 +31,10 @@ sudo rsync -av /media/nacnudus/Elements/ ~/ 2>&1 | tee -a ~/log/rsync.log ~/log/
 sudo apt-get update
 sudo apt-get upgrade
 
-# install synapse
-sudo add-apt-repository ppa:noobslab/apps
-sudo apt-get update
-sudo apt-get install synapse
+# install synapse (defunct)
+# sudo add-apt-repository ppa:noobslab/apps
+# sudo apt-get update
+# sudo apt-get install synapse
 # and get it to recognise the terminal
 # comment out the line with "OnlyShowIn=MATE" in this file:
 # gksudo pluma /usr/share/applications/mate-terminal.desktop
@@ -73,7 +73,7 @@ sudo apt-get install pdftk
 
 # get_iplayer - run separate get_iplayer_install bash script
 #or
-sudo apt-get install get-iplayer ffmpeg libavcodec-extra-53 
+sudo apt-get install get-iplayer ffmpeg libavcodec-extra-54
 
 # install audacity
 sudo apt-get install audacity
@@ -442,6 +442,7 @@ sudo apt-get install musescore
 cd ~/Downloads
 axel -n 10 http://download.linuxaudio.org/lilypond/binaries/linux-64/lilypond-2.18.0-1.linux-64.sh
 sudo sh lilypond-2.18.0-1.linux-64.sh
+sudo apt-get install timidity freepats # midi player and soundfont
 
 # pdf booklets - takes lots of megabytes and requires latex (texlive)
 sudo apt-get install pdfjam
@@ -581,6 +582,9 @@ sudo apt-get install catdoc docx2txt
 # TexLive
 sudo mount -t iso9660 -o ro,loop,noauto ~/installables/texlive2013-20130530.iso ~/usb
 sudo ~/usb/install-tl --profile=~/scripts/texlive.profile
+export PATH=$PATH:/usr/local/texlive/2013/bin/x86_64-linux
+export MANPATH=$MANPATH:/usr/local/texlive/2013/texmf-dist/doc/man
+export INFOPATH=$INFOPATH:/usr/local/texlive/2013/texmf-dist/doc/info
 sudo umount ~/usb
 tlmgr option repository http://mirror.ctan.org/systems/texlive/tlnet
 tlmgr update --all
@@ -681,7 +685,7 @@ chsh -s /usr/bin/zsh # doesn't work as root
 curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
 
 # inconsolata font
-sudo apt-get install ttf-inconsolata
+sudo apt-get install fonts-inconsolata
 
 # kexi, like MS Access.
 sudo apt-get install kexi
@@ -696,6 +700,10 @@ sudo dpkg -i # doing the "common" .deb first, then the mp280.
 
 # pandoc
 sudo apt-get install pandoc
+# or for latest version for knitr
+sudo apt-get install haskell-platform
+sudo cabal update
+sudo cabal install pandoc pandoc-citeproc
 
 # digiKam to organise photos
 sudo apt-get install digiKam
@@ -813,6 +821,7 @@ sudo apt-get install youtube-dl
 # youtube-dl -f 137 url downloads 1080p mp4
 
 # posGIS gdal PROJ.4 and rgdal for geospatial stuff
+# this has all changed, see below
 sudo add-apt-repository ppa:ubuntugis/ppa
 sudo apt-get update
 # GDAL
@@ -823,6 +832,26 @@ sudo apt-get install proj-bin
 sudo apt-get install python-software-properties
 # you may already have this if you installed gdal etc.
 sudo apt-get install postgresql-9.1-postgis libpq-dev
+$ sudo passwd postgres
+Enter new UNIX password: 
+Retype new UNIX password: 
+passwd: password updated successfully
+$ sudo -s -u postgres
+postgres$ psql
+psql (9.1.3)
+Type "help" for help.
+
+# postGIS ubuntu trusty 14.04
+# http://trac.osgeo.org/postgis/wiki/UsersWikiPostGIS21Ubuntu1310src
+sudo apt-get install build-essential postgresql-9.3 postgresql-server-dev-9.3 libxml2-dev libgdal-dev libproj-dev libjson0-dev xsltproc docbook-xsl docbook-mathml
+# and GDAL with python bindings
+sudo apt-get install build-essential python-all-dev
+wget http://download.osgeo.org/gdal/gdal-1.9.0.tar.gz
+tar xvfz gdal-1.9.0.tar.gz
+cd gdal-1.9.0
+./configure --with-python
+make
+sudo make install
 $ sudo passwd postgres
 Enter new UNIX password: 
 Retype new UNIX password: 
@@ -888,6 +917,7 @@ axel -n 10 http://sourceforge.net/projects/cmusphinx/files/Acoustic%20and%20Lang
 sudo ldconfig -v | grep sphinx
 
 # Virtualbox
+# changed in 14.04 see below
 sudo add-apt-repository "deb http://download.virtualbox.org/virtualbox/debian saucy contrib"
 cd ~/Downloads
 wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
@@ -895,6 +925,12 @@ sudo apt-get update
 sudo apt-get install linux-headers-$(uname -r) # didn't work
 sudo apt-get install virtualbox-guest-dkms
 sudo apt-get install virtualbox-guest-additions
+
+# Virtualbox in 14.04
+sudo add-apt-repository multiverse
+sudo apt-get update
+sudo apt-get install virtualbox-4.3
+sudo apt-get install dkms
 
 # Pelican - knocks socks off the bloody-awful Jekyll
 # quick guide here: http://fjavieralba.com/pelican-a-static-blog-generator-for-pythonistas.html
@@ -917,7 +953,7 @@ cabal install --force pandoc pandoc-citeproc
 # uninstall existing pandoc
 sudo apt-get purge pandoc
 # and add ~./cabal to ~./profile
-PATH=$PATH:$HOME/.cabal/bin # Add cabal to PATH for pandoc
+export PATH=$PATH:$HOME/.cabal/bin # Add cabal to PATH for pandoc
 
 # moonlight, instead of silverlight # Doesn't work
 sudo apt-get install moonlight-complete
