@@ -960,3 +960,6 @@ sudo apt-get install moonlight-complete
 
 # hugin photo panorama stitcher
 sudo apt-get install hugin
+
+# easytag for renaming mp3s sensibly
+sudo apt-get install easytag
