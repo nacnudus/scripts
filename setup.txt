@@ -963,3 +963,6 @@ sudo apt-get install hugin
 
 # easytag for renaming mp3s sensibly
 sudo apt-get install easytag
+
+# tree to print directory structure
+sudo apt-get install tree
