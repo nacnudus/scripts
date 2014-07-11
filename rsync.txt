@@ -18,3 +18,6 @@ sudo sync
 
 
 sudo rsync -av --del --exclude Music --exclude Radio --exclude Television --exclude coursesites --exclude Bandits --exclude Maps /home/ /media/nacnudus/Elements/ 2>&1 | tee ~/log/rsync_HomeToElements_$( date '+%Y-%m-%d_%H-%M-%S' ).log
+
+
+sudo rsync -av --del ./Elements/ ./usb/ 2>&1 | tee ~/log/rsync_ElementsToUSB_$( date '+%Y-%m-%d_%H-%M-%S' ).log
