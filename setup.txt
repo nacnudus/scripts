@@ -629,6 +629,9 @@ sudo apt-get install exuberant-ctags
 # jedi for vim auto-completion
 sudo pip install jedi
 
+# psutils for vim latex plugin
+sudo pip install psutils
+
 # # language tool for vim grammar checking -- a grade A pain, use texstudio
 # instead
 # go to the website and install the standalone version or

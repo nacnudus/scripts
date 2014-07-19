@@ -148,6 +148,9 @@ sudo pip install virtualenvwrapper
 # i3
 sudo pip install i3-py
 
+# psutils for auto-tex-plugin
+sudo pip install psutils
+
 # RStudio
 # R first
 cd ~/Downloads
