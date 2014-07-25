@@ -977,3 +977,5 @@ sudo apt-get install acpi
 # download and install the .deb, then create a symlink for dmenu
 sudo ln /usr/local/Open-Sankore-2.5.0/run.sh /usr/bin/opensankore -s
 
+# mypaint also for whiteboarding
+sudo apt-get install mypaint
