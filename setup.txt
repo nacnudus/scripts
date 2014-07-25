@@ -972,3 +972,8 @@ sudo apt-get install tree
 
 # acpi to check battery capacity
 sudo apt-get install acpi
+
+# open-sankore
+# download and install the .deb, then create a symlink for dmenu
+sudo ln /usr/local/Open-Sankore-2.5.0/run.sh /usr/bin/opensankore -s
+
