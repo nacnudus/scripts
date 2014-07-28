@@ -979,3 +979,7 @@ sudo ln /usr/local/Open-Sankore-2.5.0/run.sh /usr/bin/opensankore -s
 
 # mypaint also for whiteboarding
 sudo apt-get install mypaint
+
+# linssid for scanning wireless environment
+sudo add-apt-repository ppa:wseverin/ppa
+sudo apt-get install linssid
