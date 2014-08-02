@@ -983,3 +983,7 @@ sudo apt-get install mypaint
 # linssid for scanning wireless environment
 sudo add-apt-repository ppa:wseverin/ppa
 sudo apt-get install linssid
+
+# get two-finger horizontal scrolling
+xinput --set-prop 12 "Synaptics Two-Finger Scrolling" 1 1
+

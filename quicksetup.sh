@@ -182,3 +182,6 @@ sudo sh lilypond-2.18.0-1.linux-64.sh
 # jedi for vim auto-completion
 sudo pip install jedi
 
+# two-finger horizontal scrolling
+xinput --set-prop 12 "Synaptics Two-Finger Scrolling" 1 1
+
