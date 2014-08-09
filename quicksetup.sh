@@ -187,3 +187,6 @@ sudo pip install jedi
 # two-finger horizontal scrolling
 xinput --set-prop 12 "Synaptics Two-Finger Scrolling" 1 1
 
+# git extras
+(cd /tmp && git clone --depth 1 https://github.com/visionmedia/git-extras.git && cd git-extras && sudo make install)
+
