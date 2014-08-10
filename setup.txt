@@ -996,3 +996,6 @@ sudo apt-get install julia
 # git extras
 (cd /tmp && git clone --depth 1 https://github.com/visionmedia/git-extras.git && cd git-extras && sudo make install)
 
+# standard ml for coursera programming languages
+sudo apt-get install smln
+# and some vim stuff https://github.com/chilicuil/vim-sml-coursera
