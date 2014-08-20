@@ -999,3 +999,11 @@ sudo apt-get install julia
 # standard ml for coursera programming languages
 sudo apt-get install smln
 # and some vim stuff https://github.com/chilicuil/vim-sml-coursera
+
+# psensor to monitor motherboard temperature
+# see http://xmodulo.com/2013/11/monitor-system-temperature-linux.html
+sudo apt-get install lm-sensors hddtemp psensor
+sudo sensors-detect
+sudo service kmod start
+sudo hddtemp -d /dev/sda
+psensor
