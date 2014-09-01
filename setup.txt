@@ -8,10 +8,15 @@
 # sudo mv iwlwifi-7260-8.ucode  iwlwifi-7260-8.ucode.bak
 # sudo wget https://git.kernel.org/cgit/linux/kernel/git/egrumbach/linux-firmware.git/plain/iwlwifi-7260-8.ucode
 
-# chrome
-# download from Google and then
-sudo apt-get install libcurl3
-sudo dpkg -i packagename.deb
+# chrome and remote desktop
+sudo dpkg -i ~/Downloads/google-chrome-stable_current_amd64.deb
+sudo dpkg -i ~/Downloads/chrome-remote-desktop_current_amd64.deb
+# if it doesn't work then sudo apt-get -f install and try again
+sudo apt-get install lightdm
+# if the "enable remote connections" button doesn't appear, then
+touch ~/.chrome-remote-desktop-session
+# and put in the line
+exec /usr/sbin/lightdm-session "i3"
 
 # chrome default browser
 sudo cp /opt/google/chrome/google-chrome.desktop /usr/share/applications
@@ -1007,3 +1012,9 @@ sudo sensors-detect
 sudo service kmod start
 sudo hddtemp -d /dev/sda
 psensor
+
+# lyx: latex gui
+sudo add-apt-repository ppa:lyx-devel/release
+sudo apt-get update
+sudo apt-get install lyx
+
