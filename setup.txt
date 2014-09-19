@@ -1037,7 +1037,7 @@ qemu-system-arm -cpu ?
 # instructions here: http://maxolasersquad.blogspot.co.nz/2013/10/install-keepasshttp-on-ubuntu.html
 sudo apt-add-repository ppa:jtaylor/keepass
 sudo apt-get update
-sudo apt-get install keepass2 mono-complete
+sudo apt-get install keepass2 mono-complete kpcli
 # integrate chrome plugin
 sudo mkdir /usr/lib/keepass2/plugins
 cd usr/lib/keepass2/plugins
