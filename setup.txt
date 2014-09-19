@@ -1018,3 +1018,32 @@ sudo add-apt-repository ppa:lyx-devel/release
 sudo apt-get update
 sudo apt-get install lyx
 
+# qemu emulator (for raspberry pi)
+sudo apt-get install git zlib1g-dev libsdl1.2-dev libpixman-1-dev libfdt-dev
+mkdir ~/raspidev
+cd ~/raspidev
+git clone git://git.qemu-project.org/qemu.git
+cd qemu
+./configure --target-list="arm-softmmu arm-linux-user" --enable-sdl
+make
+sudo make install
+# create Raspberry Pi virtual machine
+cd ~/rpi/emulator
+wget http://xecdesign.com/downloads/linux-qemu/kernel-qemu
+qemu-system-arm -cpu ?
+# may need bash for that last command
+
+# keypass2
+# instructions here: http://maxolasersquad.blogspot.co.nz/2013/10/install-keepasshttp-on-ubuntu.html
+sudo apt-add-repository ppa:jtaylor/keepass
+sudo apt-get update
+sudo apt-get install keepass2 mono-complete
+# integrate chrome plugin
+sudo mkdir /usr/lib/keepass2/plugins
+cd usr/lib/keepass2/plugins
+wget https://raw.github.com/pfn/keepasshttp/master/KeePassHttp.plgx
+sudo git clone -n https://github.com/pfn/keepasshttp.git --depth 1
+cd keepasshttp
+sudo git checkout HEAD KeePassHttp.plgx
+# to update
+sudo git pull
