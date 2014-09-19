@@ -1047,3 +1047,6 @@ cd keepasshttp
 sudo git checkout HEAD KeePassHttp.plgx
 # to update
 sudo git pull
+# Google-Drive for linux (Grive)
+sudo apt-get install grive
+cd ~/google_drive
