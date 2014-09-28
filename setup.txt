@@ -373,25 +373,28 @@ sudo python setup.py build
 # fails at this point, so
 sudo python setup.py clean
 
-# monetdb (column-oriented database)
-# dependencies
-psudo apt-get install libxml2-dev bison ant flex unixODBC-dev
-# get source
-wget http://dev.monetdb.org/downloads/sources/Latest/MonetDB-11.15.3.tar.xz
-tar -xvf MonetDB-11.15.3.tar.xz
-# install
-cd MonetDB-11.15.3
-./configure
-sudo make
-sudo make install
-# you have to do this bit to get the shared library to work
-sudo ldconfig
-# create a directory for databases
-monetdbd create /path/to/my/dbfarm
-monetdbd start /path/to/my/dbfarm
-monetdbd create voc
-monetdbd release voc
-mclient -u monetdb -d voc #password is "monetdb"
+# monetdb
+# instructions here: https://www.monetdb.org/downloads/deb/
+# create file /etc/apt/sources.list.d/monetdb.list with two lines:
+deb http://dev.monetdb.org/downloads/deb/ trusty monetdb
+deb-src http://dev.monetdb.org/downloads/deb/ trusty monetdb
+sudo wget --output-document=- http://dev.monetdb.org/downloads/MonetDB-GPG-KEY | sudo apt-key add -
+sudo apt-get update
+sudo apt-get install monetdb5-sql monetdb-client
+sudo usermod -a -G monetdb nacnudus
+# Create a database farm
+mkdir monetdb
+monetdbd create /home/nacnudus/monetdb
+monetdbd start /home/nacnudus/monetdb
+monetdb create voc
+monetdb release voc
+mclient -u monetdb -d voc
+# password is "monetdb"
+# R instructions here: https://www.monetdb.org/Documentation/UserGuide/MonetDB-R
+# in the R shell
+install.packages("MonetDB.R")
+library(MonetDB.R)
+library(dplyr)
 
 # install mpg123 (convert mp3 to wav, etc.)
 sudo apt-get install mpg123
