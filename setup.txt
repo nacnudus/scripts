@@ -1077,3 +1077,8 @@ axel -n 10 http://iweb.dl.sourceforge.net/project/squirrel-sql/1-stable/3.6.0/sq
 java -jar squirrel-sql-3.6-standard.jar
 # symlink for dmenu
 sudo ln /home/nacnudus/squirrel-sql-3.6/squirrel-sql.sh /usr/bin/squirrel -s
+# driver for MonetDB
+axel -n 10 http://dev.monetdb.org/downloads/Java/Oct2014/monetdb-jdbc-2.12.jar
+
+# Deja dup for backup
+sudo apt-get install deja-dup
