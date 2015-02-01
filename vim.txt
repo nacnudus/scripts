@@ -1,0 +1,29 @@
+# lua
+cd ~/Downloads
+curl -R -O http://www.lua.org/ftp/lua-5.3.0.tar.gz
+tar zxf lua-5.3.0.tar.gz
+cd lua-5.3.0
+make linux test
+
+# vim with lua
+sudo apt-get install vim-nox
+
+# oh-my-vim
+sudo apt-get install exuberant-ctags silversearcher-ag ack-grep ranger tig luajit python-pip
+sudo pip install pylint virtualenvwrapper coverage
+curl -L https://raw.github.com/liangxianzhe/oh-my-vim/master/tools/install.sh | sh
+cd ~/Downloads
+git clone https://github.com/powerline/fonts.git
+cd fonts
+./install.sh
+# You will need to add joedicastro/vim-molokai256 to ~/.local.vimrc
+# Where you should also add jcfaria/Vim-R-plugin
+
+# Neobundle
+curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh | sh
+
+# vim-r-plugin
+# In the shell
+sudo apt-get install libx11-dev latexmk
+# In R
+devtools::install_github("jalvesaq/VimCom")
