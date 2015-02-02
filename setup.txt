@@ -1093,3 +1093,6 @@ sudo apt-get install deja-dup
 sudo add-apt-repository ppa:kilian/f.lux
 sudo apt-get update
 sudo apt-get install fluxgui
+
+# sumatra pdf for forward/inverse latex search
+sudo pip install sumatra

@@ -165,6 +165,9 @@ sudo pip install i3-py
 # psutils for auto-tex-plugin
 sudo pip install psutils
 
+# sumatra for forward/inverse latex search
+sudo pip install sumatra
+
 # RStudio
 # R first
 cd ~/Downloads
