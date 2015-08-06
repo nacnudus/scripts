@@ -825,7 +825,7 @@ sudo apt-get install youtube-dl
 sudo add-apt-repository ppa:ubuntugis/ppa
 sudo apt-get update
 # GDAL
-sudo apt-get install gdal-bin libgdal1
+sudo apt-get install gdal-bin libgdal1h
 # PROJ.4
 sudo apt-get install proj-bin
 # PostGIS
@@ -932,6 +932,12 @@ sudo apt-get update
 sudo apt-get install virtualbox-4.3
 sudo apt-get install dkms
 
+# Find the virtualbox guest additions iso saved here:
+/usr/share/virtualbox
+
+# Read the Windows product key off the motherboard
+sudo tail -c+57 /sys/firmware/acpi/tables/MSDM
+
 # Pelican - knocks socks off the bloody-awful Jekyll
 # quick guide here: http://fjavieralba.com/pelican-a-static-blog-generator-for-pythonistas.html
 pip install virtualenv
@@ -963,3 +969,6 @@ sudo apt-get install hugin
 
 # easytag for renaming mp3s sensibly
 sudo apt-get install easytag
+
+# tree to print directory structure
+sudo apt-get install tree

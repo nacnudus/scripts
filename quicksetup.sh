@@ -134,8 +134,9 @@ sudo vim /sys/firmware/acpi/tables/MSDM
 # freepats # soundfont
 # htop
 # easytag
+# tree
 
-sudo apt-get install --assume-yes axel terminator zsh i3 i3status i3lock xbacklight dmenu scrot libcurl3 git pdftk get-iplayer ffmpeg libavcodec-extra-54 audacity gparted python-numpy python-scipy python-matplotlib ipython ipython-notebook python-pandas python-sympy python-nose traceroute curl openjdk-7-jdk mpg123 musescore docx2txt antiword catdoc python-software-properties qgis wine playonlinux winetricks silversearcher-ag exuberant-ctags fonts-inconsolata kexi digiKam tmux testdisk gimp gimp-ufraw clementine texstudio baobab gPodder smartmontools ruby1.9.1-dev libcurl4-openssl-dev vim-gnome youtube-dl build-essential postgresql-9.3 postgresql-server-dev-9.3 libxml2-dev libgdal-dev libproj-dev libjson0-dev xsltproc docbook-xsl docbook-mathml postGIS r-cran-class r-cran-cluster r-cran-codetools r-cran-foreign r-cran-kernsmooth r-cran-lattice r-cran-mass r-cran-matrix r-cran-mgcv r-cran-nlme r-cran-nnet r-cran-rpart r-cran-spatial r-cran-survival r-cran-rodbc littler python-rpy python-rpy-doc yacas virtualbox graphviz libgtk2.0-dev hugin timidity freepats htop terminator virtualbox-4.3 virtualbox-guest-utils virtualbox-guest-x11 virtualbox-guest-dkms virtualbox-guest-additions zsh python-pip r-base r-base-dev libcurl4-openssl-dev libxml2-dev libjpeg62 r-cran-rjava haskell-platform easytag
+sudo apt-get install --assume-yes axel terminator zsh i3 i3status i3lock xbacklight dmenu scrot libcurl3 git pdftk get-iplayer ffmpeg libavcodec-extra-54 audacity gparted python-numpy python-scipy python-matplotlib ipython ipython-notebook python-pandas python-sympy python-nose traceroute curl openjdk-7-jdk mpg123 musescore docx2txt antiword catdoc python-software-properties qgis wine playonlinux winetricks silversearcher-ag exuberant-ctags fonts-inconsolata kexi digiKam tmux testdisk gimp gimp-ufraw clementine texstudio baobab gPodder smartmontools ruby1.9.1-dev libcurl4-openssl-dev vim-gnome youtube-dl build-essential postgresql-9.3 postgresql-server-dev-9.3 libxml2-dev libgdal-dev libproj-dev libjson0-dev xsltproc docbook-xsl docbook-mathml postGIS r-cran-class r-cran-cluster r-cran-codetools r-cran-foreign r-cran-kernsmooth r-cran-lattice r-cran-mass r-cran-matrix r-cran-mgcv r-cran-nlme r-cran-nnet r-cran-rpart r-cran-spatial r-cran-survival r-cran-rodbc littler python-rpy python-rpy-doc yacas virtualbox graphviz libgtk2.0-dev hugin timidity freepats htop terminator virtualbox-4.3 virtualbox-guest-utils virtualbox-guest-x11 virtualbox-guest-dkms virtualbox-guest-additions zsh python-pip r-base r-base-dev libcurl4-openssl-dev libxml2-dev libjpeg62 r-cran-rjava haskell-platform easytag tree 
 
 # Terminator
 export TERM=terminator
@@ -149,8 +150,8 @@ sudo pip install i3-py
 # RStudio
 # R first
 cd ~/Downloads
-axel -n 10 https://s3.amazonaws.com/rstudio-dailybuilds/rstudio-0.98.738-amd64.deb
-sudo dpkg -i rstudio-0.98.738-amd64.deb
+axel -n 10 https://s3.amazonaws.com/rstudio-dailybuilds/rstudio-0.98.945-amd64.deb
+sudo dpkg -i rstudio-0.98.945-amd64.deb
 
 # R and java and things
 wget http://www.lepem.ufc.br/jaa/vimcom.plus_0.9-93.tar.gz
