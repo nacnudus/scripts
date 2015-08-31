@@ -582,9 +582,9 @@ sudo apt-get install catdoc docx2txt
 # TexLive
 sudo mount -t iso9660 -o ro,loop,noauto ~/installables/texlive2013-20130530.iso ~/usb
 sudo ~/usb/install-tl --profile=~/scripts/texlive.profile
-export PATH=$PATH:/usr/local/texlive/2013/bin/x86_64-linux
-export MANPATH=$MANPATH:/usr/local/texlive/2013/texmf-dist/doc/man
-export INFOPATH=$INFOPATH:/usr/local/texlive/2013/texmf-dist/doc/info
+export PATH=$PATH:/usr/local/texlive/2015/bin/x86_64-linux
+export MANPATH=$MANPATH:/usr/local/texlive/2015/texmf-dist/doc/man
+export INFOPATH=$INFOPATH:/usr/local/texlive/2015/texmf-dist/doc/info
 sudo umount ~/usb
 tlmgr option repository http://mirror.ctan.org/systems/texlive/tlnet
 tlmgr update --all
