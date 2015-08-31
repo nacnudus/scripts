@@ -2,11 +2,20 @@ sudo add-apt-repository --yes ppa:ubuntu-wine/ppa # wine
 sudo add-apt-repository --yes ppa:marutter/rrutter # R
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
 sudo add-apt-repository --yes ppa:mscore-ubuntu/mscore-stable # muse-score
-# sudo add-apt-repository --yes ppa:ubuntugis/ubuntugis-unstable # ubuntugis QGIS
+sudo add-apt-repository --yes ppa:ubuntugis/ubuntugis-unstable # ubuntugis QGIS
 sudo add-apt-repository --yes multiverse
 sudo add-apt-repository --yes ppa:gnome-terminator # terminator
 sudo add-apt-repository --yes ppa:ubuntugis/ppa
 sudo add-apt-repository --yes deb http://download.virtualbox.org/virtualbox/debian trusty contrib
+sudo add-apt-repository --yes ppa:wseverin/ppa
+sudo add-apt-repository --yes ppa:staticfloat/juliareleases
+sudo add-apt-repository --yes ppa:staticfloat/julia-deps
+sudo add-apt-repository --yes ppa:lyx-devel/release
+sudo apt-add-repository --yes ppa:jtaylor/keepass
+
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
+sudo sh -c "echo deb https://get.docker.com/ubuntu docker main /etc/apt/sources.list.d/docker.list"
+
 echo "deb http://debian.sur5r.net/i3/ saucy universe" | sudo tee -a /etc/apt/sources.list # i3
 sudo apt-get --allow-unauthenticated install sur5r-keyring # i3
 
@@ -28,8 +37,12 @@ sudo /tmp/zotero_installer.sh
 # Calibre
 sudo -v && wget -nv -O- https://raw.githubusercontent.com/kovidgoyal/calibre/master/setup/linux-installer.py | sudo python -c "import sys; main=lambda:sys.stderr.write('Download failed\n'); exec(sys.stdin.read()); main()"
 
-# chrome
+# chrome and remote desktop
 sudo dpkg -i ~/Downloads/google-chrome-stable_current_amd64.deb
+sudo dpkg -i ~/Downloads/chrome-remote-desktop_current_amd64.deb
+# if it doesn't work then sudo apt-get -f install and try again
+# if the "enable remote connections" button doesn't appear, then
+# touch ~/.chrome-remote-desktop-session
 
 # TexLive
 sudo mount -t iso9660 -o ro,loop,noauto ~/installables/texlive2013-20130530.iso ~/usb
@@ -40,6 +53,7 @@ MANPATH=$MANPATH:/usr/local/texlive/2013/texmf-dist/doc/man
 INFOPATH=$INFOPATH:/usr/local/texlive/2013/texmf-dist/doc/info
 sudo umount ~/usb
 sudo tlmgr option repository http://mirror.ctan.org/systems/texlive/tlnet
+tlmgr init-usertree
 sudo tlmgr update --all
 
 # jekyll
@@ -135,8 +149,9 @@ sudo vim /sys/firmware/acpi/tables/MSDM
 # htop
 # easytag
 # tree
+# acpi
 
-sudo apt-get install --assume-yes axel terminator zsh i3 i3status i3lock xbacklight dmenu scrot libcurl3 git pdftk get-iplayer ffmpeg libavcodec-extra-54 audacity gparted python-numpy python-scipy python-matplotlib ipython ipython-notebook python-pandas python-sympy python-nose traceroute curl openjdk-7-jdk mpg123 musescore docx2txt antiword catdoc python-software-properties qgis wine playonlinux winetricks silversearcher-ag exuberant-ctags fonts-inconsolata kexi digiKam tmux testdisk gimp gimp-ufraw clementine texstudio baobab gPodder smartmontools ruby1.9.1-dev libcurl4-openssl-dev vim-gnome youtube-dl build-essential postgresql-9.3 postgresql-server-dev-9.3 libxml2-dev libgdal-dev libproj-dev libjson0-dev xsltproc docbook-xsl docbook-mathml postGIS r-cran-class r-cran-cluster r-cran-codetools r-cran-foreign r-cran-kernsmooth r-cran-lattice r-cran-mass r-cran-matrix r-cran-mgcv r-cran-nlme r-cran-nnet r-cran-rpart r-cran-spatial r-cran-survival r-cran-rodbc littler python-rpy python-rpy-doc yacas virtualbox graphviz libgtk2.0-dev hugin timidity freepats htop terminator virtualbox-4.3 virtualbox-guest-utils virtualbox-guest-x11 virtualbox-guest-dkms virtualbox-guest-additions zsh python-pip r-base r-base-dev libcurl4-openssl-dev libxml2-dev libjpeg62 r-cran-rjava haskell-platform easytag tree 
+sudo apt-get install --assume-yes axel terminator zsh i3 i3status i3lock xbacklight dmenu scrot libcurl3 git pdftk get-iplayer ffmpeg libavcodec-extra-54 audacity gparted python-numpy python-scipy python-matplotlib ipython ipython-notebook python-pandas python-sympy python-nose traceroute curl openjdk-7-jdk mpg123 musescore docx2txt antiword catdoc python-software-properties qgis wine playonlinux winetricks silversearcher-ag exuberant-ctags fonts-inconsolata kexi digiKam tmux testdisk gimp gimp-ufraw clementine texstudio baobab gPodder smartmontools ruby1.9.1-dev libcurl4-openssl-dev vim-gnome youtube-dl build-essential postgresql-9.3 postgresql-server-dev-9.3 libxml2-dev libgdal-dev libproj-dev libjson0-dev xsltproc docbook-xsl docbook-mathml postGIS r-cran-class r-cran-cluster r-cran-codetools r-cran-foreign r-cran-kernsmooth r-cran-lattice r-cran-mass r-cran-matrix r-cran-mgcv r-cran-nlme r-cran-nnet r-cran-rpart r-cran-spatial r-cran-survival r-cran-rodbc littler python-rpy python-rpy-doc yacas virtualbox graphviz libgtk2.0-dev hugin timidity freepats htop terminator virtualbox-4.3 virtualbox-guest-utils virtualbox-guest-x11 virtualbox-guest-dkms virtualbox-guest-additions zsh python-pip r-base r-base-dev libcurl4-openssl-dev libxml2-dev libjpeg62 r-cran-rjava haskell-platform easytag tree acpi mypaint linssid julia mdbtools mdbtools-doc smln lyx keepass2 mono-complete kpcli grive sqlite3 libspatialite5 spatialite-bin lxc-docker deja-dup xzdec
 
 # Terminator
 export TERM=terminator
@@ -146,6 +161,12 @@ sudo pip install virtualenvwrapper
 
 # i3
 sudo pip install i3-py
+
+# psutils for auto-tex-plugin
+sudo pip install psutils
+
+# sumatra for forward/inverse latex search
+sudo pip install sumatra
 
 # RStudio
 # R first
@@ -176,3 +197,12 @@ sudo sh lilypond-2.18.0-1.linux-64.sh
 # jedi for vim auto-completion
 sudo pip install jedi
 
+# two-finger horizontal scrolling
+xinput --set-prop 12 "Synaptics Two-Finger Scrolling" 1 1
+
+# git extras
+(cd /tmp && git clone --depth 1 https://github.com/visionmedia/git-extras.git && cd git-extras && sudo make install)
+
+# virtualbox usb
+sudo adduser nacnudus vboxusers
+# log out and back in

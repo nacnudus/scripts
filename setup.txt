@@ -8,10 +8,17 @@
 # sudo mv iwlwifi-7260-8.ucode  iwlwifi-7260-8.ucode.bak
 # sudo wget https://git.kernel.org/cgit/linux/kernel/git/egrumbach/linux-firmware.git/plain/iwlwifi-7260-8.ucode
 
-# chrome
-# download from Google and then
-sudo apt-get install libcurl3
-sudo dpkg -i packagename.deb
+# chrome and remote desktop
+cd ~/installables
+axel -n 10 https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i ~/Downloads/google-chrome-stable_current_amd64.deb
+sudo dpkg -i ~/Downloads/chrome-remote-desktop_current_amd64.deb
+# if it doesn't work then sudo apt-get -f install and try again
+sudo apt-get install lightdm
+# if the "enable remote connections" button doesn't appear, then
+touch ~/.chrome-remote-desktop-session
+# and put in the line
+exec /usr/sbin/lightdm-session "i3"
 
 # chrome default browser
 sudo cp /opt/google/chrome/google-chrome.desktop /usr/share/applications
@@ -368,25 +375,28 @@ sudo python setup.py build
 # fails at this point, so
 sudo python setup.py clean
 
-# monetdb (column-oriented database)
-# dependencies
-psudo apt-get install libxml2-dev bison ant flex unixODBC-dev
-# get source
-wget http://dev.monetdb.org/downloads/sources/Latest/MonetDB-11.15.3.tar.xz
-tar -xvf MonetDB-11.15.3.tar.xz
-# install
-cd MonetDB-11.15.3
-./configure
-sudo make
-sudo make install
-# you have to do this bit to get the shared library to work
-sudo ldconfig
-# create a directory for databases
-monetdbd create /path/to/my/dbfarm
-monetdbd start /path/to/my/dbfarm
-monetdbd create voc
-monetdbd release voc
-mclient -u monetdb -d voc #password is "monetdb"
+# monetdb
+# instructions here: https://www.monetdb.org/downloads/deb/
+# create file /etc/apt/sources.list.d/monetdb.list with two lines:
+deb http://dev.monetdb.org/downloads/deb/ trusty monetdb
+deb-src http://dev.monetdb.org/downloads/deb/ trusty monetdb
+sudo wget --output-document=- http://dev.monetdb.org/downloads/MonetDB-GPG-KEY | sudo apt-key add -
+sudo apt-get update
+sudo apt-get install monetdb5-sql monetdb-client
+sudo usermod -a -G monetdb nacnudus
+# Create a database farm
+mkdir monetdb
+monetdbd create /home/nacnudus/monetdb
+monetdbd start /home/nacnudus/monetdb
+monetdb create voc
+monetdb release voc
+mclient -u monetdb -d voc
+# password is "monetdb"
+# R instructions here: https://www.monetdb.org/Documentation/UserGuide/MonetDB-R
+# in the R shell
+install.packages("MonetDB.R")
+library(MonetDB.R)
+library(dplyr)
 
 # install mpg123 (convert mp3 to wav, etc.)
 sudo apt-get install mpg123
@@ -519,6 +529,10 @@ rm fTools.zip
 # Select the desired plugin from the list and click 'OK'.
 # You're done! You can now start using the plugin.
 
+# spatialite
+sudo apt-get install sqlite3
+sudo apt-get install libspatialite5 spatialite-bin
+
 # mdbtools
 sudo apt-get install mdbtools mdbtools-doc
 # apparently there are no manpages.  There's a graphical utility, though:
@@ -586,7 +600,9 @@ export PATH=$PATH:/usr/local/texlive/2015/bin/x86_64-linux
 export MANPATH=$MANPATH:/usr/local/texlive/2015/texmf-dist/doc/man
 export INFOPATH=$INFOPATH:/usr/local/texlive/2015/texmf-dist/doc/info
 sudo umount ~/usb
+sudo apt-get install xzdec
 tlmgr option repository http://mirror.ctan.org/systems/texlive/tlnet
+tlmgr init-usertree
 tlmgr update --all
 
 # i3 window manager - ubuntu packages are usually out of date.
@@ -628,6 +644,9 @@ sudo apt-get install exuberant-ctags
 
 # jedi for vim auto-completion
 sudo pip install jedi
+
+# psutils for vim latex plugin
+sudo pip install psutils
 
 # # language tool for vim grammar checking -- a grade A pain, use texstudio
 # instead
@@ -931,6 +950,7 @@ sudo add-apt-repository multiverse
 sudo apt-get update
 sudo apt-get install virtualbox-4.3
 sudo apt-get install dkms
+sudo adduser nacnudus vboxusers
 
 # Find the virtualbox guest additions iso saved here:
 /usr/share/virtualbox
@@ -972,3 +992,113 @@ sudo apt-get install easytag
 
 # tree to print directory structure
 sudo apt-get install tree
+
+# acpi to check battery capacity
+sudo apt-get install acpi
+
+# open-sankore
+# download and install the .deb, then create a symlink for dmenu
+sudo ln /usr/local/Open-Sankore-2.5.0/run.sh /usr/bin/opensankore -s
+
+# mypaint also for whiteboarding
+sudo apt-get install mypaint
+
+# linssid for scanning wireless environment
+sudo add-apt-repository ppa:wseverin/ppa
+sudo apt-get install linssid
+
+# get two-finger horizontal scrolling
+xinput --set-prop 12 "Synaptics Two-Finger Scrolling" 1 1
+
+# julia
+sudo add-apt-repository ppa:staticfloat/juliareleases
+sudo add-apt-repository ppa:staticfloat/julia-deps
+sudo apt-get update
+sudo apt-get install julia
+
+# git extras
+(cd /tmp && git clone --depth 1 https://github.com/visionmedia/git-extras.git && cd git-extras && sudo make install)
+
+# standard ml for coursera programming languages
+sudo apt-get install smln
+# and some vim stuff https://github.com/chilicuil/vim-sml-coursera
+
+# psensor to monitor motherboard temperature
+# see http://xmodulo.com/2013/11/monitor-system-temperature-linux.html
+sudo apt-get install lm-sensors hddtemp psensor
+sudo sensors-detect
+sudo service kmod start
+sudo hddtemp -d /dev/sda
+psensor
+
+# lyx: latex gui
+sudo add-apt-repository ppa:lyx-devel/release
+sudo apt-get update
+sudo apt-get install lyx
+
+# qemu emulator (for raspberry pi)
+sudo apt-get install git zlib1g-dev libsdl1.2-dev libpixman-1-dev libfdt-dev
+mkdir ~/raspidev
+cd ~/raspidev
+git clone git://git.qemu-project.org/qemu.git
+cd qemu
+./configure --target-list="arm-softmmu arm-linux-user" --enable-sdl
+make
+sudo make install
+# create Raspberry Pi virtual machine
+cd ~/rpi/emulator
+wget http://xecdesign.com/downloads/linux-qemu/kernel-qemu
+qemu-system-arm -cpu ?
+# may need bash for that last command
+
+# keypass2
+# instructions here: http://maxolasersquad.blogspot.co.nz/2013/10/install-keepasshttp-on-ubuntu.html
+sudo apt-add-repository ppa:jtaylor/keepass
+sudo apt-get update
+sudo apt-get install keepass2 mono-complete kpcli
+# integrate chrome plugin
+sudo mkdir /usr/lib/keepass2/plugins
+cd usr/lib/keepass2/plugins
+wget https://raw.github.com/pfn/keepasshttp/master/KeePassHttp.plgx
+sudo git clone -n https://github.com/pfn/keepasshttp.git --depth 1
+cd keepasshttp
+sudo git checkout HEAD KeePassHttp.plgx
+# to update
+sudo git pull
+# Google-Drive for linux (Grive)
+sudo apt-get install grive
+cd ~/google_drive
+
+# docker
+sudo apt-get install cgroup-lite lxc
+# then either
+curl -sSL https://get.docker.com/ubuntu/ | sudo sh
+# or
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
+sudo sh -c "echo deb https://get.docker.com/ubuntu docker main /etc/apt/sources.list.d/docker.list"
+sudo apt-get update
+sudo apt-get install lxc-docker
+
+# SQuirreL general SQL GUI
+cd /home/nacnudus/Downloads
+axel -n 10 http://iweb.dl.sourceforge.net/project/squirrel-sql/1-stable/3.6.0/squirrel-sql-3.6-standard.jar
+java -jar squirrel-sql-3.6-standard.jar
+# symlink for dmenu
+sudo ln /home/nacnudus/squirrel-sql-3.6/squirrel-sql.sh /usr/bin/squirrel -s
+# driver for MonetDB
+axel -n 10 http://dev.monetdb.org/downloads/Java/Oct2014/monetdb-jdbc-2.12.jar
+
+# Deja dup for backup
+sudo apt-get install deja-dup
+
+# pyCharm python IDE
+# Download the tarball, extract it in the home directory, and add the
+# directory/bin to the path (in ~/.profile) (already done)
+
+# f.lux for warmer colours at night
+sudo add-apt-repository ppa:kilian/f.lux
+sudo apt-get update
+sudo apt-get install fluxgui
+
+# sumatra pdf for forward/inverse latex search
+sudo pip install sumatra
