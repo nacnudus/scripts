@@ -267,5 +267,9 @@ fi
 # Calibre ebook library
 sudo pacman -S calibre
 
+# Temporary keyboard layout
+setxkbmap dvorak
+setxkbmap us
+
 # TODO:
 # Cairo
