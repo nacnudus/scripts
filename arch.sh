@@ -179,10 +179,10 @@ sudo tlmgr option repository http://mirror.ctan.org/systems/texlive/tlnet
 sudo tlmgr update --self
 sudo tlmgr update --all
 
-# Install bluetooth
-sudo pacman -S bluez bluez-utils
-sudo modprobe btusb
-sudo systemctl enable bluetooth.service
+# Install bluetooth (No, don't! It interferes with wifi, apparently.)
+# sudo pacman -S bluez bluez-utils
+# sudo modprobe btusb
+# sudo systemctl enable bluetooth.service
 # Follow further instructions
 
 # Install mouse
@@ -221,7 +221,7 @@ sudo pacman -S xorg-xrandr
 
 # sound
 sudo pacman -S alsa-utils
-# Create ~/.asoundrc with the line
+# Create ~/.asoundrc with the lines
 defaults.ctl.card 1
 defaults.pcm.card 1
 # Check with
