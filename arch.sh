@@ -178,6 +178,8 @@ sudo umount /media/iso
 sudo tlmgr option repository http://mirror.ctan.org/systems/texlive/tlnet
 sudo tlmgr update --self
 sudo tlmgr update --all
+# and for atp-plugin, you need psutil from python
+sudo pip install psutil
 
 # Install bluetooth (No, don't! It interferes with wifi, apparently.)
 # sudo pacman -S bluez bluez-utils
@@ -271,5 +273,19 @@ sudo pacman -S calibre
 setxkbmap dvorak
 setxkbmap us
 
+# Ranger file chooser
+sudo pacman -S ranger
+
+# Okular
+sudo pacman -S kdegraphics-okular
+# Selecting 2, 2 gave the smallest install size
+
+# Tmux fancy stuff
+# see separate tmux file
+
+
 # TODO:
 # Cairo
+
+# Update everything
+yaourt -Syua
