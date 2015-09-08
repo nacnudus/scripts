@@ -122,6 +122,9 @@ yaourt -S google-chrome
 # I selected 6 for droid ttf
 sudo pacman -S ttf-liberation
 
+# Firefox
+sudo pacman -S firefox
+
 # git
 sudo pacman -S git
 
@@ -282,6 +285,11 @@ sudo pacman -S kdegraphics-okular
 
 # Tmux fancy stuff
 # see separate tmux file
+
+
+# Powerline (must be python2 if vim is for python2
+yaourt -S python2-powerline-git
+sudo pip install powerline-git-status
 
 
 # TODO:
