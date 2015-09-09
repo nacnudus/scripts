@@ -75,7 +75,7 @@ xrandr 1024x768
 # Make the changes in visudo suggested in ~/.i3/config
 
 # Install python (note, python3 by default, otherwise use python2)
-sudo pacman -S python python-virtualenv python-virtualenvwrapper python-pip
+sudo pacman -S python python-virtualenv python-virtualenvwrapper python-pip python2 python2-pip
 # Change the line in .zshrc to
 source /usr/bin/virtualenvwrapper.sh
 
@@ -291,6 +291,32 @@ sudo pacman -S kdegraphics-okular
 yaourt -S python2-powerline-git
 sudo pip install powerline-git-status
 
+# x_x (command-line xlsx) 
+sudo pip install x_x 
+# (doesn't support worksheets) or 
+git clone https://github.com/krockode/x_x.git
+cd x_x
+sudo python setup.py install
+# (also doesn't)
+
+# Printer and scanner
+yaourt -S cnijfilter-mp280
+yaourt -S scangearmp-mp280
+sudo pacman -S simple-scan
+sudo gpasswd -a [username] sys
+sudo pacman -S cups ghostscript cups-pdf libcups
+systemctl enable cups
+systemctl start cups
+# browse http://localhost:631
+# Administration
+# Add printer
+
+# Consider:
+# scim (spreadsheet)
+# csvkit (obvious)
+# fbterm (frame-buffer terminal)
+# patool (untar everything)
+# w3m (browser) or netsurf
 
 # TODO:
 # Cairo
