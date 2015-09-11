@@ -286,18 +286,18 @@ sudo pacman -S kdegraphics-okular
 # Tmux fancy stuff
 # see separate tmux file
 
-
-# Powerline (must be python2 if vim is for python2
-yaourt -S python2-powerline-git
-sudo pip install powerline-git-status
+# # Powerline (must be python2 if vim is for python2)
+# Too slow, generally
+# yaourt -S python-powerline
+# # sudo pip install powerline-git-status
+# # For configuration, powerline_rooto is /usr/lib/python3.4/site-packages/powerline/config_files/
+# sudo pacman -S python-psutil
+# sudo pacman -S python-pygit2
 
 # x_x (command-line xlsx) 
-sudo pip install x_x 
-# (doesn't support worksheets) or 
-git clone https://github.com/krockode/x_x.git
-cd x_x
-sudo python setup.py install
-# (also doesn't)
+# Doesn't handle multiple worksheets yet.
+# sudo pip install x_x 
+# (doesn't support worksheets)
 
 # Printer and scanner
 yaourt -S cnijfilter-mp280
