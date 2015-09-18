@@ -336,8 +336,6 @@ sudo awk 'BEGIN {c=0;} /BEGIN CERT/{c++} { print > "cert." c ".pem"}' < ca-certi
 /opt/Citrix/ICAClient/wfica ~/Downloads/launch.jsp
 
 # Consider:
-# scim (spreadsheet)
-# csvkit (obvious)
 # fbterm (frame-buffer terminal)
 # patool (untar everything)
 # w3m (browser) or netsurf
