@@ -311,6 +311,30 @@ systemctl start cups
 # Administration
 # Add printer
 
+# gksu (includes gksudo)
+sudo pacman -S gksu
+
+# Citrix
+# Directly from Citrix, but follow these intructions:
+# https://bbs.archlinux.org/viewtopic.php?id=195998
+#
+# "Firstly, enable the multilib repository by uncommenting the [multilib]
+# section in /etc/pacman.conf as mentioned on this wiki page:
+# https://wiki.archlinux.org/index.php/Multilib.  Then update the package list
+# and upgrade with pacman -Syu.
+#
+# "Follow mostly the steps under "Manual Install" on this wiki page:
+# https://wiki.archlinux.org/index.php/Citrix.  On Step 0, the package
+# lib32-libpng12 is no longer in the official repository (it's in AUR).  I skipped it and also
+# the four AUR packages (lib32-libxp, lib32-libxpm, lib32-libxaw,
+# lib32-openmotif).  No issue so far."
+# Run as root:
+cd /opt/Citrix/ICAClient/keystore/cacerts/
+sudo cp /etc/ssl/certs/ca-certificates.crt .
+sudo awk 'BEGIN {c=0;} /BEGIN CERT/{c++} { print > "cert." c ".pem"}' < ca-certificates.crt
+# Use like this:
+/opt/Citrix/ICAClient/wfica ~/Downloads/launch.jsp
+
 # Consider:
 # scim (spreadsheet)
 # csvkit (obvious)
