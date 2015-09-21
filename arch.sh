@@ -314,6 +314,9 @@ systemctl start cups
 # gksu (includes gksudo)
 sudo pacman -S gksu
 
+# Swap orientation
+sudo pacman -S xorg-xinput
+
 # Citrix
 # Directly from Citrix, but follow these intructions:
 # https://bbs.archlinux.org/viewtopic.php?id=195998
