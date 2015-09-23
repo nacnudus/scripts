@@ -347,6 +347,11 @@ sudo pacman -S axel
 # unrar
 sudo pacman -S unrar
 
+# crashplan backup
+yaourt -S crashplan
+sudo systemctl enable crashplan.service
+CrashPlanDesktop
+
 # Consider:
 # scim (spreadsheet)
 # csvkit (obvious)
