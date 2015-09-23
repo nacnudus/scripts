@@ -338,6 +338,15 @@ sudo awk 'BEGIN {c=0;} /BEGIN CERT/{c++} { print > "cert." c ".pem"}' < ca-certi
 # Use like this:
 /opt/Citrix/ICAClient/wfica ~/Downloads/launch.jsp
 
+# Playonlinux
+sudo pacman -S playonlinux
+
+# axel
+sudo pacman -S axel
+
+# unrar
+sudo pacman -S unrar
+
 # Consider:
 # scim (spreadsheet)
 # csvkit (obvious)
