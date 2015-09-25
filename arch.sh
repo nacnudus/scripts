@@ -349,9 +349,10 @@ sudo pacman -S unrar
 
 # crashplan backup
 yaourt -S crashplan
-sudo systemctl enable crashplan.service
+# sudo systemctl enable crashplan.service
 systemctl start crashplan.service
 CrashPlanDesktop
+systemctl start crashplan.service
 
 # get_iplayer
 yaourt -S get_iplayer
