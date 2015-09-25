@@ -350,7 +350,22 @@ sudo pacman -S unrar
 # crashplan backup
 yaourt -S crashplan
 sudo systemctl enable crashplan.service
+systemctl start crashplan.service
 CrashPlanDesktop
+
+# get_iplayer
+yaourt -S get_iplayer
+sudo pacman -S perl-xml-simple
+sudo pacman -S rtmpdump
+
+# music audio player
+sudo pacman -S cmus
+man cmus-tutorial
+
+# To increase the volume, copy the file 'louder' in this directory to 
+# /etc/asound.conf
+# from http://alien.slackbook.org/blog/adding-an-alsa-software-pre-amp-to-fix-low-sound-levels/
+# and reboot.  This adds a pre-amp bar to alsamixer.
 
 # Consider:
 # scim (spreadsheet)
