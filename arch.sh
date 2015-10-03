@@ -121,6 +121,8 @@ source /usr/share/chruby/auto.sh
 yaourt -S google-chrome
 # I selected 6 for droid ttf
 sudo pacman -S ttf-liberation
+# Fix for no sound
+sudo pacman -S pulseaudio-alsa
 
 # Firefox
 sudo pacman -S firefox
@@ -352,7 +354,7 @@ yaourt -S crashplan
 # sudo systemctl enable crashplan.service
 systemctl start crashplan.service
 CrashPlanDesktop
-systemctl start crashplan.service
+systemctl stop crashplan.service
 
 # get_iplayer
 yaourt -S get_iplayer
@@ -362,6 +364,9 @@ sudo pacman -S rtmpdump
 # music audio player
 sudo pacman -S cmus
 man cmus-tutorial
+
+# Youtube downloader
+sudo pacman -S youtube-dl
 
 # To increase the volume, copy the file 'louder' in this directory to 
 # /etc/asound.conf
