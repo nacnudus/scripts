@@ -221,7 +221,7 @@ sudo pacman -S baobab
 gpg --keyserver pgp.mit.edu --recv-key 944B4826
 yaourt -S backintime
 # Run with
-backintime-qt4
+sudo backintime-qt4
 
 # xrandr
 sudo pacman -S xorg-xrandr
