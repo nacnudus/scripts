@@ -167,6 +167,14 @@ devtools::install_github("Data-Camp/Rdocumentation")
 install.packages("rgdal")
 # Rstudo
 yaourt -S rstudio-desktop-bin
+# RODBC
+sudo pacman -S unixodbc
+# in R
+install.packages("RODBC")
+# V8 (takes forever to tuild)
+# yaourt -S v8
+gem install libv8 
+# gem install libv8 -- --with-system-v8
 
 # Install ag
 sudo pacman -S the_silver_searcher
@@ -372,6 +380,9 @@ sudo pacman -S youtube-dl
 # /etc/asound.conf
 # from http://alien.slackbook.org/blog/adding-an-alsa-software-pre-amp-to-fix-low-sound-levels/
 # and reboot.  This adds a pre-amp bar to alsamixer.
+
+# Databaker (ScraperWiki)
+sudo pip2.7 install databaker
 
 # Consider:
 # scim (spreadsheet)
