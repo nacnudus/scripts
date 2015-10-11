@@ -171,10 +171,11 @@ yaourt -S rstudio-desktop-bin
 sudo pacman -S unixodbc
 # in R
 install.packages("RODBC")
-# V8 (takes forever to tuild)
+# V8 (use version 3.15 because nothing works with newer ones)
+yaourt -S v8-3.15 
 # yaourt -S v8
-gem install libv8 
-# gem install libv8 -- --with-system-v8
+# gem install libv8 
+gem install libv8 -- --with-system-v8
 
 # Install ag
 sudo pacman -S the_silver_searcher
@@ -381,8 +382,14 @@ sudo pacman -S youtube-dl
 # from http://alien.slackbook.org/blog/adding-an-alsa-software-pre-amp-to-fix-low-sound-levels/
 # and reboot.  This adds a pre-amp bar to alsamixer.
 
-# Databaker (ScraperWiki)
+# Scraperwiki
+# Databaker
 sudo pip2.7 install databaker
+# pdftables
+
+# test fans
+sudo pacman -S lm_sensors
+sudo pacman -S gnuplot
 
 # Consider:
 # scim (spreadsheet)
