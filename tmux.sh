@@ -112,4 +112,16 @@ loadkeys /usr/local/share/kbd/keymaps/personal.map
 # sudo chmod u+s /usr/bin/fbterm
 # Try yaft instead (yet another framebuffer terminal)
 
+# netsurf
+sudo pacman -S libnsbmp libnsgif libcss libdom lcms libmng libpng libnsutils libutf8proc 
+git clone git://git.netsurf-browser.org/netsurf.git
+git clone git://git.netsurf-browser.org/libnsfb.git
+cd lbnsfb
+make
+make install
+cd ../netsurf
+PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+export PKG_CONFIG_PATH
+make TARGET=framebuffer
+
 # TODO: IPython 
