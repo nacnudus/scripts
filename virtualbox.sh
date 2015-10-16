@@ -26,6 +26,6 @@ testparm -s
 # nmblookup -A 192.168.56.101 
 # smbclient -L \\DESKTOP-ETEMMPD -U nacnu%thepassword
 smbclient -L \\DESKTOP-ETEMMPD -U mbie%mbie
-# sudo mount -t cifs //192.168.56.101/test_share /home/nacnudus/winshare -o user=nacnu,password=thepassword
-sudo mount -t cifs //192.168.56.101/Users/mbie/Desktop/mbie /home/nacnudus/winshare -o user=mbie,password=mbie
-sudo mount -t cifs //192.168.56.101/h /home/nacnudus/winshare -o user=mbie,password=mbie
+
+# Mount shared MBIE flash drive (alias 'mbie' in .zshrc)
+sudo mount -t cifs //192.168.56.101/h /home/nacnudus/winshare -o user=mbie,password=mbie,rw,gid=1000,uid=1000
