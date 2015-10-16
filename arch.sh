@@ -420,5 +420,14 @@ cd bacpac
 # Update everything
 yaourt -Syua
 yaourt -Syua --noconfirm
+# Backup list of pacman packages
 cd ~/bacpac
 ./bacpac update
+# Remove orphaned packages
+sudo pacman -Rns $(pacman -Qtdq) 
+# List explicitly-installed packages
+pacman -Qen
+# List explicitly-installed packages not in official repositories
+pacman -Qem
+# List explicitly-installed packages with no dependencies
+./clean
