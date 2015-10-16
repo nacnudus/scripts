@@ -394,6 +394,13 @@ sudo pacman -S gnuplot
 # Microsoft fonts
 yaourt -S ttf-vista-fonts
 yaourt -S ttf-ms-fonts
+# Copy fonts from a windows installation in C:\Windows\Fonts to the Linux home
+# directory (already done, in ~/WindowsFonts)
+sudo mkdir /usr/share/fonts/WindowsFonts
+sudo cp -r WindowsFonts /usr/share/fonts
+sudo chmod 755 /usr/share/fonts/WindowsFonts/*
+fc-cache
+# sudo fc-cache?
 
 # Consider:
 # scim (spreadsheet)
