@@ -402,6 +402,11 @@ sudo chmod 755 /usr/share/fonts/WindowsFonts/*
 fc-cache
 # sudo fc-cache?
 
+# Backup pacman packages
+git clone https://github.com/tech4david/bacpac
+cd bacpac
+./backpac init
+
 # Consider:
 # scim (spreadsheet)
 # csvkit (obvious)
@@ -415,3 +420,5 @@ fc-cache
 # Update everything
 yaourt -Syua
 yaourt -Syua --noconfirm
+cd ~/bacpac
+./bacpac update
