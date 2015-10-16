@@ -180,7 +180,7 @@ gem install libv8 -- --with-system-v8
 # Install ag
 sudo pacman -S the_silver_searcher
 
-# Install TexLive
+# Install TexLive for LaTeX
 sudo mkdir -p /media/iso
 sudo mkdir scripts 
 sudo mount -t iso9660 -o ro,loop,noauto ~/installables/texlive2015-20150523.iso /media/iso
@@ -390,6 +390,10 @@ sudo pip2.7 install databaker
 # test fans
 sudo pacman -S lm_sensors
 sudo pacman -S gnuplot
+
+# Microsoft fonts
+yaourt -S ttf-vista-fonts
+yaourt -S ttf-ms-fonts
 
 # Consider:
 # scim (spreadsheet)
