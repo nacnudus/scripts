@@ -414,3 +414,4 @@ fc-cache
 
 # Update everything
 yaourt -Syua
+yaourt -Syua --noconfirm
