@@ -407,6 +407,9 @@ git clone https://github.com/tech4david/bacpac
 cd bacpac
 ./backpac init
 
+# Manage dos/unix line endings
+sudo pacman -S dos2unix
+
 # Consider:
 # scim (spreadsheet)
 # csvkit (obvious)
