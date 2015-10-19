@@ -151,6 +151,7 @@ sudo gpasswd -a $USER vboxsf
 # now you find it in /media/sf_share
 
 # Install R stats
+sudo pacman -S gcc-fortran
 sudo pacman -S tmux
 yaourt -s gdal
 yaourt -s openblas
