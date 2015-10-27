@@ -23,9 +23,13 @@ testparm -s
 
 # Find shares
 # sudo pacman -S nmap
-# nmblookup -A 192.168.56.101 
-# smbclient -L \\DESKTOP-ETEMMPD -U nacnu%thepassword
+nmblookup -A 192.168.56.101 
+smbclient -L \\DESKTOP-ETEMMPD -U nacnu%thepassword
 smbclient -L \\DESKTOP-ETEMMPD -U mbie%mbie
 
 # Mount shared MBIE flash drive (alias 'mbie' in .zshrc)
 sudo mount -t cifs //192.168.56.101/h /home/nacnudus/winshare -o user=mbie,password=mbie,rw,gid=1000,uid=1000
+
+# Mount Windows C drive
+sudo mount -t cifs //192.168.56.101/c /home/nacnudus/windows -o user=nacnu,rw,gid=1000,uid=1000
+
