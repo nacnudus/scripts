@@ -439,6 +439,8 @@ sudo pacman -Sc
 sudo pacman -Scc
 # Clean /var/log/journal
 sudo systemctl --vacuum-size=16M
+# Uninstall and remove unneeeded dependencies
+sudo pacman -Rs xxx
 # Remove orphaned packages
 sudo pacman -Rns $(pacman -Qtdq) 
 # List explicitly-installed packages
