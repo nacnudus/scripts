@@ -300,6 +300,10 @@ sudo pacman -S ranger
 # Okular
 sudo pacman -S kdegraphics-okular
 # Selecting 2, 2 gave the smallest install size
+# For latex reverse search, Tools > Settings > Editor
+# $HOME/.vim/plugged/atp_vim/ftplugin/ATP_files/reverse_search.py '%f' '%l'
+# No longer works, use this instead:
+# vim --servername VIM --remote +%l %f
 
 # Tmux fancy stuff
 # see separate tmux file
