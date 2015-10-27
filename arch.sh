@@ -127,6 +127,12 @@ sudo pacman -S pulseaudio-alsa
 # Firefox
 sudo pacman -S firefox
 
+# Limit journal directory size
+# Edit /etc/systemd/journald.conf
+# Uncomment SystemMaxUse and set it equal to 16M
+# From time to time check for corrupted files hanging around, and vacuum
+sudo systemctl --vacuum-size=16M
+
 # git
 sudo pacman -S git
 
@@ -427,6 +433,12 @@ yaourt -Syua --noconfirm
 # Backup list of pacman packages
 cd ~/bacpac
 ./bacpac update
+# Clean cache
+sudo pacman -Sc
+# Completely wipe cache
+sudo pacman -Scc
+# Clean /var/log/journal
+sudo systemctl --vacuum-size=16M
 # Remove orphaned packages
 sudo pacman -Rns $(pacman -Qtdq) 
 # List explicitly-installed packages
