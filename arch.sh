@@ -304,6 +304,9 @@ sudo pacman -S kdegraphics-okular
 # $HOME/.vim/plugged/atp_vim/ftplugin/ATP_files/reverse_search.py '%f' '%l'
 # No longer works, use this instead:
 # vim --servername VIM --remote +%l %f
+# Zathura is a lightweight alternative that has synctex support
+# xdotool is necessary for forward-search from Vim
+sudo pacman -S zathura-pdf-mupdf xdotool
 
 # Tmux fancy stuff
 # see separate tmux file
