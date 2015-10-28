@@ -297,8 +297,8 @@ setxkbmap us
 # Ranger file chooser
 sudo pacman -S ranger
 
-# Okular
-sudo pacman -S kdegraphics-okular
+# Okular (requires qt or gtk or something huge, use zathura instead)
+# sudo pacman -S kdegraphics-okular
 # Selecting 2, 2 gave the smallest install size
 # For latex reverse search, Tools > Settings > Editor
 # $HOME/.vim/plugged/atp_vim/ftplugin/ATP_files/reverse_search.py '%f' '%l'
@@ -423,6 +423,9 @@ cd bacpac
 
 # Manage dos/unix line endings
 sudo pacman -S dos2unix
+
+# Lightweight spreadsheet and word
+sudo pacman -S gnumeric abiword
 
 # Consider:
 # scim (spreadsheet)
