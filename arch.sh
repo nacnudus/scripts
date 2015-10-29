@@ -306,7 +306,7 @@ sudo pacman -S ranger
 # vim --servername VIM --remote +%l %f
 # Zathura is a lightweight alternative that has synctex support
 # xdotool is necessary for forward-search from Vim
-sudo pacman -S zathura-pdf-mupdf xdotool
+sudo pacman -S zathura-pdf-mupdf xdotool wmctrl
 
 # Tmux fancy stuff
 # see separate tmux file
@@ -448,7 +448,7 @@ sudo pacman -Sc
 # Completely wipe cache
 sudo pacman -Scc
 # Clean /var/log/journal
-sudo systemctl --vacuum-size=16M
+sudo journalctl --vacuum-size=16M
 # Uninstall and remove unneeeded dependencies
 sudo pacman -Rs xxx
 # Remove orphaned packages
