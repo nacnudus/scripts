@@ -307,6 +307,8 @@ sudo pacman -S ranger
 # Zathura is a lightweight alternative that has synctex support
 # xdotool is necessary for forward-search from Vim
 sudo pacman -S zathura-pdf-mupdf xdotool wmctrl
+# Set as default viewer
+xdg-mime default zathura.desktop application/pdf
 
 # Tmux fancy stuff
 # see separate tmux file
