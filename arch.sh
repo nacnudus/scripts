@@ -429,6 +429,10 @@ sudo pacman -S dos2unix
 # Lightweight spreadsheet and word
 sudo pacman -S gnumeric abiword
 
+# k3b audio CD burner
+sudo pacman -S k3b cdrao dvd+rw-tools
+# Options 2 and 2 had the smallest footprint
+
 # Consider:
 # scim (spreadsheet)
 # csvkit (obvious)
