@@ -433,6 +433,10 @@ sudo pacman -S gnumeric abiword
 sudo pacman -S k3b cdrao dvd+rw-tools
 # Options 2 and 2 had the smallest footprint
 
+# Downgrade packages easily
+yaourt -S downgrade
+# downgrade foo bar
+
 # Consider:
 # scim (spreadsheet)
 # csvkit (obvious)
