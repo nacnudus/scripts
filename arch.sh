@@ -163,7 +163,7 @@ yaourt -s gdal
 yaourt -s openblas
 # I chose option 3 aur/openblas
 yaourt -s intel-mkl
-sudo pacman -S r-mkl
+yaourt -s r-mkl
 ln -s dotfiles/.Rprofile .Rprofile
 # Inside R
 install.packages("devtools")
