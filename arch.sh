@@ -152,6 +152,9 @@ cd fonts
 ./install.sh
 # And restart the terminal
 
+# NeoVim
+sudo pacman -S neovim python2-neovim python-neovim
+
 # Shared folders
 sudo gpasswd -a $USER vboxsf
 # now you find it in /media/sf_share
