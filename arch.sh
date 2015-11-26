@@ -60,6 +60,11 @@ sudo pacman -S i3
 sudo pacman -S dmenu
 sudo pacman -S gnome-terminal 
 cp /etc/X11/xinit/xinitrc ~/.xinitrc 
+# If you want .Xresources to work, then you also need to do
+sudo pacman -S xorg-xrdb
+# But it doesn't work, so to set the desktop background, you need this for the
+# command in .i3/config
+sudo pacman -S xorg-xsetroot
 # Comment out the lines from twm onwards, then add
 exec i3
 # Unless in virtualbox, in which case
