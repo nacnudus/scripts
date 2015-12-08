@@ -159,6 +159,20 @@ cd fonts
 
 # NeoVim
 sudo pacman -S neovim python2-neovim python-neovim
+# In R
+devtools::install_github("jalvesaq/nvimcom")
+# For clang completion
+sudo pacman -S clang
+cd ~/Downloads
+git clone https://github.com/Rip-Rip/clang_complete
+cd clang_complete
+# Edit the makefile to use nvim instead of vim
+sudo make install
+# In nvim
+:help clang
+# For tags config, ~/.nvim is in fact .config/nvim/plugged/Nvim-R
+# You will need ctags
+sudo pacman -S ctags
 
 # Shared folders
 sudo gpasswd -a $USER vboxsf
