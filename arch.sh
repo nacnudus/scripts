@@ -185,6 +185,13 @@ yaourt -s gdal
 yaourt -s openblas
 # I chose option 3 aur/openblas
 yaourt -s intel-mkl
+# (to remove it, do
+# yaourt -R intel-advisor-xe intel-compiler-base intel-fortran-compiler intel-inspector-xe intel-ipp intel-mkl intel-openmp intel-sourcechecker intel-tbb_psxe intel-vtune-amplifier-xe
+# )
+# Another way, suggested in the PKGBUILD is to download the tarball from the
+# AUR, extract it, and do makepkg -sri --pkg intel-mkl
+# Come back later to find it has failed without sudo, and do sudo pacman -U
+# intel-mkl...pkg.tar.gz
 yaourt -s r-mkl
 ln -s dotfiles/.Rprofile .Rprofile
 # Inside R
