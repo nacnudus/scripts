@@ -5,3 +5,7 @@ for i in *.m4a;
 done
 
 # apparently avconv is to be used as a drop-in replacement.
+
+
+# Here's how to trim a get_iplayer download
+ffmpeg -ss 0:01:26 -i ./in.m4a -vn -c copy -t 0:00:19 out.m4a
