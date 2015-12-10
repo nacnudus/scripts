@@ -182,7 +182,7 @@ sudo gpasswd -a $USER vboxsf
 sudo pacman -S gcc-fortran
 sudo pacman -S tmux
 yaourt -s gdal
-yaourt -s openblas
+yaourt -s openblas-lapack
 # I chose option 3 aur/openblas
 yaourt -s intel-mkl
 # (to remove it, do
