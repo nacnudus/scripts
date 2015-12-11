@@ -470,6 +470,9 @@ sudo pacman -S k3b cdrao dvd+rw-tools
 yaourt -S downgrade
 # downgrade foo bar
 
+# fasd for fast cd
+yaourt -S fasd
+
 # Consider:
 # scim (spreadsheet)
 # csvkit (obvious)
