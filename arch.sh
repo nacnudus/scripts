@@ -191,10 +191,10 @@ sudo gpasswd -a $USER vboxsf
 # Install R stats
 sudo pacman -S gcc-fortran
 sudo pacman -S tmux
-yaourt -s gdal
-yaourt -s openblas-lapack
+yaourt -S gdal
+yaourt -S openblas-lapack
 # I chose option 3 aur/openblas
-yaourt -s intel-mkl
+yaourt -S intel-mkl
 # (to remove it, do
 # yaourt -R intel-advisor-xe intel-compiler-base intel-fortran-compiler intel-inspector-xe intel-ipp intel-mkl intel-openmp intel-sourcechecker intel-tbb_psxe intel-vtune-amplifier-xe
 # )
@@ -202,7 +202,7 @@ yaourt -s intel-mkl
 # AUR, extract it, and do makepkg -sri --pkg intel-mkl
 # Come back later to find it has failed without sudo, and do sudo pacman -U
 # intel-mkl...pkg.tar.gz
-yaourt -s r-mkl
+yaourt -S r-mkl
 ln -s dotfiles/.Rprofile .Rprofile
 # Inside R
 install.packages("devtools")
