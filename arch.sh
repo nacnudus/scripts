@@ -376,10 +376,9 @@ xdg-mime default zathura.desktop application/pdf
 # (doesn't support worksheets)
 
 # Printer and scanner
-yaourt -S cnijfilter-mp280
-yaourt -S scangearmp-mp280
+yaourt -S cnijfilter-mp280 scangearmp-mp280 --noconfirm
 sudo pacman -S simple-scan
-sudo gpasswd -a [username] sys
+sudo gpasswd -a nacnudus sys
 sudo pacman -S cups ghostscript cups-pdf libcups
 systemctl enable cups
 systemctl start cups
