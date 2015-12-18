@@ -49,6 +49,7 @@ exit
 # Allow colour in pacman
 sudo vi /etc/pacman.conf
 # and uncomment the 'Color' line
+Color=auto
 
 # Install virtualbox guest additions (if a guest in a virtualbox host)
 sudo pacman -S virtualbox-guest-utils
