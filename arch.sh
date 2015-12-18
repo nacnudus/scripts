@@ -98,6 +98,11 @@ sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/i
 mv .zshrc .zshrc~
 ln -s dotfiles/.zshrc .zshrc
 
+# Enable the multilib repository by uncommenting the [multilib]
+# section in /etc/pacman.conf as mentioned on this wiki page:
+# https://wiki.archlinux.org/index.php/Multilib.  Then update the package list
+# and upgrade with pacman -Syu.
+
 # mount ntfs
 sudo pacman -S ntfs-3g
 
