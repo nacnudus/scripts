@@ -424,12 +424,12 @@ sudo pacman -S axel
 # unrar
 sudo pacman -S unrar
 
-# crashplan backup
-yaourt -S crashplan
-# sudo systemctl enable crashplan.service
-systemctl start crashplan.service
-CrashPlanDesktop
-systemctl stop crashplan.service
+# # crashplan backup
+# yaourt -S crashplan
+# # sudo systemctl enable crashplan.service
+# systemctl start crashplan.service
+# CrashPlanDesktop
+# systemctl stop crashplan.service
 
 # get_iplayer
 yaourt -S get_iplayer
