@@ -257,8 +257,10 @@ sudo cp /usr/share/X11/xorg.conf.d/50-synaptics.conf /etc/X11/xorg.conf.d
 # suggested in the Arch wiki for synaptics.
 
 # Install fonts
-# Take your pick from ttf-anything
+# Take your pick from ttf-anything, but you need inconsolata for current
+# defaults
 sudo pacman -S ttf-
+sudo pacman -S ttf-inconsolata
 
 # Dim backlight
 sudo pacman -S xorg-xbacklight
