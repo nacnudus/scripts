@@ -4,7 +4,7 @@ gpg --verify archlinux-2015.08.01-dual.iso.sig
 
 # Do the beginners' guide.
 
-# If grub-install complains about EFI, then force it to use BIOS by specifying --target-i386-pc
+# If grub-install complains about EFI, then force it to use BIOS by specifying --target=i386-pc
 
 # The wireless network device is called something like wlp2s0
 
