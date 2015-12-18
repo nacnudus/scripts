@@ -279,7 +279,7 @@ sudo pacman -S baobab
 
 # Backups (back in time)
 gpg --keyserver pgp.mit.edu --recv-key 944B4826
-yaourt -S backintime
+yaourt -S backintime backintime-cli
 # Run with
 sudo backintime-qt4
 
