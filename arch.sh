@@ -406,8 +406,8 @@ sudo pacman -S xorg-xinput
 # lib32-libpng12 is no longer in the official repository (it's in AUR).  I skipped it and also
 # the four AUR packages (lib32-libxp, lib32-libxpm, lib32-libxaw,
 # lib32-openmotif).  No issue so far."
-sudo pacman -S openmotif lib32-libxmu printproto nspluginwrapper lib32-alsa-lib lib32-gcc-libs lib32-libxft lib32-gtk2 lib32-libxdamage lib32-libpng12 libcanberra
-yaourt -S lib32-libpng12 lib32-libxp lib32-libxpm lib32-libxaw lib32-openmotif
+sudo pacman -S openmotif lib32-libxmu printproto nspluginwrapper lib32-alsa-lib lib32-gcc-libs lib32-libxft lib32-gtk2 lib32-libxdamage libcanberra
+yaourt -S lib32-libpng12 lib32-libxp lib32-libxpm lib32-libxaw lib32-openmotif --noconfirm
 # Run as root:
 cd /opt/Citrix/ICAClient/keystore/cacerts/
 sudo cp /etc/ssl/certs/ca-certificates.crt .
