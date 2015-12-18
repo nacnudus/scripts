@@ -294,7 +294,7 @@ defaults.pcm.card 1
 # Check with
 speaker-test
 # Eventually pavucontrol was only way to get everything working
-sudo pacman pavucontrol
+sudo pacman -S pavucontrol
 
 # vlc
 sudo pacman -S vlc
