@@ -312,7 +312,10 @@ sudo pacman -S pkgstats
 
 # Virtualbox
 sudo pacman -S virtualbox virtualbox-guest-utils net-tools
-# Create the file /etc/modules-load.d/virtualbox.conf with the line
+# Load the driver to go immediately
+sudo modprobe vboxdrv
+# Load the driver on boot by creating the file
+# /etc/modules-load.d/virtualbox.conf with the lines
 vboxdrv
 vboxnetadp
 vboxnetflt
