@@ -490,6 +490,15 @@ yaourt -S downgrade
 # fasd for fast cd
 yaourt -S fasd
 
+# 7zip (7za command)
+sudo pacman -S p7zip
+
+# mdbtools
+yaourt -S mdbtools
+
+# directory structure
+sudo pacman -S tree
+
 # Consider:
 # scim (spreadsheet)
 # csvkit (obvious)
