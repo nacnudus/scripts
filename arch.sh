@@ -392,28 +392,28 @@ sudo pacman -S gksu
 # Swap orientation
 sudo pacman -S xorg-xinput
 
-# Citrix
-# Directly from Citrix, but follow these intructions:
-# https://bbs.archlinux.org/viewtopic.php?id=195998
-#
-# "Firstly, enable the multilib repository by uncommenting the [multilib]
-# section in /etc/pacman.conf as mentioned on this wiki page:
-# https://wiki.archlinux.org/index.php/Multilib.  Then update the package list
-# and upgrade with pacman -Syu.
-#
-# "Follow mostly the steps under "Manual Install" on this wiki page:
-# ttps://wiki.archlinux.org/index.php/Citrix.  On Step 0, the package
-# lib32-libpng12 is no longer in the official repository (it's in AUR).  I skipped it and also
-# the four AUR packages (lib32-libxp, lib32-libxpm, lib32-libxaw,
-# lib32-openmotif).  No issue so far."
-sudo pacman -S openmotif lib32-libxmu printproto nspluginwrapper lib32-alsa-lib lib32-gcc-libs lib32-libxft lib32-gtk2 lib32-libxdamage libcanberra
-yaourt -S lib32-libpng12 lib32-libxp lib32-libxpm lib32-libxaw lib32-openmotif --noconfirm
-# Run as root:
-cd /opt/Citrix/ICAClient/keystore/cacerts/
-sudo cp /etc/ssl/certs/ca-certificates.crt .
-sudo awk 'BEGIN {c=0;} /BEGIN CERT/{c++} { print > "cert." c ".pem"}' < ca-certificates.crt
-# Use like this:
-/opt/Citrix/ICAClient/wfica ~/Downloads/launch.jsp
+# # Citrix
+# # Directly from Citrix, but follow these intructions:
+# # https://bbs.archlinux.org/viewtopic.php?id=195998
+# #
+# # "Firstly, enable the multilib repository by uncommenting the [multilib]
+# # section in /etc/pacman.conf as mentioned on this wiki page:
+# # https://wiki.archlinux.org/index.php/Multilib.  Then update the package list
+# # and upgrade with pacman -Syu.
+# #
+# # "Follow mostly the steps under "Manual Install" on this wiki page:
+# # ttps://wiki.archlinux.org/index.php/Citrix.  On Step 0, the package
+# # lib32-libpng12 is no longer in the official repository (it's in AUR).  I skipped it and also
+# # the four AUR packages (lib32-libxp, lib32-libxpm, lib32-libxaw,
+# # lib32-openmotif).  No issue so far."
+# sudo pacman -S openmotif lib32-libxmu printproto nspluginwrapper lib32-alsa-lib lib32-gcc-libs lib32-libxft lib32-gtk2 lib32-libxdamage libcanberra
+# yaourt -S lib32-libpng12 lib32-libxp lib32-libxpm lib32-libxaw lib32-openmotif --noconfirm
+# # Run as root:
+# cd /opt/Citrix/ICAClient/keystore/cacerts/
+# sudo cp /etc/ssl/certs/ca-certificates.crt .
+# sudo awk 'BEGIN {c=0;} /BEGIN CERT/{c++} { print > "cert." c ".pem"}' < ca-certificates.crt
+# # Use like this:
+# /opt/Citrix/ICAClient/wfica ~/Downloads/launch.jsp
 
 # Playonlinux
 sudo pacman -S playonlinux
