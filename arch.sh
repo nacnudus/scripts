@@ -42,6 +42,10 @@ nacnudus ALL=(ALL) ALL
 exit
 # login as nacnudus
 
+# Auto-connect to wifi and ethernet
+# sudo systemctl enable netctl-auto@eno0.service
+# sudo systemctl enable netctl-auto@wlp2s0.service
+
 # Allow colour in pacman
 sudo vi /etc/pacman.conf
 # and uncomment the 'Color' line
