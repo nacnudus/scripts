@@ -85,7 +85,7 @@ xrandr 1024x768
 # Make the changes in visudo suggested in ~/.i3/config
 
 # Install python (note, python3 by default, otherwise use python2)
-sudo pacman -S python python-virtualenv python-virtualenvwrapper python-pip python2 python2-pip
+sudo pacman -S python python-virtualenv python-virtualenvwrapper python-pip python2 python2-pip ipython ipython2
 # Change the line in .zshrc to
 source /usr/bin/virtualenvwrapper.sh
 
