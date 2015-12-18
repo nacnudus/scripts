@@ -168,7 +168,7 @@ cd fonts
 # And restart the terminal
 
 # NeoVim
-sudo pacman -S neovim python2-neovim python-neovim
+sudo pacman -S neovim python2-neovim python-neovim xclip
 # In R
 devtools::install_github("jalvesaq/nvimcom")
 # For clang completion
