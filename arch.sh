@@ -377,14 +377,15 @@ xdg-mime default zathura.desktop application/pdf
 
 # Printer and scanner
 yaourt -S cnijfilter-mp280 scangearmp-mp280 --noconfirm
-sudo pacman -S simple-scan
+sudo pacman -S simple-scan cups ghostscript cups-pdf libcups
 sudo gpasswd -a nacnudus sys
-sudo pacman -S cups ghostscript cups-pdf libcups
-systemctl enable cups
-systemctl start cups
+systemctl enable org.cups.cupsd.service
+systemctl start org.cups.cupsd.service
 # browse http://localhost:631
 # Administration
 # Add printer
+# To print in greyscale, print to file and then:
+convert -density 300 -colorspace gray output.pdf output_greyscale.pdf
 
 # gksu (includes gksudo)
 sudo pacman -S gksu
