@@ -1,5 +1,0 @@
-# regex with rm
-
-rm -r {0..16}
-
-# -r is recursive, for deleting whole directories.

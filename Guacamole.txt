@@ -1,9 +1,0 @@
-sudo nano /etc/tomcat6/tomcat-users.xml
-# Create the manager-gui role and user
-  <role rolename="manager-gui"/>
-  <user username="manager-gui" password="password" roles="manager-gui"/>
-
-# do something with SSL (replacing "password" with two identical passwords)
-sudo keytool -genkey -alias guacamole -keypass password -keystore /var/lib/tomcat6/webapps/.keystore -storepass password
-
-/usr/lib/vino/vino-server

@@ -1,2 +1,0 @@
-# search for packages
-apt-cache search <command>

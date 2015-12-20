@@ -1,2 +1,0 @@
-# curl can be used to get your external ip address:
-curl ip.alt.io
