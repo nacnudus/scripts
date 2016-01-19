@@ -507,6 +507,9 @@ sudo pacman -S qbittorrent
 # podcasts
 sudo pacman -S gpodder
 
+# rename by mp3 tag
+sudo pacman -S puddletag
+
 # Consider:
 # scim (spreadsheet)
 # csvkit (obvious)
