@@ -504,6 +504,9 @@ sudo pacman -S tree
 # torrents
 sudo pacman -S qbittorrent
 
+# podcasts
+sudo pacman -S gpodder
+
 # Consider:
 # scim (spreadsheet)
 # csvkit (obvious)
