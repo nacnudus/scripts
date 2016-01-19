@@ -510,6 +510,9 @@ sudo pacman -S gpodder
 # rename by mp3 tag
 sudo pacman -S puddletag
 
+# photo viewer
+sudo pacman -S nomacs
+
 # Consider:
 # scim (spreadsheet)
 # csvkit (obvious)
