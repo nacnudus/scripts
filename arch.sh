@@ -501,6 +501,9 @@ yaourt -S mdbtools
 # directory structure
 sudo pacman -S tree
 
+# torrents
+sudo pacman -S qbittorrent
+
 # Consider:
 # scim (spreadsheet)
 # csvkit (obvious)
