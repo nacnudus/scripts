@@ -137,8 +137,6 @@ source /usr/share/chruby/auto.sh
 yaourt -S google-chrome
 # I selected 6 for droid ttf
 sudo pacman -S ttf-liberation
-# Fix for no sound
-sudo pacman -S pulseaudio-alsa
 
 # Firefox
 sudo pacman -S firefox
@@ -288,10 +286,13 @@ sudo backintime-qt4
 sudo pacman -S xorg-xrandr
 
 # sound
-sudo pacman -S alsa-utils
+sudo pacman -S pulseaudio-alsa 
+yaourt -S pulseaudio-ctl
+# pulseaudio-ctl provides commands to control volume and mute, the mappings for
+# which are in ~/.i3/config.
 # Create ~/.asoundrc with the lines
-defaults.ctl.card 1
-defaults.pcm.card 1
+# defaults.ctl.card 1
+# defaults.pcm.card 1
 # Check with
 speaker-test
 # Eventually pavucontrol was only way to get everything working
