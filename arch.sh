@@ -27,8 +27,6 @@ mount --bind /hostrun/lvm /run/lvm
 # You can then run grub-mkconfig and grub-install without any LVM errors. This also makes the commands behave if you are installing with LVM, for what it's worth.
 # When done, remember to umount /run/lvm before exiting the chroot."
 
-
-
 # Create a user
 useradd -m -G wheel nacnudus
 chfn nacnudus
@@ -513,6 +511,22 @@ sudo pacman -S puddletag
 
 # photo viewer
 sudo pacman -S nomacs
+
+# keyboard with pound sign (right-alt + shift + 4)
+localectl set-keymap --no-convert us
+localectl --no-convert set-x11-keymap us pc105 altgr-intl
+# To choose, examine these:
+# localectl list-x11-keymap-models
+# localectl list-x11-keymap-layouts
+# localectl list-x11-keymap-variants
+# localectl list-x11-keymap-options
+# For serious customisation, look at
+# cd /usr/share/kbd/keymaps
+# sudo cp i386/qwerty/us.map.gz nacnudus.map.gz
+# sudo gunzip nacnudus.map.gz
+# man keymaps
+# less dumpkeys.txt
+# .Xmodmap
 
 # Consider:
 # scim (spreadsheet)
