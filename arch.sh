@@ -527,6 +527,9 @@ localectl --no-convert set-x11-keymap us pc105 altgr-intl
 # man keymaps
 # less dumpkeys.txt
 # .Xmodmap
+# And for .Xmodmap the keycodes aren't the showkey ones, but the xev ones from
+# package xorg-xev:
+# xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'
 
 # Consider:
 # scim (spreadsheet)
