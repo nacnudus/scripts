@@ -255,9 +255,10 @@ sudo cp /usr/share/X11/xorg.conf.d/50-synaptics.conf /etc/X11/xorg.conf.d
 
 # Install fonts
 # Take your pick from ttf-anything, but you need inconsolata for current
-# defaults
+# defaults, and fontawesome for i3bar volume icons
 sudo pacman -S ttf-
 sudo pacman -S ttf-inconsolata
+yaourt -S ttf-font-awesome
 
 # Dim backlight
 sudo pacman -S xorg-xbacklight
