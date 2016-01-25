@@ -442,6 +442,9 @@ sudo pacman -S rtmpdump
 sudo pacman -S cmus
 man cmus-tutorial
 
+# gui music audio player
+sudo pacman -S clementine gstreamer0.10-base-plugins gstreamer0.10-good-plugins gstreamer0.10-bad-plugins gstreamer0.10-ugly-plugins
+
 # Youtube downloader
 sudo pacman -S youtube-dl
 
