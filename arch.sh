@@ -180,6 +180,16 @@ sudo make install
 # For tags config, ~/.nvim is in fact .config/nvim/plugged/Nvim-R
 # You will need ctags
 sudo pacman -S ctags
+# For latex, you need nvim-remote
+mkdir ~/bin
+curl -Lo ~/bin/nvr https://raw.githubusercontent.com/mhinz/neovim-remote/master/nvr
+git clone https://github.com/mhinz/neovim-remote
+cd neovim-remote
+# Recent commits broke it, so:
+git checkout d206e65548e6a8f95300f8fb7ecaa0a162f90cd5
+# Make a local copy
+cp nvr ~/bin/nvr
+chmod 700 ~/bin/nvr
 
 # Shared folders
 sudo gpasswd -a $USER vboxsf
