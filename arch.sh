@@ -184,11 +184,6 @@ sudo pacman -S ctags
 mkdir ~/bin
 curl -Lo ~/bin/nvr https://raw.githubusercontent.com/mhinz/neovim-remote/master/nvr
 git clone https://github.com/mhinz/neovim-remote
-cd neovim-remote
-# Recent commits broke it, so:
-git checkout d206e65548e6a8f95300f8fb7ecaa0a162f90cd5
-# Make a local copy
-cp nvr ~/bin/nvr
 chmod 700 ~/bin/nvr
 
 # Shared folders
