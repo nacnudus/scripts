@@ -553,11 +553,8 @@ sudo systemctl enable vnstat.service
 # vnstat -l
 
 # Consider:
-# scim (spreadsheet)
 # csvkit (obvious)
-# fbterm (frame-buffer terminal)
 # patool (untar everything)
-# w3m (browser) or netsurf
 
 # TODO:
 # Cairo
