@@ -581,3 +581,5 @@ pacman -Qen
 pacman -Qem
 # List explicitly-installed packages with no dependencies
 ./clean
+# Refresh keys (signature from ... is unknown trust)
+sudo pacman-key --refresh-keys
