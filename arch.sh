@@ -545,6 +545,13 @@ localectl --no-convert set-x11-keymap us pc105 altgr-intl
 # package xorg-xev:
 # xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'
 
+# Network usage monitor
+sudo pacman -S vnstat
+sudo systemctl start vnstat.service
+sudo systemctl enable vnstat.service
+# vnstat -q
+# vnstat -l
+
 # Consider:
 # scim (spreadsheet)
 # csvkit (obvious)
