@@ -135,6 +135,8 @@ source /usr/share/chruby/auto.sh
 yaourt -S google-chrome
 # I selected 6 for droid ttf
 sudo pacman -S ttf-liberation
+# For java, you need icedtea-web
+sudo pacman -S icedtea-web
 
 # Firefox
 sudo pacman -S firefox
@@ -546,6 +548,17 @@ sudo systemctl start vnstat.service
 sudo systemctl enable vnstat.service
 # vnstat -q
 # vnstat -l
+
+# redshift (like f.lux)
+sudo pacman- S redshift
+touch ~/.config/redshift.conf
+sudo cp /usr/lib/systemd/user/redshift.service /etc/systemd/system/redshift.service
+sudo systemctl start redshift
+sudo systemctl enable redshift
+
+# mount usb sticks e.g. vfat
+sudo pacman -S dosfstools
+# and restart
 
 # Consider:
 # csvkit (obvious)
