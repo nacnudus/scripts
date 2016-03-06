@@ -560,6 +560,16 @@ sudo systemctl enable redshift
 sudo pacman -S dosfstools
 # and restart
 
+# Photo organiser and Google+/Picasa uploader
+yaourt -S shotwell
+
+# For copyediting, convert word to txt
+sudo pacman -S antiword
+
+# calise to automatically adjust screen brightness (32 MB!)
+# Not working as of 17 Feb 2016
+# yaourt -S calise-git
+
 # Consider:
 # csvkit (obvious)
 # patool (untar everything)
