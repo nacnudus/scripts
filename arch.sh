@@ -570,6 +570,17 @@ sudo pacman -S antiword
 # Not working as of 17 Feb 2016
 # yaourt -S calise-git
 
+# Poor wifi performance (slow)
+# Enable antennae aggregation (this worked on 2016-03-06)
+nvim /etc/modprobe.d/iwlwifi.conf
+options iwlwifi 11n_disable=8
+# nvim /etc/modprobe.d/iwlwifi.conf
+# options iwlwifi 11n_disable=1
+# options iwlwifi swcrypto=1
+# Or disable power management
+# nvim /etc/udev/rules.d/80-iwlwifi.rules
+
+
 # Consider:
 # csvkit (obvious)
 # patool (untar everything)
