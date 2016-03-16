@@ -588,6 +588,12 @@ options iwlwifi 11n_disable=8
 # Or disable power management
 # nvim /etc/udev/rules.d/80-iwlwifi.rules
 
+# eduroam example connections
+# yaourt -S netctl-eduroam
+# sudo pacman -S wicd wicd-gtk
+sudo wpa_supplicant -c /home/nacnudus/dotfiles/eduroam -i wlp2s0 -D nl80211
+sudo dhcpcd wlp2s0
+
 
 # Consider:
 # csvkit (obvious)
