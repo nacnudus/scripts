@@ -40,10 +40,18 @@ nacnudus ALL=(ALL) ALL
 exit
 # login as nacnudus
 
-# Auto-connect to wifi and ethernet
-sudo systemctl enable netctl-auto@eno0.service
-sudo systemctl enable netctl-auto@wlp2s0.service
-sudo pacman -S ifplugd wpa_actiond
+# # Auto-connect to wifi and ethernet
+# sudo systemctl enable netctl-auto@eno0.service
+# sudo systemctl enable netctl-auto@wlp2s0.service
+# sudo pacman -S ifplugd wpa_actiond
+
+# For wifi, I now follow the instructions on the Arch wiki for wicd
+sudo pacman -S wicd
+sudo systemctl stop and disable all net* services
+sudo systemctl enable wicd
+sudo systemctl start wicd
+gpasswd -a nacnudus users
+wicd-curses
 
 # Allow colour in pacman
 sudo vi /etc/pacman.conf
