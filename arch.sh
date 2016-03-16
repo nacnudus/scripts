@@ -594,6 +594,10 @@ options iwlwifi 11n_disable=8
 sudo wpa_supplicant -c /home/nacnudus/dotfiles/eduroam -i wlp2s0 -D nl80211
 sudo dhcpcd wlp2s0
 
+# kicker for knitr-compiling files edited with vimtex
+gem install kicker -s http://gemcutter.org
+# and add .gem/ruby/2.3.0/gems/kicker-3.0.0/bin to the path (in .zshrc)
+
 
 # Consider:
 # csvkit (obvious)
