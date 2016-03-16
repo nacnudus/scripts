@@ -598,6 +598,9 @@ sudo dhcpcd wlp2s0
 gem install kicker -s http://gemcutter.org
 # and add .gem/ruby/2.3.0/gems/kicker-3.0.0/bin to the path (in .zshrc)
 
+# mirror list maintenance
+sudo pacman -S reflector
+sudo reflector --verbose -l 5 --sort rate --save /etc/pacman.d/mirrorlist
 
 # Consider:
 # csvkit (obvious)
