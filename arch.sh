@@ -618,6 +618,10 @@ sudo reflector --verbose -l 5 --sort rate --save /etc/pacman.d/mirrorlist
 # List uuid of all devices
 sudo blkid
 
+# musescore music typesetting like sibelius
+sudo pacman -S musescore qt5-base qt5-declarative qt5-webkit qt5-sensors qt5-webchannel
+# launch with mscore
+
 # Consider:
 # csvkit (obvious)
 # patool (untar everything)
