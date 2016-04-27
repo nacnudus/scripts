@@ -622,6 +622,9 @@ sudo blkid
 sudo pacman -S musescore qt5-base qt5-declarative qt5-webkit qt5-sensors qt5-webchannel
 # launch with mscore
 
+# unrar to extrat .rar files
+sudo pacman -S unrar
+
 # Consider:
 # csvkit (obvious)
 # patool (untar everything)
