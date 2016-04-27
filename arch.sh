@@ -629,6 +629,19 @@ sudo pacman -S unrar
 # csvkit (obvious)
 # patool (untar everything)
 
+# Set up usb tethering
+sudo ip link
+# Note teh name of the link and use it, e.g. enp0s20u2
+sudo dhcpcd enp0s20u2
+# Create /etc/systemd/network/enp0s20u2
+[Match]
+Name=enp0s20u2
+
+[Network]
+DHCP=ipv4
+# And you're done.  To reconnect after reboot, if necessary, do
+sudo dhcpcd enp0s20u2
+
 # TODO:
 # Cairo
 
