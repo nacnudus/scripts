@@ -40,6 +40,9 @@ nacnudus ALL=(ALL) ALL
 exit
 # login as nacnudus
 
+# gimp and help
+sudo pacman -S gimp gimp-help-en_gb
+
 # # Auto-connect to wifi and ethernet
 # sudo systemctl enable netctl-auto@eno0.service
 # sudo systemctl enable netctl-auto@wlp2s0.service
