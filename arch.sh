@@ -615,6 +615,9 @@ gem install kicker -s http://gemcutter.org
 sudo pacman -S reflector
 sudo reflector --verbose -l 5 --sort rate --save /etc/pacman.d/mirrorlist
 
+# List uuid of all devices
+sudo blkid
+
 # Consider:
 # csvkit (obvious)
 # patool (untar everything)
