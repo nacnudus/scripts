@@ -371,6 +371,9 @@ setxkbmap us
 
 # Ranger file chooser
 sudo pacman -S ranger
+# Also w3m for viewing images in the console
+sudo pacman -S w3m
+ranger --copy-config=scope
 
 # Okular (requires qt or gtk or something huge, use zathura instead)
 # sudo pacman -S kdegraphics-okular
