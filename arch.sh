@@ -209,15 +209,21 @@ sudo pacman -S tmux
 yaourt -S gdal
 yaourt -S openblas-lapack
 # I chose option 3 aur/openblas
-yaourt -S intel-mkl
+# Install intel-mkl by downloading the AUR tarball, extracting it,
+# finding out what the huge intel gz download is, downloading it manually into
+# the extracted AUR directory, and running makepkg as suggested, and if it
+# automaautomatically installs more than merely intel-mkl, then uninstally those
+# other bits, except for intel-compiler-base
 # (to remove it, do
 # yaourt -R intel-advisor-xe intel-compiler-base intel-fortran-compiler intel-inspector-xe intel-ipp intel-mkl intel-openmp intel-sourcechecker intel-tbb_psxe intel-vtune-amplifier-xe
 # )
 # Another way, suggested in the PKGBUILD is to download the tarball from the
 # AUR, extract it, and do makepkg -sri --pkg intel-mkl
-# Come back later to find it has failed without sudo, and do sudo pacman -U
-# intel-mkl...pkg.tar.gz
+# Come back later to find it has failed without sudo, and do sudo pacman -U intel-mkl...pkg.tar.gz
 yaourt -S r-mkl
+# Edit the PKGBUILD, using the following paths
+    source /opt/intel/compilers_and_libraries_2016.2.181/linux/mkl/bin/mklvars.sh ${_intel_arch}
+    source /opt/intel/composerxe/linux/bin/compilervars.sh ${_intel_arch}
 ln -s dotfiles/.Rprofile .Rprofile
 # Inside R
 install.packages("devtools")
