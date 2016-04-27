@@ -243,6 +243,7 @@ yaourt -S v8-3.15
 # yaourt -S v8
 # gem install libv8 
 gem install libv8 -- --with-system-v8
+# Set the default browser by editing /etc/R/Renviron, or wherever R.home() is
 
 # Install ag
 sudo pacman -S the_silver_searcher
