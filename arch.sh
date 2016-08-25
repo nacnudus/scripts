@@ -808,3 +808,5 @@ pacman -Qem
 ./clean
 # Refresh keys (signature from ... is unknown trust)
 sudo pacman-key --refresh-keys
+# Empty coredump cache (usually from terminated R sessions)
+sudo rm /var/lib/systemd/coredump/*
