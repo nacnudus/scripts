@@ -766,6 +766,9 @@ sudo pacman -S julia
 # sqlite browser gui
 sudo pacman -S sqlitebrowser
 
+# gimp and help
+sudo pacman -S gimp gimp-help-en_gb
+
 
 # Update everything
 yaourt -Syua
