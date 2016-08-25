@@ -255,12 +255,46 @@ yaourt -S rstudio-desktop-bin
 sudo pacman -S unixodbc
 # in R
 install.packages("RODBC")
-# V8 (use version 3.15 because nothing works with newer ones)
-yaourt -S v8-3.15 
-# yaourt -S v8
-# gem install libv8 
-gem install libv8 -- --with-system-v8
-# Set the default browser by editing /etc/R/Renviron, or wherever R.home() is
+# General package dependencies
+sudo pacman -S pandoc pandoc-citeproc
+
+# V8 just doesn't bloody work, so copy it from a backup
+/usr/lib/libv8.so
+/usr/include/v8*.h
+# and optionally
+/usr/lib/pkgconfig/libv8.pc
+# which is
+prefix=/usr
+exec_prefix=${prefix}
+libdir=/usr/lib
+includedir=${prefix}/include
+
+Name: v8
+Description: V8 JavaScript Engine
+Version: @VERSION@
+Libs: -L${libdir} -lv8 -pthread
+Cflags: -I${includedir}
+# That's all
+
+# rocker (R docker)
+sudo pacman -S docker
+sudo systemctl start docker.service
+sudo systemctl enable docker.service
+sudo gpasswd -a nacnudus docker
+newgrp docker
+docker run --rm -ti rocker/r-devel
+# docker run --user docker -p 8000:8000 -ti rocker/r-base bash
+apt-get update
+apt-get install -y libv8-dev libcurl4-openssl-dev
+exit
+docker run --rm --user docker -p 8000:8000 -ti rocker/r-base bash
+R
+install.packages("V8")
+# Finally worked! Yuss!
+sudo docker run --rm --user docker -p 8000:8000 -v $HOME/crossprod:/home/docker/crossprod -ti pelican bash
+sudo docker run --rm --user docker -p 8000:8000 -v $HOME/pelican-themes:/home/docker/pelican-themes -v $HOME/pelican-plugins:/home/docker/pelican-plugins -v $HOME/crossprod:/home/docker/crossprod -ti pelican bash
+source /etc/bash_completion.d/virtualenvwrapper
+workon crossprod
 
 # Install ag
 sudo pacman -S the_silver_searcher
