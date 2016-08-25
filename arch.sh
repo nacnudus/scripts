@@ -634,8 +634,8 @@ sudo pacman -S tree
 # torrents
 sudo pacman -S qbittorrent
 
-# podcasts
-sudo pacman -S gpodder
+# podcasts (not found last time)
+# sudo pacman -S gpodder
 
 # rename by mp3 tag
 sudo pacman -S puddletag
