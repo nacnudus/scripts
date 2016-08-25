@@ -212,7 +212,6 @@ sudo pacman -S ctags
 # For latex, you need nvim-remote
 mkdir ~/bin
 curl -Lo ~/bin/nvr https://raw.githubusercontent.com/mhinz/neovim-remote/master/nvr
-git clone https://github.com/mhinz/neovim-remote
 chmod 700 ~/bin/nvr
 
 # Shared folders
