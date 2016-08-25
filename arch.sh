@@ -302,11 +302,12 @@ sudo pacman -S the_silver_searcher
 # Install TexLive for LaTeX
 sudo mkdir -p /media/iso
 sudo mkdir scripts 
-sudo mount -t iso9660 -o ro,loop,noauto ~/installables/texlive2015-20150523.iso /media/iso
+sudo mount -t iso9660 -o ro,loop,noauto ~/installables/texlive2016-20160523.iso /media/iso
 sudo /media/iso/install-tl --profile=~/scripts/texlive.profile
-export PATH=$PATH:/usr/local/texlive/2015/bin/x86_64-linux
-export MANPATH=$MANPATH:/usr/local/texlive/2015/texmf-dist/doc/man
-export INFOPATH=$INFOPATH:/usr/local/texlive/2015/texmf-dist/doc/info
+# Add the exports to the .zshrc
+export PATH=$PATH:/usr/local/texlive/2016/bin/x86_64-linux
+export MANPATH=$MANPATH:/usr/local/texlive/2016/texmf-dist/doc/man
+export INFOPATH=$INFOPATH:/usr/local/texlive/2016/texmf-dist/doc/info
 sudo umount /media/iso
 sudo tlmgr option repository http://mirror.ctan.org/systems/texlive/tlnet
 sudo tlmgr update --self
