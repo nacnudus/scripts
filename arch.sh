@@ -763,6 +763,9 @@ sudo pacman -S gdb
 # julia language
 sudo pacman -S julia
 
+# sqlite browser gui
+sudo pacman -S sqlitebrowser
+
 
 # Update everything
 yaourt -Syua
