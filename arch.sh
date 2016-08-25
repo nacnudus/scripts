@@ -769,6 +769,11 @@ sudo pacman -S sqlitebrowser
 # gimp and help
 sudo pacman -S gimp gimp-help-en_gb
 
+# nodejs javascript console
+sudo pacman -S nodejs
+# then run with
+node
+
 
 # Update everything
 yaourt -Syua
