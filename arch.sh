@@ -730,7 +730,7 @@ sudo pacman -S unrar
 
 # Set up usb tethering
 sudo ip link
-# Note teh name of the link and use it, e.g. enp0s20u2
+# Note the name of the link and use it, e.g. enp0s20u2
 sudo dhcpcd enp0s20u2
 # Create /etc/systemd/network/enp0s20u2
 [Match]
