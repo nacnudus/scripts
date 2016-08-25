@@ -430,16 +430,14 @@ blacklist bluetooth
 # Let arch devs know about your packages
 sudo pacman -S pkgstats
 
-# Virtualbox
-sudo pacman -S virtualbox virtualbox-guest-utils net-tools
-# Load the driver to go immediately
-sudo modprobe vboxdrv
-# Load the driver on boot by creating the file
-# /etc/modules-load.d/virtualbox.conf with the lines
-vboxdrv
-vboxnetadp
-vboxnetflt
-vboxpci
+# Virtualbox (I don't think virtualbox-guest-utils is necessary)
+sudo pacman -S virtualbox virtualbox-host-modules-arch net-tools virtualbox-guest-iso
+# qt5-x11extras seems to be needed 2016-07-23
+sudo pacman -S qt5-x11extras
+# Load the modules immediately
+sudo modprobe vboxdrv vboxnetadp vboxnetflt vboxpci
+# The GuestAdditions iso lives here
+/usr/lib/virtualbox/additions/VBoxGuestAdditions.iso
 # For usb sharing, use this:
 sudo gpasswd -a $USER vboxusers
 # # Shared folders ?? Old instruction ??
