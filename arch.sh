@@ -404,7 +404,7 @@ sudo backintime --profile full backup
 sudo pacman -S xorg-xrandr
 
 # sound
-sudo pacman -S pulseaudio-alsa 
+sudo pacman -S pulseaudio-alsa alsa-utils
 yaourt -S pulseaudio-ctl
 # pulseaudio-ctl provides commands to control volume and mute, the mappings for
 # which are in ~/.i3/config.
