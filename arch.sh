@@ -244,12 +244,12 @@ sudo pacman -U r-mkl-3.3.0-1-x86_64.pkg.tar.xz
 ln -s dotfiles/.Rprofile .Rprofile
 # Inside R
 install.packages("devtools")
-install.packages("setwidth")
-devtools::install_github("jalvesaq/VimCom")
-devtools::install_github("jalvesaq/colorout")
-devtools::install_github("Data-Camp/Rdocumentation")
-install.packages("rgdal")
-# Rstudo
+# install.packages("setwidth")
+# devtools::install_github("jalvesaq/VimCom")
+# devtools::install_github("jalvesaq/colorout")
+# devtools::install_github("Data-Camp/Rdocumentation")
+# install.packages("rgdal")
+# Rstudio
 yaourt -S rstudio-desktop-bin
 # RODBC
 sudo pacman -S unixodbc
