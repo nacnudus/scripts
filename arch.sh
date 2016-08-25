@@ -369,6 +369,9 @@ sudo pacman -S ntp
 sudo ntpd -u ntp:ntp
 sudo systemctl enable ntpd.service 
 
+# OpenGL
+sudo pacman -S mesa-libgl
+
 
 # Directory sizes
 sudo pacman -S baobab
