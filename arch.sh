@@ -503,6 +503,8 @@ xdg-mime default zathura.desktop application/pdf
 # Printer and scanner
 yaourt -S cnijfilter-mp280 scangearmp-mp280 --noconfirm
 sudo pacman -S simple-scan cups ghostscript cups-pdf libcups
+# For HP Photosmart 7350
+sudo pacman -S hplip
 sudo gpasswd -a nacnudus sys
 systemctl enable org.cups.cupsd.service
 systemctl start org.cups.cupsd.service
