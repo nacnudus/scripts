@@ -235,6 +235,12 @@ yaourt -S r-mkl
 # Edit the PKGBUILD, using the following paths
     source /opt/intel/compilers_and_libraries_2016.3.210/linux/mkl/bin/mklvars.sh ${_intel_arch}
     source /opt/intel/composerxe-2016/linux/bin/compilervars.sh ${_intel_arch}
+# Wouldn't work, try downloading AUR tarball, extract it, cd into it, fix
+# PKGBUILD as above, and also change `make check-recommended` into `make check`
+# to avoid mgcv failure.  Then:
+makepkg -sri r-mkl
+sudo pacman -U r-mkl-3.3.0-1-x86_64.pkg.tar.xz
+
 ln -s dotfiles/.Rprofile .Rprofile
 # Inside R
 install.packages("devtools")
