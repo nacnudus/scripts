@@ -744,6 +744,9 @@ sudo dhcpcd enp0s20u2
 # Prevent screen from turning off during movies (temporarily)
 xset s off
 
+# Offline wikipedia
+yaourt -S kiwix-bin
+
 
 # Update everything
 yaourt -Syua
