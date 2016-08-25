@@ -747,6 +747,9 @@ xset s off
 # Offline wikipedia
 yaourt -S kiwix-bin
 
+# Kill by mouse
+sudo pacman -S xorg-xkill
+
 
 # Update everything
 yaourt -Syua
