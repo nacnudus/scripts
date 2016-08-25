@@ -777,6 +777,9 @@ node
 # zotero reference manager
 yaourt -S zotero
 
+# mono and gecko for playonlinux
+sudo pacman -S wine-mono wine_gecko
+
 
 # Update everything
 yaourt -Syua
