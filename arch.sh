@@ -774,6 +774,9 @@ sudo pacman -S nodejs
 # then run with
 node
 
+# zotero reference manager
+yaourt -S zotero
+
 
 # Update everything
 yaourt -Syua
