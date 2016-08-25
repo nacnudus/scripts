@@ -103,6 +103,11 @@ startx
 xrandr 1024x768
 # or some other mode listed by xrandr
 # Make the changes in visudo suggested in ~/.i3/config
+# If output doesn't appear in the terminal immediately, try putting/changing
+Section "Device"
+        Option      "AccelMethod" "uxa"
+EndSection
+# in /etc/X11/xorg.conf.d/20-intel.conf
 
 # Install python (note, python3 by default, otherwise use python2)
 sudo pacman -S python python-virtualenv python-virtualenvwrapper python-pip python2 python2-pip ipython ipython2
