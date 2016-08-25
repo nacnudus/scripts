@@ -750,6 +750,10 @@ yaourt -S kiwix-bin
 # Kill by mouse
 sudo pacman -S xorg-xkill
 
+# battery health
+sudo pacman -S acpi
+acpi -i
+
 
 # Update everything
 yaourt -Syua
