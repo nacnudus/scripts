@@ -396,6 +396,9 @@ gpg --keyserver pgp.mit.edu --recv-key 944B4826
 yaourt -S backintime backintime-cli
 # Run with
 sudo backintime-qt4
+# or
+sudo backintime --profile home backup
+sudo backintime --profile full backup
 
 # xrandr
 sudo pacman -S xorg-xrandr
