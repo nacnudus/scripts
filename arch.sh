@@ -780,6 +780,9 @@ yaourt -S zotero
 # mono and gecko for playonlinux
 sudo pacman -S wine-mono wine_gecko
 
+# Microsoft office 2010
+# Go through playonlinux
+# Use product key and activation code in ./installables/Microsoft Office Professional Plus 2010/
 
 # Update everything
 yaourt -Syua
