@@ -372,6 +372,21 @@ sudo systemctl enable ntpd.service
 # OpenGL
 sudo pacman -S mesa-libgl
 
+# Intel graphics config
+# File: /etc/X11/xorg.conf.d/20-intel.conf (to reduce tearing -- does something
+# worse instead!)
+Section "Device"
+   Identifier  "Intel Graphics"
+   Driver      "intel"
+   Option      "TearFree"    "true"
+EndSection
+# Set recommended options (also causes problems refreshing the terminal when
+# typing)
+# /etc/modprobe.d/i915.conf
+options i915 enable_rc6=1 enable_fbc=1 lvds_downclock=1 semaphores=1
+# Next, I tried (based on http://www.linux-hell.com/2015/05/09/solve-ubuntu-video-tearing/
+sudo pacman -S lib32-sdl
+
 
 # Directory sizes
 sudo pacman -S baobab
