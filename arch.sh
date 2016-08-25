@@ -70,6 +70,12 @@ sudo pacman -S virtualbox-guest-utils
 # Choose the default mesa library at the prompt
 sudo systemctl enable vboxservice
 
+# Android file transfer
+# sudo pacman -S libmtp ?? Necessary?
+sudo pacman -S android-file-transfer
+# Then aft-mtp-mount ~/android
+# Unmount with fusermount -u ~/android
+
 # Install X, i3, and gnome-terminal (TODO: video acceleration? mesa-vdpau and libva-mesa-driver)
 sudo pacman -S xorg-server
 # That doesn't seem to be necessary if you have already installed virtualbox
