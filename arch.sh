@@ -41,17 +41,24 @@ exit
 # login as nacnudus
 
 # # Auto-connect to wifi and ethernet
-sudo systemctl enable netctl-auto@eno0.service
+# I'm pretty sure we do need to copy a template from /etc/netctl/examples
+sudo cp /etc/netctl/examples/ethernet-dhcp /etc/netctl/eno1
+# And then change the interface name in the file to 'eno1'.
+# This delays boot:
+# sudo systemctl enable dhcpcd@eno1.service
+sudo pacman -S wpa_actiond
 sudo systemctl enable netctl-auto@wlp2s0.service
-sudo pacman -S ifplugd wpa_actiond
+# Do we need?
+sudo pacman -S ifplugd
+sudo systemctl enable netctl-ifplugd@eno1.service
 
-# For wifi, I now follow the instructions on the Arch wiki for wicd
-sudo pacman -S wicd
-sudo systemctl stop and disable all net* services
-sudo systemctl enable wicd
-sudo systemctl start wicd
-gpasswd -a nacnudus users
-wicd-curses
+# # For wifi, I now (no longer) follow the instructions on the Arch wiki for wicd
+# sudo pacman -S wicd
+# sudo systemctl stop and disable all net* services
+# sudo systemctl enable wicd
+# sudo systemctl start wicd
+# gpasswd -a nacnudus users
+# wicd-curses
 
 # Allow colour in pacman
 sudo vi /etc/pacman.conf
