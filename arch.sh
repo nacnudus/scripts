@@ -754,6 +754,12 @@ sudo pacman -S xorg-xkill
 sudo pacman -S acpi
 acpi -i
 
+# lldb and valgrind gdb c++ segfault debuggers
+# Note that lldb doesn't work (missing a .so file somewhere)
+sudo pacman -S lldb 
+sudo pacman -S valgrind 
+sudo pacman -S gdb 
+
 
 # Update everything
 yaourt -Syua
