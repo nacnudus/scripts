@@ -364,6 +364,11 @@ Section "Device"
         BusID       "PCI:0:2:0"
 EndSection
 
+# Synchronise time
+sudo pacman -S ntp
+sudo ntpd -u ntp:ntp
+sudo systemctl enable ntpd.service 
+
 
 # Directory sizes
 sudo pacman -S baobab
