@@ -214,10 +214,6 @@ mkdir ~/bin
 curl -Lo ~/bin/nvr https://raw.githubusercontent.com/mhinz/neovim-remote/master/nvr
 chmod 700 ~/bin/nvr
 
-# Shared folders
-sudo gpasswd -a $USER vboxsf
-# now you find it in /media/sf_share
-
 # Install R stats
 sudo pacman -S gcc-fortran
 sudo pacman -S tmux
@@ -363,6 +359,9 @@ vboxnetflt
 vboxpci
 # For usb sharing, use this:
 sudo gpasswd -a $USER vboxusers
+# # Shared folders ?? Old instruction ??
+# sudo gpasswd -a $USER vboxsf
+# # now you find it in /media/sf_share
 # For webcam etc.
 yaourt -S virtualbox-ext-oracle
 
