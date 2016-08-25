@@ -452,6 +452,7 @@ sudo pacman -S xorg-xmodmap
 xmodmap -pke > ~/.Xmodmap # warning, wipes file if it exists!
 vim ~/.Xmodmap # and do, e.g.
 keycode 100 = Menu NoSymbol Menu
+# But last time it was keycode 135
 # in ~/.xinitrc add
 if [ -f $HOME/.Xmodmap  ]; then
     /usr/bin/xmodmap $HOME/.Xmodmap
