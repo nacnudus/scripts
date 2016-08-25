@@ -741,6 +741,9 @@ DHCP=ipv4
 # And you're done.  To reconnect after reboot, if necessary, do
 sudo dhcpcd enp0s20u2
 
+# Prevent screen from turning off during movies (temporarily)
+xset s off
+
 
 # Update everything
 yaourt -Syua
