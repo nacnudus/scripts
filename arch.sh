@@ -760,6 +760,9 @@ sudo pacman -S lldb
 sudo pacman -S valgrind 
 sudo pacman -S gdb 
 
+# julia language
+sudo pacman -S julia
+
 
 # Update everything
 yaourt -Syua
