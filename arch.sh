@@ -741,8 +741,6 @@ DHCP=ipv4
 # And you're done.  To reconnect after reboot, if necessary, do
 sudo dhcpcd enp0s20u2
 
-# TODO:
-# Cairo
 
 # Update everything
 yaourt -Syua
