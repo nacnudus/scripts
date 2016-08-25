@@ -319,16 +319,32 @@ sudo pip install psutil
 sudo pacman -S htop
 
 # Install bluetooth (No, don't! It interferes with wifi, apparently.)
-# sudo pacman -S bluez bluez-utils
-# sudo modprobe btusb
-# sudo systemctl enable bluetooth.service
-# Follow further instructions
+sudo pacman -S bluez bluez-utils
+sudo modprobe btusb
+sudo systemctl enable bluetooth.service
+sudo systemctl start bluetooth.service
+sudo gpasswd -a nacnudus lp
+rfkill unblock bluetooth
+bluetoothctl
+power on
+scan on
+devices
+agent on
+trust 64:BC:0C:F6:62:74
+pair 64:BC:0C:F6:62:74
+# connect 64:BC:0C:F6:62:74
+# Doesn't work, but you can transfer files like this (still doesn't work)
+obexftp -b 64:BC:0C:F6:62:74 -p /path/to/file
+obexftp -b 64:BC:0C:F6:62:74 -g /path/to/file
+exit
+sudo pacman -S obexfs
+# Try again, still doesn't work, but can transfer files
+sudo pacman -S blueman
+blueman-manager
 
 # Install mouse
 sudo pacman -S xf86-input-synaptics
-sudo cp /usr/share/X11/xorg.conf.d/50-synaptics.conf /etc/X11/xorg.conf.d
-# Edit the file and write with :w!! for sudo permissions, using settings
-# suggested in the Arch wiki for synaptics.
+# Copy /etc/X11/xorg.conf.d/50-synaptics.conf from a backup
 
 # Install fonts
 # Take your pick from ttf-anything, but you need inconsolata for current
