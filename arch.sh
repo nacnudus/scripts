@@ -760,6 +760,8 @@ acpi -i
 sudo pacman -S lldb 
 sudo pacman -S valgrind 
 sudo pacman -S gdb 
+# Then use with e.g. R:
+R -d valgrind -e "tidyxl::contents('./R/readxl/tests/testthat/iris-google-doc.xlsx')"
 
 # julia language
 sudo pacman -S julia
