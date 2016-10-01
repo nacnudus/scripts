@@ -787,6 +787,11 @@ sudo pacman -S wine-mono wine_gecko
 # Go through playonlinux
 # Use product key and activation code in ./installables/Microsoft Office Professional Plus 2010/
 
+# Haskell
+sudo pacman -S ghc
+# type ghci in terminal
+sudo pacman -S hlint ghc-mod
+
 # Update everything
 yaourt -Syua
 yaourt -Syua --noconfirm
