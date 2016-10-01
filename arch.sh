@@ -74,6 +74,7 @@ sudo systemctl enable vboxservice
 # sudo pacman -S libmtp ?? Necessary?
 sudo pacman -S android-file-transfer
 # Then aft-mtp-mount ~/android
+# And enable file transfer on the phone
 # Unmount with fusermount -u ~/android
 
 # Install X, i3, and gnome-terminal (TODO: video acceleration? mesa-vdpau and libva-mesa-driver)
