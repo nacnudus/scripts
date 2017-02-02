@@ -334,12 +334,12 @@ sudo pip install psutil
 sudo pacman -S htop
 
 # Install bluetooth (No, don't! It interferes with wifi, apparently.)
-sudo pacman -S bluez bluez-utils
+sudo pacman -S bluez bluez-utils rfkill
 sudo modprobe btusb
 sudo systemctl enable bluetooth.service
 sudo systemctl start bluetooth.service
 sudo gpasswd -a nacnudus lp
-rfkill unblock bluetooth
+sudo rfkill unblock bluetooth
 bluetoothctl
 power on
 scan on
