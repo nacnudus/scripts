@@ -807,6 +807,24 @@ yaourt -S qoobar
 # flac lossless audio codec
 sudo pacman -S flac
 
+# whipper for high-quality audio cd ripping
+yaourt -S whipper-git
+# Get the model name
+whipper drive list
+# Look up the offset http://www.accuraterip.com/driveoffsets.htm (MATSHITA is
+# listed as PANASONIC, offset is +103)
+# Either confirm it (takes ages) with
+whipper offset find -o +103
+# or manually put
+[drive:MATSHITA%3ABD-CMB%20UJ162%20%20%20%20%3A1.01]
+vendor = MATSHITA
+model = BD-CMB UJ162
+release = 1.01
+read_offset = 103
+# into $HOME/.config/whipper/whipper.conf
+# To rip:
+whipper cd rip
+
 # Microsoft office 2010
 # Go through playonlinux
 # Use product key and activation code in ./installables/Microsoft Office Professional Plus 2010/
