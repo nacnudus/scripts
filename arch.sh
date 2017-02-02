@@ -40,6 +40,19 @@ nacnudus ALL=(ALL) ALL
 exit
 # login as nacnudus
 
+# Set a UK/GB keyboard layout by editing
+/etc/X11/xorg.conf.d/00-keyboard.conf
+# And adding the lines below, including the comments
+# Read and parsed by systemd-localed. It's probably wise not to edit this file
+# manually too freely.
+Section "InputClass"
+        Identifier "system-keyboard"
+        MatchIsKeyboard "on"
+        Option "XkbLayout" "gb"
+        Option "XkbModel" "pc105"
+        # Option "XkbVariant" "altgr-intl"
+EndSection
+
 # # Auto-connect to wifi and ethernet
 # I'm pretty sure we do need to copy a template from /etc/netctl/examples
 sudo cp /etc/netctl/examples/ethernet-dhcp /etc/netctl/eno1
