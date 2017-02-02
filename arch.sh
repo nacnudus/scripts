@@ -804,6 +804,9 @@ sudo pacman -S wine-mono wine_gecko
 # qoobar for specialised classical music organisation
 yaourt -S qoobar
 
+# flac lossless audio codec
+sudo pacman -S flac
+
 # Microsoft office 2010
 # Go through playonlinux
 # Use product key and activation code in ./installables/Microsoft Office Professional Plus 2010/
