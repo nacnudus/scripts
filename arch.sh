@@ -801,6 +801,9 @@ yaourt -S zotero
 # mono and gecko for playonlinux
 sudo pacman -S wine-mono wine_gecko
 
+# qoobar for specialised classical music organisation
+yaourt -S qoobar
+
 # Microsoft office 2010
 # Go through playonlinux
 # Use product key and activation code in ./installables/Microsoft Office Professional Plus 2010/
