@@ -222,7 +222,8 @@ sudo make install
 :help clang
 # For tags config, ~/.nvim is in fact .config/nvim/plugged/Nvim-R
 # You will need ctags
-sudo pacman -S ctags
+# sudo pacman -S ctags
+yaourt -S universal-ctags-git
 # For latex, you need nvim-remote
 mkdir ~/bin
 curl -Lo ~/bin/nvr https://raw.githubusercontent.com/mhinz/neovim-remote/master/nvr
