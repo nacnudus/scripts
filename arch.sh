@@ -834,6 +834,9 @@ sudo pacman -S ghc
 # type ghci in terminal
 sudo pacman -S hlint ghc-mod
 
+# shutter for screenshots and snipping
+sudo pacman -S shutter
+
 # Update everything
 yaourt -Syua
 yaourt -Syua --noconfirm
