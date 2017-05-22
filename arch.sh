@@ -871,6 +871,8 @@ npm install
 # Expect warnings about optional components for 'darwin' (mac)
 npm start
 
+# slack (like IRC)
+yaourt -S slack-desktop
 # Update everything
 yaourt -Syua
 yaourt -Syua --noconfirm
