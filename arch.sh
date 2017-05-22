@@ -123,10 +123,29 @@ Section "Device"
 EndSection
 # in /etc/X11/xorg.conf.d/20-intel.conf
 
-# Install python (note, python3 by default, otherwise use python2)
-sudo pacman -S python python-virtualenv python-virtualenvwrapper python-pip python2 python2-pip ipython ipython2
-# Change the line in .zshrc to
-source /usr/bin/virtualenvwrapper.sh
+# # Install python (note, python3 by default, otherwise use python2)
+# sudo pacman -S python python-virtualenv python-virtualenvwrapper python-pip python2 python2-pip ipython ipython2
+# # Change the line in .zshrc to
+# source /usr/bin/virtualenvwrapper.sh
+
+# Install conda for anaconda environments Use the miniconda installer, because
+# the full anaconda is huge, ~1.7 GB It will add anaconda's python to the
+# beginning of the path, taking precedence over Arch's python, so move it to the
+# end of the path instead, as per
+# http://tobanwiebe.com/blog/2016/09/anaconda-python-linux
+# Default configuration of Anaconda installer
+# export PATH="/home/toban/utilities/anaconda3/bin:$PATH"
+# Append Anaconda so that it doesn't override system Python
+# export PATH="$PATH:/home/toban/utilities/anaconda3/bin"
+# The root environment uses the standard Anaconda python installation, so to
+# activate the Anaconda’s python, just do source activate root. (Note: this only
+# affects the current shell session).
+# Set up neovim with jedi completion
+source create -n neovim2 python=2
+pip install neovim jedi
+source create -n neovim3 python=3
+pip install neovim jedi
+source deactivate
 
 # Install zsh
 sudo pacman -S zsh
