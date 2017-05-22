@@ -861,6 +861,16 @@ sudo pacman -S hlint ghc-mod
 # shutter for screenshots and snipping
 sudo pacman -S shutter
 
+# gov uk prototype kit https://github.com/alphagov/govuk_prototype_kit
+sudo pacman -S npm
+yaourt -S nvm
+nvm install 6
+# Download the latest kit and unzip into ~/govuk/prototypes, rename the folder
+# and cd into it.
+npm install
+# Expect warnings about optional components for 'darwin' (mac)
+npm start
+
 # Update everything
 yaourt -Syua
 yaourt -Syua --noconfirm
