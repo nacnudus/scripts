@@ -873,6 +873,9 @@ npm start
 
 # slack (like IRC)
 yaourt -S slack-desktop
+# For desktop notifications
+sudo pacman -S dunst
+
 # Update everything
 yaourt -Syua
 yaourt -Syua --noconfirm
