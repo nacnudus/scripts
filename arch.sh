@@ -847,6 +847,11 @@ whipper cd rip
 # Microsoft office 2010
 # Go through playonlinux
 # Use product key and activation code in ./installables/Microsoft Office Professional Plus 2010/
+# Otherwise (this never worked), create a wineprefix with PlayOnLinux and then
+export WINEPREFIX=~/.PlayOnLinux/wineprefix/Office2010
+export WINEARCH=win32
+wine /home/nacnudus/installables/Microsoft\ Office\ Professional\ Plus\ 2010/X16-32250.exe
+wine .PlayOnLinux/wineprefix/Office2010/drive_c/Program\ Files/Microsoft\ Office/Office14/EXCEL.EXE
 
 # Haskell
 sudo pacman -S ghc
