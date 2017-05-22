@@ -859,7 +859,7 @@ sudo pacman -S ghc
 sudo pacman -S hlint ghc-mod
 
 # shutter for screenshots and snipping
-sudo pacman -S shutter
+yaourt -S shutter
 
 # gov uk prototype kit https://github.com/alphagov/govuk_prototype_kit
 sudo pacman -S npm
