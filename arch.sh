@@ -876,6 +876,11 @@ yaourt -S slack-desktop
 # For desktop notifications
 sudo pacman -S dunst
 
+# elixir, for the commands elixir elixirc ix and mix
+# "Elixir is a dynamic, functional language designed for building scalable and
+# maintainable applications"
+sudo pacman -S elixir
+
 # Update everything
 yaourt -Syua
 yaourt -Syua --noconfirm
