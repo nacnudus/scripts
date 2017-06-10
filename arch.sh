@@ -143,8 +143,10 @@ EndSection
 # Set up neovim with jedi completion
 source create -n neovim2 python=2
 pip install neovim jedi
+conda install ncurses
 source create -n neovim3 python=3
 pip install neovim jedi
+conda install ncurses
 source deactivate
 
 # Install zsh
