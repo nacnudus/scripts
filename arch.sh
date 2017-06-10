@@ -874,6 +874,9 @@ npm install
 # Expect warnings about optional components for 'darwin' (mac)
 npm start
 
+# remark, a markdown code tidier/beautifier/lintr
+npm install -g remark-cli
+
 # slack (like IRC)
 yaourt -S slack-desktop
 # For desktop notifications
