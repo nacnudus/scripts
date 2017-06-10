@@ -879,6 +879,9 @@ npm start
 # remark, a markdown code tidier/beautifier/lintr
 npm install -g remark-cli
 
+# vim markdown preview
+npm install -g livedown
+
 # slack (like IRC)
 yaourt -S slack-desktop
 # For desktop notifications
