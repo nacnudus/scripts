@@ -228,6 +228,9 @@ cd fonts
 
 # NeoVim
 sudo pacman -S neovim python2-neovim python-neovim xclip
+# For vim-github-dashboard
+gem install neovim
+gem install json_pure
 # In R
 devtools::install_github("jalvesaq/nvimcom")
 # For clang completion
