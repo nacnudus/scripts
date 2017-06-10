@@ -8,7 +8,7 @@ gpg --verify archlinux-2015.08.01-dual.iso.sig
 
 # The wireless network device is called something like wlp2s0
 
-# After following the beginners' guide, if it doesn't boot, then try this from 
+# After following the beginners' guide, if it doesn't boot, then try this from
 # http://unix.stackexchange.com/a/152277/46012
 
 # "I ran across the same issue just now, and found another workaround. Basically, it involves making the hosts /run directory available to the guest.
@@ -97,8 +97,8 @@ sudo pacman -S xorg-xinit
 sudo pacman -S i3
 # Accept all defaults
 sudo pacman -S dmenu
-sudo pacman -S gnome-terminal 
-cp /etc/X11/xinit/xinitrc ~/.xinitrc 
+sudo pacman -S gnome-terminal
+cp /etc/X11/xinit/xinitrc ~/.xinitrc
 # If you want .Xresources to work, then you also need to do
 sudo pacman -S xorg-xrdb
 # But it doesn't work, so to set the desktop background, you need this for the
@@ -340,7 +340,7 @@ sudo pacman -S the_silver_searcher
 
 # Install TexLive for LaTeX
 sudo mkdir -p /media/iso
-sudo mkdir scripts 
+sudo mkdir scripts
 sudo mount -t iso9660 -o ro,loop,noauto ~/installables/texlive2016-20160523.iso /media/iso
 sudo /media/iso/install-tl --profile=~/scripts/texlive.profile
 # Add the exports to the .zshrc
@@ -410,7 +410,7 @@ EndSection
 # Synchronise time
 sudo pacman -S ntp
 sudo ntpd -u ntp:ntp
-sudo systemctl enable ntpd.service 
+sudo systemctl enable ntpd.service
 
 # OpenGL
 sudo pacman -S mesa-libgl
@@ -538,9 +538,9 @@ xdg-mime default zathura.desktop application/pdf
 # sudo pacman -S python-psutil
 # sudo pacman -S python-pygit2
 
-# x_x (command-line xlsx) 
+# x_x (command-line xlsx)
 # Doesn't handle multiple worksheets yet.
-# sudo pip install x_x 
+# sudo pip install x_x
 # (doesn't support worksheets)
 
 # Printer and scanner
@@ -618,7 +618,7 @@ sudo pacman -S clementine gstreamer gst-plugins-base gst-plugins-good gst-plugin
 # Youtube downloader
 sudo pacman -S youtube-dl
 
-# To increase the volume, copy the file 'louder' in this directory to 
+# To increase the volume, copy the file 'louder' in this directory to
 # /etc/asound.conf
 # from http://alien.slackbook.org/blog/adding-an-alsa-software-pre-amp-to-fix-low-sound-levels/
 # and reboot.  This adds a pre-amp bar to alsamixer.
@@ -799,9 +799,9 @@ acpi -i
 
 # lldb and valgrind gdb c++ segfault debuggers
 # Note that lldb doesn't work (missing a .so file somewhere)
-sudo pacman -S lldb 
-sudo pacman -S valgrind 
-sudo pacman -S gdb 
+sudo pacman -S lldb
+sudo pacman -S valgrind
+sudo pacman -S gdb
 # Then use with e.g. R:
 R -d valgrind -e "tidyxl::contents('./R/readxl/tests/testthat/iris-google-doc.xlsx')"
 
@@ -919,7 +919,7 @@ sudo journalctl --vacuum-size=16M
 # Uninstall and remove unneeeded dependencies
 sudo pacman -Rs xxx
 # Remove orphaned packages
-sudo pacman -Rns $(pacman -Qtdq) 
+sudo pacman -Rns $(pacman -Qtdq)
 # List explicitly-installed packages
 pacman -Qen
 # List explicitly-installed packages not in official repositories
