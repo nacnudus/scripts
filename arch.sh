@@ -887,6 +887,21 @@ sudo pacman -S dunst
 # maintainable applications"
 sudo pacman -S elixir
 
+# Postgresql
+sudo pacman -S postgresql
+sudo -u postgres -i
+initdb --locale en_GB.UTF-8 -E UTF8 -D '/var/lib/postgres/data'
+exit
+sudo systemctl start postgresql.service
+sudo systemctl enable postgresql.service
+# If you create a PostgreSQL user with the same name as your Linux username, it
+# allows you to access the PostgreSQL database shell without having to specify a
+# user to login (which makes it quite convenient).
+sudo -u postgres -i
+createuser --interative
+exit
+createdb myDatabaseName
+
 # Update everything
 yaourt -Syua
 yaourt -Syua --noconfirm
