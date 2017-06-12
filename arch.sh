@@ -662,8 +662,15 @@ cd bacpac
 # Manage dos/unix line endings
 sudo pacman -S dos2unix
 
-# Lightweight spreadsheet and word
+# Lightweight spreadsheet and word, with poor xls->xlsx conversion
 sudo pacman -S gnumeric abiword
+# Then convert xls to xlsx with
+ssconvert in.xls out.xlsx
+
+# Heavyweight (>500MB!) spreadsheet and word, for better xls->xlsx conversion
+sudo pacman -S libreoffice-fresh
+# Then convert xls to xlsx with
+libreoffice --headless --convert-to xlsx myfile.xls
 
 # k3b audio CD burner
 sudo pacman -S k3b cdrdao dvd+rw-tools
