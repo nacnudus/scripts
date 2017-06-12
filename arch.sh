@@ -279,6 +279,17 @@ yaourt -S r-mkl
 # to avoid mgcv failure.  Then:
 makepkg -sri r-mkl
 sudo pacman -U r-mkl-3.3.0-1-x86_64.pkg.tar.xz
+# rJava
+# If the output of
+archlinux-java status
+# is
+Available Java environments:
+  java-7-openjdk/jre (default)
+  java-8-openjdk
+# then only the JRE component of java-7 is installed, so install the JDK bit too
+sudo pacman -S jdk7-openjdk
+# Finally, in R
+install.packages("rJava")
 
 ln -s dotfiles/.Rprofile .Rprofile
 # Inside R
