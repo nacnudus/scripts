@@ -331,7 +331,7 @@ sudo systemctl start docker.service
 sudo systemctl enable docker.service
 sudo gpasswd -a nacnudus docker
 newgrp docker
-docker run --rm -ti rocker/r-devel
+docker run --rm -ti rocker/r-base
 # docker run --user docker -p 8000:8000 -ti rocker/r-base bash
 apt-get update
 apt-get install -y libv8-dev libcurl4-openssl-dev
