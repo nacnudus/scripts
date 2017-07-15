@@ -53,6 +53,38 @@ Section "InputClass"
         # Option "XkbVariant" "altgr-intl"
 EndSection
 
+# # wifi manually, following
+# # https://wiki.archlinux.org/index.php/Wireless_network_configuration#Wireless_management
+# sudo ip link set wlp2s0 up
+# sudo wpa_supplicant -i wlp2s0 -c <(wpa_passphrase "TALKTALK-FB7208" "7FWKUNMX")
+
+# # wifi and internet and ethernet with connman (I've gone back to netctl)
+# # To find existing passwords from netctl
+# sudo cat /etc/netctl/something
+# # connman configs are in
+# /var/lib/connman/somthing.config
+# # Now for connman
+# sudo pacman -S connman
+# yaourt -S connman_dmenu-git
+sudo systemctl enable connman.service
+sudo systemctl start connman.service
+# connmanctl technologies
+# connmanctl enable wifi
+# # For unprotected networks
+# connmanctl scan wifi
+# connmanctl services
+# connmanctl connect wifi_gobbledegook
+# # For protected networks, go interactive
+# connmanctl
+# scan wifi
+# services
+# agent on
+# connect wifi_gobbledegook
+# yaourt -S connman-ncurses-git
+yaourt -S connman_dmenu-git
+# sudo systemctl stop connman.service
+# sudo systemctl disable connman.service
+
 # # Auto-connect to wifi and ethernet
 # I'm pretty sure we do need to copy a template from /etc/netctl/examples
 sudo cp /etc/netctl/examples/ethernet-dhcp /etc/netctl/eno1
