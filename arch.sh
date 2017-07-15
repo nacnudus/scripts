@@ -186,7 +186,7 @@ makepkg -sri
 # sudo pacman -U yaourt
 
 # install ruby, gems and chruby
-sudo pacman -S ruby
+sudo pacman -S ruby jruby
 yaourt -S chruby
 # Change the lines in zshrc to
 source /usr/share/chruby/chruby.sh
