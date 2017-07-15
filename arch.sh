@@ -922,6 +922,9 @@ exit
 createdb myDatabaseName
 
 
+# green-recorder screencast recorder
+yaourt -S green-recorder
+
 # gscreenshot screenshot taker
 yaourt -S gscreenshot
 
