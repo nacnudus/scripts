@@ -922,6 +922,9 @@ exit
 createdb myDatabaseName
 
 
+# gscreenshot screenshot taker
+yaourt -S gscreenshot
+
 # diff2html-cli for rendering diffs in HTML with highlighting a la github
 # sudo pacman -S diff2html
 npm install -g diff2html-cli
