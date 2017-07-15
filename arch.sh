@@ -870,6 +870,8 @@ whipper cd rip
 export WINEPREFIX=~/.PlayOnLinux/wineprefix/Office2010
 export WINEARCH=win32
 wine /home/nacnudus/installables/Microsoft\ Office\ Professional\ Plus\ 2010/X16-32250.exe
+winecfg
+# set riched20 and gdiplus to 'native' only
 wine .PlayOnLinux/wineprefix/Office2010/drive_c/Program\ Files/Microsoft\ Office/Office14/EXCEL.EXE
 
 # Haskell
