@@ -922,6 +922,19 @@ exit
 createdb myDatabaseName
 
 
+# diff2html-cli for rendering diffs in HTML with highlighting a la github
+# sudo pacman -S diff2html
+npm install -g diff2html-cli
+
+# markdown-diff for rendering diffs of markdown in HTML with highlighting
+cd ~/temp
+curl -RL \
+     -O https://raw.github.com/netj/markdown-diff/master/markdown-format-wdiff \
+     -O https://raw.github.com/netj/markdown-diff/master/markdown-git-changes
+chmod +x markdown-format-wdiff markdown-git-changes
+mkdir -p ~/bin
+mv -f markdown-format-wdiff markdown-git-changes ~/bin/
+
 # diarize-jruby for speaker identification from audio files, though I've no idea
 # how then to use it
 rvm install 1.7.0
