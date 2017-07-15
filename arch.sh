@@ -726,12 +726,12 @@ sudo systemctl enable vnstat.service
 # vnstat -q
 # vnstat -l
 
-# redshift (like f.lux)
-sudo pacman- S redshift
-touch ~/.config/redshift.conf
-sudo cp /usr/lib/systemd/user/redshift.service /etc/systemd/system/redshift.service
-sudo systemctl start redshift
-sudo systemctl enable redshift
+# # redshift (like f.lux)
+# sudo pacman- S redshift
+# touch ~/.config/redshift.conf
+# sudo cp /usr/lib/systemd/user/redshift.service /etc/systemd/system/redshift.service
+# sudo systemctl start redshift
+# sudo systemctl enable redshift
 
 # mount usb sticks e.g. vfat
 sudo pacman -S dosfstools
