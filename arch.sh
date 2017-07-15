@@ -92,10 +92,15 @@ sudo cp /etc/netctl/examples/ethernet-dhcp /etc/netctl/eno1
 # This delays boot:
 # sudo systemctl enable dhcpcd@eno1.service
 sudo pacman -S wpa_actiond
+sudo systemctl start netctl-auto@wlp2s0.service
 sudo systemctl enable netctl-auto@wlp2s0.service
 # Do we need?
 sudo pacman -S ifplugd
 sudo systemctl enable netctl-ifplugd@eno1.service
+sudo systemctl start netctl-ifplugd@eno1.service
+# sudo systemctl disable netctl-ifplugd@eno1.service
+# sudo systemctl stop netctl-auto@wlp2s0.service
+# sudo systemctl disable netctl-auto@wlp2s0.service
 
 # # For wifi, I now (no longer) follow the instructions on the Arch wiki for wicd
 # sudo pacman -S wicd
