@@ -116,7 +116,6 @@ startx
 # if the screen is tiny, do
 xrandr 1024x768
 # or some other mode listed by xrandr
-# Make the changes in visudo suggested in ~/.i3/config
 # If output doesn't appear in the terminal immediately, try putting/changing
 Section "Device"
         Option      "AccelMethod" "uxa"
@@ -472,9 +471,6 @@ sudo pacman -S pavucontrol
 
 # vlc
 sudo pacman -S vlc
-
-# sleep and hibernate
-sudo pacman -S pm-utils
 
 # blacklist bluetooth to attempt to fix wifi drops
 # create a file /etc/modprobe.d/bluetooth.conf
@@ -924,6 +920,49 @@ sudo -u postgres -i
 createuser --interative
 exit
 createdb myDatabaseName
+
+
+# create a swap file
+sudo fallocate -l 16G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+vim /etc/fstab
+# Add the line
+/swapfile none swap defaults 0 0
+# Reduce swappiness
+vim /etc/sysctl.d/99-sysctl.conf
+# Add the line
+vm.swappiness=10
+
+# Set up hibernation into the swap file
+# You need to know the partition of the swapfile, e.g. /dev/sdb1
+# and the offset, which is from the following command, row 1, column 4 (left
+# column of 'physical_offset' pair.
+vim /etc/default/grub
+# Add the parameters to the line
+GRUB_CMDLINE_LINUX_DEFAULT="quiet"
+# e.g.
+GRUB_CMDLINE_LINUX_DEFAULT="resume=/dev/sdb1 resume_offset=5734400 quiet"
+# Generate new grub.cfg config file
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+vim /etc/mkinitcpio.conf
+# Edit the line HOOKS= to include resume, e.g.
+HOOKS="base udev resume autodetect modconf block filesystems keyboard fsck"
+# generate this boot image
+sudo mkinitcpio -p linux
+# enable systemd to handle lid close events and buttons and so on
+vim /etc/systemd/logind.conf
+# uncomment a line and edit it, e.g.
+HandleSuspendKey=hibernate
+# resume with a locked screen
+yaourt -S xss-lock
+# Add to $HOME/.xsession
+xss-lock -- i3lock -c 002b36
+
+# Install firmware wd719x-firmware to avoid warnings in mkinitcpio -p linux
+yaourt -S wd719x-firmware
+yaourt -S aic94xx-firmware
 
 # Update everything
 yaourt -Syua
