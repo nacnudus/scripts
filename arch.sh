@@ -922,6 +922,10 @@ exit
 createdb myDatabaseName
 
 
+# cisco anyconnect VPN equivalent
+sudo pacman -S openconnect
+sudo openconnect <url>
+
 # green-recorder screencast recorder
 yaourt -S green-recorder
 
