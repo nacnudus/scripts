@@ -922,6 +922,27 @@ exit
 createdb myDatabaseName
 
 
+# diarize-jruby for speaker identification from audio files, though I've no idea
+# how then to use it
+rvm install 1.7.0
+zsh --login # or set gnome-terminal to run as login shell
+rvm use 1.7.0
+mkdir $HOME/ruby
+cd $HOME/ruby
+git clone git@github.com:bbc/diarize-jruby.git
+cd diarize-jruby
+jruby -S rake --trace
+
+# voiceid for speaker identification from audio files
+conda create -n voiceid
+source activate voiceid
+pip install wxPython mplayer.py MplayerCtrl SoX # wxPython took ages and didn't work
+cd $HOME/python
+git clone git@github.com:BackupGGCode/voiceid.git
+sudo ln /usr/bin/gst-launch-1.0 /usr/bin/gst-launch
+cd voiceid
+python setup.py install
+
 # create a swap file
 sudo fallocate -l 16G /swapfile
 sudo chmod 600 /swapfile
