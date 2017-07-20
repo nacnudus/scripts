@@ -1,0 +1,2 @@
+#!/bin/sh
+env WINEPREFIX=/home/nacnudus/.PlayOnLinux/wineprefix/Office2010 wine $HOME/.PlayOnLinux/wineprefix/Office2010/drive_c/Program\ Files/Microsoft\ Office/Office14/WINWORD.EXE

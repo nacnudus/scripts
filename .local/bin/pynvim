@@ -1,0 +1,10 @@
+#!/usr/bin/python
+# EASY-INSTALL-ENTRY-SCRIPT: 'neovim==0.0.34','console_scripts','pynvim'
+__requires__ = 'neovim==0.0.34'
+import sys
+from pkg_resources import load_entry_point
+
+if __name__ == '__main__':
+    sys.exit(
+        load_entry_point('neovim==0.0.34', 'console_scripts', 'pynvim')()
+    )
