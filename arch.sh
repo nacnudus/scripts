@@ -208,7 +208,7 @@ ln -s dotfiles/.zshrc .zshrc
 # mount ntfs
 sudo pacman -S ntfs-3g
 
-# battery life (conflicst with pm-utils)
+# battery life (conflicts with pm-utils)
 # sudo pacman -S tlp
 # sudo tlp start
 # sudo systemctl enable tlp.service
