@@ -1136,6 +1136,16 @@ yaourt -S aic94xx-firmware
 # (mbox)
 yaourt -S mpack
 
+# sml for coursera programming languages proglang course
+sudo pacman -S smlnj mlton
+# install the vim plugin https://github.com/jez/vim-better-sml
+cd ~/nvim/plugged/vim-better-sml
+make
+# Doesn't currently work.  I opened an issue
+
+# rlwrap for making repls better
+sudo pacman -S rlwrap
+
 # Update everything
 yaourt -Syua
 yaourt -Syua --noconfirm
