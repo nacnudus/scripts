@@ -466,12 +466,12 @@ devices
 agent on
 trust 64:BC:0C:F6:62:74
 pair 64:BC:0C:F6:62:74
-# connect 64:BC:0C:F6:62:74
+connect 64:BC:0C:F6:62:74
 # Doesn't work, but you can transfer files like this (still doesn't work)
+sudo pacman -S obexfs
 obexftp -b 64:BC:0C:F6:62:74 -p /path/to/file
 obexftp -b 64:BC:0C:F6:62:74 -g /path/to/file
 exit
-sudo pacman -S obexfs
 # Try again, still doesn't work, but can transfer files
 sudo pacman -S blueman
 blueman-manager
