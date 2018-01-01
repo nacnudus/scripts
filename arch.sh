@@ -110,6 +110,9 @@ sudo systemctl start netctl-ifplugd@eno1.service
 # gpasswd -a nacnudus users
 # wicd-curses
 
+# Enable ssd fstrim to save wear and tear
+sudo systemctl enable fstrim.timer
+
 # Allow colour in pacman
 sudo vi /etc/pacman.conf
 # and uncomment the 'Color' line
