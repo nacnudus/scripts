@@ -167,6 +167,9 @@ EndSection
 # # Change the line in .zshrc to
 # source /usr/bin/virtualenvwrapper.sh
 
+# Coexist virtualenvwrapper and conda by following
+# https://stackoverflow.com/a/42014049/937932
+
 # Install conda for anaconda environments Use the miniconda installer, because
 # the full anaconda is huge, ~1.7 GB It will add anaconda's python to the
 # beginning of the path, taking precedence over Arch's python, so move it to the
