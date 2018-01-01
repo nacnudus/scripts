@@ -228,6 +228,9 @@ cd yaourt
 makepkg -sri
 # sudo pacman -U yaourt
 
+# dpkg for .deb-only packages (a bad idea, but necessary for e.g. zombodb)
+yaourt -S dpkg
+
 # install ruby, gems and chruby
 sudo pacman -S ruby jruby
 yaourt -S chruby
