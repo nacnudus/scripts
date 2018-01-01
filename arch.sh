@@ -636,19 +636,24 @@ xdg-mime default zathura.desktop application/pdf
 # sudo pip install x_x
 # (doesn't support worksheets)
 
-# Printer and scanner
-yaourt -S cnijfilter-mp280 scangearmp-mp280 --noconfirm
-sudo pacman -S simple-scan cups ghostscript cups-pdf libcups
-# For HP Photosmart 7350
+# # Printer and scanner (out of date?)
+# yaourt -S cnijfilter-mp280 scangearmp-mp280 --noconfirm
+# sudo pacman -S simple-scan cups ghostscript cups-pdf libcups
+# # For HP Photosmart 7350
+# sudo pacman -S hplip
+# sudo gpasswd -a nacnudus sys
+# systemctl enable org.cups.cupsd.service
+# systemctl start org.cups.cupsd.service
+# # browse http://localhost:631
+# # Administration
+# # Add printer
+# # To print in greyscale, print to file and then:
+# convert -density 300 -colorspace gray output.pdf output_greyscale.pdf
+
+# Printer and scanner (Mum and Dad's)
 sudo pacman -S hplip
-sudo gpasswd -a nacnudus sys
-systemctl enable org.cups.cupsd.service
-systemctl start org.cups.cupsd.service
-# browse http://localhost:631
-# Administration
-# Add printer
-# To print in greyscale, print to file and then:
-convert -density 300 -colorspace gray output.pdf output_greyscale.pdf
+sudo hp-setup
+hp-toolbox
 
 # gksu (includes gksudo)
 sudo pacman -S gksu
