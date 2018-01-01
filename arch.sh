@@ -1132,6 +1132,10 @@ xss-lock -- i3lock -c 002b36
 yaourt -S wd719x-firmware
 yaourt -S aic94xx-firmware
 
+# mpack for the munpack utitilty to extract attachments from exported emails
+# (mbox)
+yaourt -S mpack
+
 # Update everything
 yaourt -Syua
 yaourt -Syua --noconfirm
