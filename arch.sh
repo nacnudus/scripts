@@ -1036,6 +1036,14 @@ createdb myDatabaseName
 # Ignore upgrades by adding to /etc/pacman.conf
 IgnorePkg = postgresql postgresql-libs
 
+# postgis
+sudo pacman -S postgis
+createdb addressbase
+psql addressbase
+# in the psql prompt
+CREATE EXTENSION postgis;
+# exit the prompt
+\q
 
 
 # cisco anyconnect VPN equivalent
