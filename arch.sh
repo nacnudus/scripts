@@ -1146,6 +1146,19 @@ make
 # rlwrap for making repls better
 sudo pacman -S rlwrap
 
+# mysql, there's an Arch wiki page on it, but basically install mariadb
+sudo pacman -S mariadb
+sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+sudo systemctl enable mariadb.service
+sudo systemctl start mariadb.service
+# Do the below and follow the prompts
+mysql_secure_installation
+mysql -u root -p
+CREATE USER 'nacnudus'@'localhost' IDENTIFIED BY 'some_pass';
+CREATE DATABASE nacnudus;
+GRANT ALL PRIVILEGES ON nacnudus.* TO 'nacnudus'@'localhost';
+# It seems that only root can create databases
+
 # Update everything
 yaourt -Syua
 yaourt -Syua --noconfirm
