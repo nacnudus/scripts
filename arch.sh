@@ -1033,6 +1033,9 @@ sudo -u postgres -i
 createuser --interative
 exit
 createdb myDatabaseName
+# Ignore upgrades by adding to /etc/pacman.conf
+IgnorePkg = postgresql postgresql-libs
+
 
 
 # cisco anyconnect VPN equivalent
