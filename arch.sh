@@ -927,8 +927,8 @@ node
 # zotero reference manager
 yaourt -S zotero
 
-# mono and gecko for playonlinux
-sudo pacman -S wine-mono wine_gecko
+# things for playonlinux for office
+sudo pacman -S wine-mono wine_gecko samba lib32-libxml2
 
 # qoobar for specialised classical music organisation
 yaourt -S qoobar
@@ -956,7 +956,8 @@ whipper cd rip
 
 # Microsoft office 2010
 # Go through playonlinux
-# Use product key and activation code in ./installables/Microsoft Office Professional Plus 2010/
+# Use product key and activation code in ./installables/Microsoft Office
+# Professional Plus 2010/ or in email
 # Otherwise (this never worked), create a wineprefix with PlayOnLinux and then
 export WINEPREFIX=~/.PlayOnLinux/wineprefix/Office2010
 export WINEARCH=win32
@@ -964,6 +965,25 @@ wine /home/nacnudus/installables/Microsoft\ Office\ Professional\ Plus\ 2010/X16
 winecfg
 # set riched20 and gdiplus to 'native' only
 wine .PlayOnLinux/wineprefix/Office2010/drive_c/Program\ Files/Microsoft\ Office/Office14/EXCEL.EXE
+
+# Microsoft office 2013 (doesn't work)
+# Use product key and activation code in email
+# In playonlinux, install Wine version 2.1
+# Instructions from https://askubuntu.com/q/879304
+sudo pacman -S krb5 samba
+WINEPREFIX=~/.PlayOnLinux/wineprefix/Office2013 WINEARCH=win32 winecfg
+# In the winecfg applications tab select "Windows version: Windows 7", then
+# close wine config
+sudo pacman -S zenity
+WINEPREFIX=~/.PlayOnLinux/wineprefix/Office2013 WINEARCH=win32 winetricks msxml6
+WINEPREFIX=~/.PlayOnLinux/wineprefix/Office2013 WINEARCH=win32 winetricks
+# 2. select Run regedit and wait for the Registry Editor window to open. In the
+# folder tree expand HKEY_CURRENT_USER - Software - Wine and create a new key in
+# the Wine folder. To do so, right click, select new-->key and name it Direct3D.
+# Now create new-->DWORD Value, rename the file to MaxVersionGL and set the
+# value data to 30002 (hexadecimal). Close the Registry Editor window.
+WINEPREFIX=~/.PlayOnLinux/wineprefix/Office2013 WINEARCH=win32 wine /media/dvd/office/setup32.exe
+wine .PlayOnLinux/wineprefix/Office2013/drive_c/Program\ Files/Microsoft\ Office/Office14/EXCEL.EXE
 
 # Haskell
 sudo pacman -S ghc
