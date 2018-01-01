@@ -484,6 +484,7 @@ sudo pacman -S xf86-input-synaptics
 # Take your pick from ttf-anything, but you need inconsolata for current
 # defaults, and fontawesome for i3bar volume icons
 sudo pacman -S ttf-
+sudo pacman -S ttf-opensans
 # sudo pacman -S ttf-inconsolata
 # yaourt -S ttf-font-awesome
 # yaourt -S nerd-fonts-complete
