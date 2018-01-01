@@ -1159,6 +1159,11 @@ CREATE DATABASE nacnudus;
 GRANT ALL PRIVILEGES ON nacnudus.* TO 'nacnudus'@'localhost';
 # It seems that only root can create databases
 
+# mongodb
+sudo pacman -S mongodb
+sudo systemctl start mongodb.service
+sudo systemctl enable mongodb.service
+
 # Update everything
 yaourt -Syua
 yaourt -Syua --noconfirm
