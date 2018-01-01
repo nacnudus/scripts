@@ -352,6 +352,8 @@ sudo pacman -S unixodbc
 install.packages("RODBC")
 # General package dependencies
 sudo pacman -S pandoc pandoc-citeproc
+# littler
+yaourt -S littler
 
 # V8 just doesn't bloody work, so copy it from a backup
 /usr/lib/libv8.so
