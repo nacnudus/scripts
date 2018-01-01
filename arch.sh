@@ -374,24 +374,61 @@ Cflags: -I${includedir}
 # That's all
 
 # rocker (R docker)
-sudo pacman -S docker
+sudo pacman -S docker docker-compose
 sudo systemctl start docker.service
 sudo systemctl enable docker.service
 sudo gpasswd -a nacnudus docker
 newgrp docker
+# To go straight into R
 docker run --rm -ti rocker/r-base
-# docker run --user docker -p 8000:8000 -ti rocker/r-base bash
+# For version-stable images
+docker run --rm -ti rocker/r-ver:3.1.0
+# To install other stuff with root privileges
+docker run --user docker -u 0 -p 8000:8000 -ti rocker/tidyverse:devel bash
 apt-get update
+# For V8 you need
 apt-get install -y libv8-dev libcurl4-openssl-dev
+# For rsconnect you need
+apt-get install -y libcurl4-openssl-dev libssl-dev
+# Commit the changes (outside of the container, get the id with docker ps -l)
+sudo docker commit <container_id> rocker/r-base
 exit
 docker run --rm --user docker -p 8000:8000 -ti rocker/r-base bash
 R
 install.packages("V8")
 # Finally worked! Yuss!
+# To use files outside of the image
 sudo docker run --rm --user docker -p 8000:8000 -v $HOME/crossprod:/home/docker/crossprod -ti pelican bash
 sudo docker run --rm --user docker -p 8000:8000 -v $HOME/pelican-themes:/home/docker/pelican-themes -v $HOME/pelican-plugins:/home/docker/pelican-plugins -v $HOME/crossprod:/home/docker/crossprod -ti pelican bash
 source /etc/bash_completion.d/virtualenvwrapper
 workon crossprod
+# Or for this rsconnect thing
+docker run --rm --user docker -u 0 -p 8000:8000 -v $HOME/R:/home/docker/R -ti rocker/r-ver:3.3.0 bash
+apt-get install -y libcairo2-dev libudunits2-dev vim
+vim /etc/apt/sources.list
+# add
+deb-src http://ftp.us.debian.org/debian/ unstable main contrib non-free
+apt-get update
+apt-get build-dep -y dpkg-dev
+apt-get -b source dpkg-dev
+apt-get build-dep -y debhelper
+apt-get -b source debhelper
+apt-get build-dep -y libudunits2-dev
+apt-get -b source libudunits2-dev
+R
+install.packages("devtools")
+install.packages("igraph")
+devtools::install_github("RcppCore/Rcpp")
+devtools::install_github("rstudio/httpuv")
+devtools::install_github("rstudio/shiny")
+devtools::install_github("Ironholds/piton")
+devtools::install_github("davidgohel/gdtools")
+devtools::install_github("edzer/units")
+devtools::install_github("joelgombin/concaveman")
+devtools::install_github("thomasp85/ggforce") # these take ages, so many dependencies
+devtools::install_github("thomasp85/ggraph") # these take ages, so many dependencies
+devtools::install_github("nacnudus/tidyxl")
+deployApp("/home/docker/R/tidyxl/shiny/", appName = "xlex")
 
 # Install ag
 sudo pacman -S the_silver_searcher
