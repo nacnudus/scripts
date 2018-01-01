@@ -1164,6 +1164,11 @@ sudo pacman -S mongodb
 sudo systemctl start mongodb.service
 sudo systemctl enable mongodb.service
 
+# elasticsearch
+sudo pacman -S elasticsearch
+sudo systemctl start elasticsearch.service
+sudo systemctl enable elasticsearch.service
+
 # Update everything
 yaourt -Syua
 yaourt -Syua --noconfirm
