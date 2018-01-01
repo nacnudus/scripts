@@ -1188,6 +1188,10 @@ sudo systemctl enable elasticsearch.service
 # #Send data to the endpoint
 # curl -i -T food-types.rdf http://localhost:8890/DAV/home/nacnudus/rdf_sink/food-data.rdf -u nacnudus:nacnudus
 
+# libpostal address matcher normalizer
+yaourt -S libpostal-git
+sudo libpostal_data download all /usr/local/share/libpostal
+
 # Update everything
 yaourt -Syua
 yaourt -Syua --noconfirm
