@@ -1169,6 +1169,25 @@ sudo pacman -S elasticsearch
 sudo systemctl start elasticsearch.service
 sudo systemctl enable elasticsearch.service
 
+# # virtuoso (graph database for RDF data).  It just doesn't work and the docs are
+# # awful
+# yaourt -S virtuoso
+# cd /etc/virtuoso
+# sudo virtuosod -fd
+# # or to run as a demon (not debug)
+# sudo virtuosod -f
+# # open in browser
+# http://localhost:8890/conductor/
+# # the two accounts have the same password as username
+# # dba -- the relational data administrative account,) and
+# # dav --the WebDAV adminstrative account.
+# # Create a new user via the website: username=nacnudus password=nacnudus
+# # check "User Enabled" and "Allow SQL/ODBC Logins"
+# # Give SPARQL_SELECT and SPARQL_UPDATE roles, and a DAV Home Path of
+# # /DAV/home/nacnudus/ (check the 'create' checkbox)
+# #Send data to the endpoint
+# curl -i -T food-types.rdf http://localhost:8890/DAV/home/nacnudus/rdf_sink/food-data.rdf -u nacnudus:nacnudus
+
 # Update everything
 yaourt -Syua
 yaourt -Syua --noconfirm
