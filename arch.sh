@@ -1213,6 +1213,12 @@ sudo pacman -S aws-cli
 # Create an access token in the AWS online console, and use it to configure
 aws configure
 
+# R magick package
+sudo pacman -S libmagick tesseract
+# in R
+install.packages("magick")
+install.packages("tesseract")
+
 # Update everything
 yaourt -Syua
 yaourt -Syua --noconfirm
