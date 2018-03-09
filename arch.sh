@@ -702,8 +702,7 @@ sudo pacman -S unrar
 
 # get_iplayer
 yaourt -S get_iplayer
-sudo pacman -S perl-xml-simple
-sudo pacman -S rtmpdump
+sudo pacman -S perl-xml-simple rtmpdump atomicparsley
 
 # music audio player
 sudo pacman -S cmus
