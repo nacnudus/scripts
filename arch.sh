@@ -1167,6 +1167,8 @@ sudo systemctl enable mongodb.service
 sudo pacman -S elasticsearch
 sudo systemctl start elasticsearch.service
 sudo systemctl enable elasticsearch.service
+# elasticsearch version 2 (for HMRC's address microservices)
+yaourt -S elasticsearch2
 
 # # virtuoso (graph database for RDF data).  It just doesn't work and the docs are
 # # awful
