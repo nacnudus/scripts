@@ -1205,6 +1205,9 @@ sudo pacman -S jq
 # use like
 curl something | jq .
 
+# proselint for linting prose in vim
+sudo pip install proselint
+
 # Update everything
 yaourt -Syua
 yaourt -Syua --noconfirm
