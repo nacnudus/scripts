@@ -1200,6 +1200,11 @@ sudo pacman -S cryptsetup
 # skype
 yaourt -S skypeforlinux-bin
 
+# pretty print json at the command line https://stedolan.github.io/jq/
+sudo pacman -S jq
+# use like
+curl something | jq .
+
 # Update everything
 yaourt -Syua
 yaourt -Syua --noconfirm
