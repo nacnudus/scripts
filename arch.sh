@@ -1197,6 +1197,9 @@ sudo libpostal_data download all /usr/local/share/libpostal
 # https://wiki.archlinux.org/index.php/Dm-crypt/Device_encryption
 sudo pacman -S cryptsetup
 
+# skype
+yaourt -S skypeforlinux-bin
+
 # Update everything
 yaourt -Syua
 yaourt -Syua --noconfirm
