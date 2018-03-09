@@ -1219,6 +1219,11 @@ sudo pacman -S libmagick tesseract
 install.packages("magick")
 install.packages("tesseract")
 
+# Network monitor
+sudo pacman -S vnstat
+sudo systemctl start vnstat.service
+sudo systemctl enable vnstat.service
+
 # Update everything
 yaourt -Syua
 yaourt -Syua --noconfirm
