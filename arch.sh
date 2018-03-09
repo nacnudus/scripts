@@ -1193,6 +1193,10 @@ yaourt -S elasticsearch2
 yaourt -S libpostal-git
 sudo libpostal_data download all /usr/local/share/libpostal
 
+# Encrypt the hard disk
+# https://wiki.archlinux.org/index.php/Dm-crypt/Device_encryption
+sudo pacman -S cryptsetup
+
 # Update everything
 yaourt -Syua
 yaourt -Syua --noconfirm
