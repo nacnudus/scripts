@@ -1208,6 +1208,11 @@ curl something | jq .
 # proselint for linting prose in vim
 sudo pip install proselint
 
+# Amazon s3 command line
+sudo pacman -S aws-cli
+# Create an access token in the AWS online console, and use it to configure
+aws configure
+
 # Update everything
 yaourt -Syua
 yaourt -Syua --noconfirm
