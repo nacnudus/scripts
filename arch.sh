@@ -191,6 +191,11 @@ pip install neovim jedi
 conda install ncurses
 source deactivate
 
+# direnv for directory specific python environment variables
+yay direnv
+# Add to the end of ~/.zshrc
+eval "$(direnv hook zsh)"
+
 # Install zsh
 sudo pacman -S zsh
 chsh -l
