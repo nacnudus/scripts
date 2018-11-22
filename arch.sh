@@ -1251,6 +1251,22 @@ sudo pacman -S vnstat
 sudo systemctl start vnstat.service
 sudo systemctl enable vnstat.service
 
+# Microsoft SQL Server
+# Native
+yaourt -S mssql-server mssql-tools
+sudo /opt/mssql/bin/mssql-conf setup
+sudo systemctl disable mssql-server
+systemctl status mssql-server
+sqlcmd -S localhost -U SA -Q 'select @@VERSION'
+# Or docker
+sudo docker pull microsoft/mssql-server-linux:2017-latest
+# Remove databases
+sudo rm -rf /var/opt/mssql/
+# Execute an SQL script
+sqlcmd -S localhost -U SA -i ODS_CCG.sql
+# Export a table
+bcp dbo.ods_ccg out temp.tsv -c -S localhost -U SA
+
 # Update everything
 yaourt -Syua
 yaourt -Syua --noconfirm
