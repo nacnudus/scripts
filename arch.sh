@@ -1354,6 +1354,9 @@ sudo vim /etc/anacrontab
 # Add the line
 @daily  10      urlwatch.daily          urlwatch
 
+# android-studio for creating android apps
+yaourt -S android-studio
+
 # cron
 sudo pacman -S cronie
 sudo systemctl start cronie
