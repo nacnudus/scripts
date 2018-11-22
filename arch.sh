@@ -1354,6 +1354,15 @@ sudo vim /etc/anacrontab
 # Add the line
 @daily  10      urlwatch.daily          urlwatch
 
+# kops (kubernetes operations -- cluster something something)
+yaourt -S kops-bin
+
+# kubectl (kubernetes command-line tool)
+yaourt -S kubectl-bin
+
+# helm (kubernetes package manager)
+yaourt -S kubernetes-helm
+
 # Docker chrome GUI
 sudo pacman -S xorg-xhost
 xhost +local:root; \
