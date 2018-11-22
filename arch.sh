@@ -1354,6 +1354,9 @@ sudo vim /etc/anacrontab
 # Add the line
 @daily  10      urlwatch.daily          urlwatch
 
+# spyder python ide like RStudio, comes for python versions 2 and 3 separately
+yay spyder
+
 # scala programming language
 sudo pacman -S scala
 
