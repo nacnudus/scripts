@@ -761,7 +761,7 @@ sudo pacman -S libreoffice-fresh
 # Then convert xls to xlsx with
 libreoffice --headless --convert-to xlsx myfile.xls
 
-# k3b audio CD burner
+# k3b audio CD burner and ripper
 sudo pacman -S k3b cdrdao dvd+rw-tools
 # Options 2 and 2 had the smallest footprint
 
