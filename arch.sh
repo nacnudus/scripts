@@ -1354,6 +1354,11 @@ sudo vim /etc/anacrontab
 # Add the line
 @daily  10      urlwatch.daily          urlwatch
 
+# cron
+sudo pacman -S cronie
+sudo systemctl start cronie
+sudo systemctl enable cronie
+
 # Update everything
 yaourt -Syua
 yaourt -Syua --noconfirm
