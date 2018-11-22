@@ -1267,6 +1267,9 @@ sqlcmd -S localhost -U SA -i ODS_CCG.sql
 # Export a table
 bcp dbo.ods_ccg out temp.tsv -c -S localhost -U SA
 
+# Cross-database GUI
+sudo pacman -S dbeaver
+
 # Update everything
 yaourt -Syua
 yaourt -Syua --noconfirm
