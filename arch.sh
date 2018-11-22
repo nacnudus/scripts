@@ -228,6 +228,9 @@ cd yaourt
 makepkg -sri
 # sudo pacman -U yaourt
 
+# yay for unofficial packages (seems better, easier to import keys)
+yaourt -S yay
+
 # dpkg for .deb-only packages (a bad idea, but necessary for e.g. zombodb)
 yaourt -S dpkg
 
