@@ -1337,6 +1337,9 @@ timidity path/to/file.mid
 # Includes midi2ly
 sudo pacman -S lilypond
 
+# simcity micropolis clone (native, small)
+yaourt -S micropolis-git
+
 # Update everything
 yaourt -Syua
 yaourt -Syua --noconfirm
