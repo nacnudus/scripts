@@ -765,6 +765,9 @@ libreoffice --headless --convert-to xlsx myfile.xls
 sudo pacman -S k3b cdrdao dvd+rw-tools
 # Options 2 and 2 had the smallest footprint
 
+# ripright audio CD ripper
+yaourt -S ripright
+
 # Downgrade packages easily
 yaourt -S downgrade
 # downgrade foo bar
