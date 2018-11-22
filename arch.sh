@@ -1354,6 +1354,9 @@ sudo vim /etc/anacrontab
 # Add the line
 @daily  10      urlwatch.daily          urlwatch
 
+# Wifi monitor connection monitor internet monitor
+sudo pacman -S wavemon
+
 # kops (kubernetes operations -- cluster something something)
 yaourt -S kops-bin
 
