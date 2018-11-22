@@ -1343,6 +1343,17 @@ yaourt -S micropolis-git
 # glpk operational research optimisation library for Rglpk
 sudo pacman -S glpk
 
+# urlwatch to monitor websites
+sudo pacman -S urlwatch
+sudo pip3 install pushbullet.py
+export EDITOR=nvim
+urlwatch --edit
+e ~/.config/urlwatch/urlwatch.yaml
+# Configure as you wish
+sudo vim /etc/anacrontab
+# Add the line
+@daily  10      urlwatch.daily          urlwatch
+
 # Update everything
 yaourt -Syua
 yaourt -Syua --noconfirm
