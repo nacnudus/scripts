@@ -1285,6 +1285,13 @@ nameserver 1.0.0.1
 nameserver 2606:4700:4700::1111
 nameserver 2606:4700:4700::1001
 
+# hub for git sugar
+sudo pacman -S hub
+# get instructions for aliasing
+hub alias
+# currently the instructions say to add the following to ~/.zshrc
+eval "$(hub alias -s)"
+
 # Update everything
 yaourt -Syua
 yaourt -Syua --noconfirm
