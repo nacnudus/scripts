@@ -1292,6 +1292,9 @@ hub alias
 # currently the instructions say to add the following to ~/.zshrc
 eval "$(hub alias -s)"
 
+# debugger
+sudo pacman -S gdb
+
 # Update everything
 yaourt -Syua
 yaourt -Syua --noconfirm
