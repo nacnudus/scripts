@@ -1234,6 +1234,9 @@ sudo pacman -S aws-cli
 # Create an access token in the AWS online console, and use it to configure
 aws configure
 
+# tesseract ocr optical character recognition
+sudo pacman -S tesseract tesseract-data-eng
+
 # R magick package
 sudo pacman -S libmagick tesseract
 # in R
