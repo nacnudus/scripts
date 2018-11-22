@@ -1333,6 +1333,10 @@ sudo systemctl enable timidity.service
 timidity path/to/file.mid
 # to play in vlc you need the vlc-git package rather than plain vlc
 
+# lilypond to typeset music like latex
+# Includes midi2ly
+sudo pacman -S lilypond
+
 # Update everything
 yaourt -Syua
 yaourt -Syua --noconfirm
