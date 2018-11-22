@@ -1160,6 +1160,9 @@ cd ~/nvim/plugged/vim-better-sml
 make
 # Doesn't currently work.  I opened an issue
 
+# download coursera videos
+yaourt -S coursera-dl
+
 # rlwrap for making repls better
 sudo pacman -S rlwrap
 
