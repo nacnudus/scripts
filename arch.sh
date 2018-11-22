@@ -1354,6 +1354,9 @@ sudo vim /etc/anacrontab
 # Add the line
 @daily  10      urlwatch.daily          urlwatch
 
+# Discord chat and file sharing
+yaourt -S discord
+
 # spyder python ide like RStudio, comes for python versions 2 and 3 separately
 yay spyder
 
