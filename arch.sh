@@ -1237,6 +1237,9 @@ aws configure
 # tesseract ocr optical character recognition
 sudo pacman -S tesseract tesseract-data-eng
 
+# pdfsandwich to OCR pdf files and create searchable pdfs
+yaourt -S pdfsandwich
+
 # R magick package
 sudo pacman -S libmagick tesseract
 # in R
