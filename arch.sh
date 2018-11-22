@@ -1273,6 +1273,18 @@ sudo pacman -S dbeaver
 # moreutils for sponge to read from and write to the same file
 sudo pacman -S moreutils
 
+# use cloudflare's fast dns domain name servers
+vim /etc/resolv.conf
+# Put the following lines at the top of /etc/resolv.conf and
+# /etc/resolv.conf.head and (comment out whatever's already there)
+# Cloudflare
+# IPv4 nameservers:
+nameserver 1.1.1.1
+nameserver 1.0.0.1
+# IPv6 nameservers:
+nameserver 2606:4700:4700::1111
+nameserver 2606:4700:4700::1001
+
 # Update everything
 yaourt -Syua
 yaourt -Syua --noconfirm
