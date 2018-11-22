@@ -1340,6 +1340,9 @@ sudo pacman -S lilypond
 # simcity micropolis clone (native, small)
 yaourt -S micropolis-git
 
+# glpk operational research optimisation library for Rglpk
+sudo pacman -S glpk
+
 # Update everything
 yaourt -Syua
 yaourt -Syua --noconfirm
