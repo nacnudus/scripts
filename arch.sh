@@ -1303,6 +1303,21 @@ jupyter nbextension enable --py --sys-prefix widgetsnbextension
 conda install -c conda-forge jupyter_contrib_nbextensions
 conda install -c conda-forge jupyter_nbextensions_configurator
 
+# Lego designer LDCad
+yaourt -S ldcad
+sudo pacman -S povray
+# or
+yaourt -S leocad
+# parts library
+yaourt -S ldraw-parts-library
+# or download the latest version 4 from Lego
+unzip setupldd-pc-4_3_11.exe LDDSetup.exe
+cp LDDSetup.exe /tmp
+export WINEPREFIX=~/.PlayOnLinux/wineprefix/ldd
+export WINEARCH=win32
+winetricks flash
+wine /tmp/LDDSetup.exe
+
 # Update everything
 yaourt -Syua
 yaourt -Syua --noconfirm
