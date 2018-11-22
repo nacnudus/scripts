@@ -1295,6 +1295,14 @@ eval "$(hub alias -s)"
 # debugger
 sudo pacman -S gdb
 
+# jupyter notebooks
+sudo pacman -S jupyter-notebook
+# Then enable extensions (e.g. vim)
+jupyter nbextension enable --py --sys-prefix widgetsnbextension
+# Or in conda environments
+conda install -c conda-forge jupyter_contrib_nbextensions
+conda install -c conda-forge jupyter_nbextensions_configurator
+
 # Update everything
 yaourt -Syua
 yaourt -Syua --noconfirm
