@@ -1096,6 +1096,17 @@ sudo ln /usr/bin/gst-launch-1.0 /usr/bin/gst-launch
 cd voiceid
 python setup.py install
 
+# ClamAV Antivirus
+sudo pacman -S clamav
+sudo freshclam
+sudo systemctl start clamav-freshclam.service
+sudo systemctl enable clamav-freshclam.service
+sudo systemctl start clamav-daemon.service
+sudo systemctl enable clamav-daemon.service
+yaourt -S clamav-unofficial-sigs
+sudo systemctl start clamav-unofficial-sigs.timer
+sudo systemctl enable clamav-unofficial-sigs.timer
+
 # create a swap file
 sudo fallocate -l 16G /swapfile
 sudo chmod 600 /swapfile
