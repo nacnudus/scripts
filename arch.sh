@@ -301,7 +301,7 @@ mkdir ~/bin
 curl -Lo ~/bin/nvr https://raw.githubusercontent.com/mhinz/neovim-remote/master/nvr
 chmod 700 ~/bin/nvr
 
-# Install R stats
+# Install R stats rstats
 sudo pacman -S gcc-fortran
 sudo pacman -S tmux
 yaourt -S gdal
