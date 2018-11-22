@@ -1354,6 +1354,25 @@ sudo vim /etc/anacrontab
 # Add the line
 @daily  10      urlwatch.daily          urlwatch
 
+# Docker chrome GUI
+sudo pacman -S xorg-xhost
+xhost +local:root; \
+docker run -it \
+  --net host \
+  --cpuset-cpus 0 \
+  --memory 2048mb \
+  -v /tmp/.X11-unix:/tmp/.X11-unix \
+  -e DISPLAY=$DISPLAY \
+  -v $HOME/Downloads:/home/chrome/Downloads \
+  --security-opt seccomp=$HOME/chrome.json \
+  --device /dev/snd \
+    --device /dev/dri \
+  -v /dev/shm:/dev/shm \
+  --name chrome \
+  --cap-add=SYS_ADMIN \
+  jess/chrome \
+  https://www.google.com
+
 # Discord chat and file sharing
 yaourt -S discord
 
