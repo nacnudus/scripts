@@ -1354,6 +1354,9 @@ sudo vim /etc/anacrontab
 # Add the line
 @daily  10      urlwatch.daily          urlwatch
 
+# Telegram cross-device messaging
+yaourt -S telegram-desktop-bin
+
 # Wifi monitor connection monitor internet monitor
 sudo pacman -S wavemon
 
