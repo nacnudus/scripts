@@ -966,6 +966,7 @@ whipper cd rip
 # Otherwise (this never worked), create a wineprefix with PlayOnLinux and then
 export WINEPREFIX=~/.PlayOnLinux/wineprefix/Office2010
 export WINEARCH=win32
+export FREETYPE_PROPERTIES="truetype:interpreter-version=35"
 wine /home/nacnudus/installables/Microsoft\ Office\ Professional\ Plus\ 2010/X16-32250.exe
 winecfg
 # set riched20 and gdiplus to 'native' only
