@@ -1354,6 +1354,9 @@ sudo vim /etc/anacrontab
 # Add the line
 @daily  10      urlwatch.daily          urlwatch
 
+# scala programming language
+sudo pacman -S scala
+
 # android-studio for creating android apps
 yaourt -S android-studio
 
