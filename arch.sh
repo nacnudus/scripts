@@ -1318,6 +1318,21 @@ export WINEARCH=win32
 winetricks flash
 wine /tmp/LDDSetup.exe
 
+# midi file playback
+# timidity++ thing
+sudo pacman -S timidity++
+# fluidsynth sound font
+sudo pacman -S fluidsynth soundfont-fluid
+gpasswd -a nacnudus audio
+# add the following line to vim /etc/timitidy++/timidity.cfg
+soundfont /usr/share/soundfonts/FluidR3_GM.sf2
+# then
+sudo systemctl start timidity.service
+sudo systemctl enable timidity.service
+# play a file with
+timidity path/to/file.mid
+# to play in vlc you need the vlc-git package rather than plain vlc
+
 # Update everything
 yaourt -Syua
 yaourt -Syua --noconfirm
