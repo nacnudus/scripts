@@ -1429,6 +1429,9 @@ sudo systemctl enable cronie
 yay untrunc
 
 
+# sass css compiler
+sudo pacman -S sassc
+
 # svg editor
 yay inkscape
 
