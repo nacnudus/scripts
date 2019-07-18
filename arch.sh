@@ -1428,6 +1428,9 @@ sudo systemctl enable cronie
 # untrunc to fix corrupt mp4 files
 yay untrunc
 
+# kitty fast featureful tereminal with wayland support
+sudo pacman -S kitty
+
 # Update everything
 yaourt -Syua
 yaourt -Syua --noconfirm
