@@ -1428,6 +1428,10 @@ sudo systemctl enable cronie
 # untrunc to fix corrupt mp4 files
 yay untrunc
 
+# clear package cache weekly
+sudo systemctl start paccache.timer
+sudo systemctl enable paccache.timer
+
 # kitty fast featureful tereminal with wayland support
 sudo pacman -S kitty
 
