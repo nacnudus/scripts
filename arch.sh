@@ -1425,6 +1425,9 @@ sudo pacman -S cronie
 sudo systemctl start cronie
 sudo systemctl enable cronie
 
+# untrunc to fix corrupt mp4 files
+yay untrunc
+
 # Update everything
 yaourt -Syua
 yaourt -Syua --noconfirm
