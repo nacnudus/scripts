@@ -1429,6 +1429,9 @@ sudo systemctl enable cronie
 yay untrunc
 
 
+# google drive client
+yay gdrive-bin
+
 # mongodb
 yay mongodb-bin
 mongodb-tools-bin
