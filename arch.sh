@@ -494,13 +494,10 @@ sudo pacman -S xf86-input-synaptics
 # Copy /etc/X11/xorg.conf.d/50-synaptics.conf from a backup
 
 # Install fonts
-# Take your pick from ttf-anything, but you need inconsolata for current
-# defaults, and fontawesome for i3bar volume icons
-sudo pacman -S ttf-
-sudo pacman -S ttf-opensans
-# sudo pacman -S ttf-inconsolata
-# yaourt -S ttf-font-awesome
-# yaourt -S nerd-fonts-complete
+# Take your pick from ttf-anything, but you need hack for current defaults, and
+# noto for full unicode coverage.
+sudo pacman -S noto-fonts
+yay -S nerd-fonts-hack
 # The above is a fallback, but really you should download inconsolata from nerd
 # fonts, put it in /usr/share/fonts/OTF, and then do something like
 fc-cache
