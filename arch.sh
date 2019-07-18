@@ -124,11 +124,16 @@ sudo pacman -S virtualbox-guest-utils
 sudo systemctl enable vboxservice
 
 # Android file transfer
-# sudo pacman -S libmtp ?? Necessary?
+sudo pacman -S libmtp
 sudo pacman -S android-file-transfer
-# Then aft-mtp-mount ~/android
+sudo pacman -S android-udev
+# Look for phone
+mtp-detect
+# Mount
+aft-mtp-mount -o allow_other ~/android
 # And enable file transfer on the phone
-# Unmount with fusermount -u ~/android
+# Unmount
+fusermount -u ~/android
 
 # Install X, i3, and gnome-terminal (TODO: video acceleration? mesa-vdpau and libva-mesa-driver)
 sudo pacman -S xorg-server
