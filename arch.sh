@@ -1314,6 +1314,9 @@ jupyter nbextension enable --py --sys-prefix widgetsnbextension
 conda install -c conda-forge jupyter_contrib_nbextensions
 conda install -c conda-forge jupyter_nbextensions_configurator
 
+# jupyterlab
+sudo pacman -S jupyterlab
+
 # Lego designer LDCad
 yaourt -S ldcad
 sudo pacman -S povray
