@@ -1429,6 +1429,10 @@ sudo systemctl enable cronie
 yay untrunc
 
 
+# apache drill
+yay apache-drill
+sudo /opt/apache-drill/bin/drill-embedded
+
 # google drive client
 yay gdrive-bin
 
