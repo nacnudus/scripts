@@ -94,7 +94,7 @@ sudo cp /etc/netctl/examples/ethernet-dhcp /etc/netctl/eno1
 sudo pacman -S wpa_actiond
 sudo systemctl start netctl-auto@wlp2s0.service
 sudo systemctl enable netctl-auto@wlp2s0.service
-# Do we need?
+# Configure ifplug for wired connections
 sudo pacman -S ifplugd
 sudo systemctl enable netctl-ifplugd@eno1.service
 sudo systemctl start netctl-ifplugd@eno1.service
