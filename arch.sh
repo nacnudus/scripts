@@ -1428,6 +1428,9 @@ sudo systemctl enable cronie
 # untrunc to fix corrupt mp4 files
 yay untrunc
 
+# check for broken links
+yay linkchecker
+
 # libkml for reading kml files without bugs
 yay libkml
 
