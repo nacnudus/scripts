@@ -1429,6 +1429,9 @@ sudo systemctl enable cronie
 yay untrunc
 
 
+# svg editor
+yay inkscape
+
 # compress png
 yay optipng
 
