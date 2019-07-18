@@ -1428,6 +1428,9 @@ sudo systemctl enable cronie
 # untrunc to fix corrupt mp4 files
 yay untrunc
 
+# losslesscut to edit videos
+yay losslesscut
+
 
 # sass css compiler
 sudo pacman -S sassc
