@@ -1429,6 +1429,19 @@ sudo systemctl enable cronie
 yay untrunc
 
 
+# mongodb
+yay mongodb-bin
+mongodb-tools-bin
+# edit /etc/mongodb.conf and set the dbpath to /home/nacnudus/gds/mongodb
+# edit /usr/lib/systemd/system/mongodb.service and set the --dbpath in the
+# ExecStart line
+sudo chown -R mongodb: /home/nacnudus/gds/log/mongodb/
+sudo chown -R mongodb: /home/nacnudus/gds/mongodb/
+sudo systemctl stop mongodb.service
+sudo systemctl disable mongodb.service
+sudo systemctl enable mongodb.service
+sudo systemctl start mongodb.service
+
 # Chromecast
 yay pulseaudio-dlna
 pulseaudio-dlna
