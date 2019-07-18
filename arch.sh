@@ -1351,6 +1351,12 @@ timidity path/to/file.mid
 # Includes midi2ly
 sudo pacman -S lilypond
 
+# simcity micropolis clone (unity-based, which is massive: gigabytes)
+yaourt -S unity-editor
+mkdir simcity
+cd simcity
+git clone git@github.com:bsimser/Micropolis.git
+
 # simcity micropolis clone (native, small)
 yaourt -S micropolis-git
 
