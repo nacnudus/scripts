@@ -1428,6 +1428,10 @@ sudo systemctl enable cronie
 # untrunc to fix corrupt mp4 files
 yay untrunc
 
+
+# terminal spreadsheet editor csv
+yay sc-im
+
 # check for broken links
 yay linkchecker
 
