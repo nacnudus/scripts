@@ -979,6 +979,10 @@ winecfg
 # set riched20 and gdiplus to 'native' only
 wine .PlayOnLinux/wineprefix/Office2010/drive_c/Program\ Files/Microsoft\ Office/Office14/EXCEL.EXE
 
+# Microsoft office 2013
+cd ${WINEPREFIX:-~/.wine}/drive_c/windows/Fonts && for i in /usr/share/fonts/**/*.{ttf,otf}; do ln -s "$i" ; done
+sudo pacman -S libpng12
+
 # Microsoft office 2013 (doesn't work)
 # Use product key and activation code in email
 # In playonlinux, install Wine version 2.1
