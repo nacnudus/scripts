@@ -577,7 +577,7 @@ blacklist bluetooth
 sudo pacman -S pkgstats
 
 # Virtualbox (I don't think virtualbox-guest-utils is necessary)
-sudo pacman -S virtualbox virtualbox-host-modules-arch net-tools virtualbox-guest-iso
+sudo pacman -S virtualbox virtualbox-host-modules-arch net-tools virtualbox-guest-iso linux-headers
 # qt5-x11extras seems to be needed 2016-07-23
 sudo pacman -S qt5-x11extras
 # Load the modules immediately
