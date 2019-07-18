@@ -192,7 +192,7 @@ source create -n neovim2 python=2
 pip install neovim jedi
 conda install ncurses
 source create -n neovim3 python=3
-pip install neovim jedi
+pip install neovim jedi neovim-remote
 conda install ncurses
 source deactivate
 
