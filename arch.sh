@@ -1431,6 +1431,10 @@ yay untrunc
 # losslesscut to edit videos
 yay losslesscut
 
+# gruvbox terminal theme https://github.com/Mayccoll/Gogh
+bash -c  "$(wget -qO- https://git.io/vQgMr)"
+# Then right-click the terminal and choose a profile
+
 
 # sass css compiler
 sudo pacman -S sassc
