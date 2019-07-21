@@ -502,6 +502,9 @@ yay -S nerd-fonts-hack
 # fonts, put it in /usr/share/fonts/OTF, and then do something like
 fc-cache
 
+# fonts for wedding hymn setting
+yay ttf-gentium-plus
+
 # Dim backlight
 sudo pacman -S xorg-xbacklight
 sudo pacman -S xf86-video-intel
