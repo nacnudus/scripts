@@ -1511,6 +1511,8 @@ sudo systemctl enable paccache.timer
 # kitty fast featureful tereminal with wayland support
 sudo pacman -S kitty
 
+# 2d/3d home room designer
+yay sweethome3d
 # Update everything
 yaourt -Syua
 yaourt -Syua --noconfirm
