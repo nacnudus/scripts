@@ -1533,6 +1533,9 @@ yay bat-extras-git
 # Better git diffs
 yay git-delta-bin
 
+# System monitor
+yay glances
+
 # Update everything
 yaourt -Syua
 yaourt -Syua --noconfirm
