@@ -1503,6 +1503,7 @@ pulseaudio-dlna
 # then separately use pavucontrol to select the chromecast and be patient --
 # wait several seconds.  You could set the output to wav for a faster response
 # on a reliable network.
+
 # clear package cache weekly
 sudo systemctl start paccache.timer
 sudo systemctl enable paccache.timer
