@@ -1057,8 +1057,11 @@ sudo pacman -S elixir
 
 # Postgresql
 sudo pacman -S postgresql
-sudo -u postgres -i
-initdb --locale en_GB.UTF-8 -E UTF8 -D '/var/lib/postgres/data'
+cd /home/nacnudus
+mkdir -p postgres/data
+sudo chown -R postgres:postgres /home/nacnudus/postgres
+sudo -iu postgres
+initdb --locale en_GB.UTF-8 -E UTF8 -D '/home/nacnudus/postgres/data'
 exit
 sudo systemctl start postgresql.service
 sudo systemctl enable postgresql.service
