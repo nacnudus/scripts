@@ -775,6 +775,22 @@ libreoffice --headless --convert-to xlsx myfile.xls
 sudo pacman -S k3b cdrdao dvd+rw-tools
 # Options 2 and 2 had the smallest footprint
 
+# Rip audio from DVD
+yay transcode libdvdcss
+# then follow https://askubuntu.com/a/516190/64997
+tcprobe -i /dev/sr0
+# look for the number of chapters in a line like
+# [dvd_reader.c] DVD title 1/1: 17 chapter(s), 1 angle(s), title set 1
+# then use the number of chapters in a loop
+for i in {1..17};do
+  transcode -x null,dvd -y null,tcaud -i /dev/sr0 -T $i,1,1 -a 0 -E 44100,16,2 --lame_preset medium -m ~/tmp/yourDestinationMp3File_chapter${i}.mp3;
+done
+
+# Rip audio from video tracks on a DVD
+yay libdvdcss
+vlc --no-sout-video dvd:///dev/sr0 :sout='#std{access=file,mux=raw,dst=./file.ac3}'
+
+
 # ripright audio CD ripper
 yaourt -S ripright
 
