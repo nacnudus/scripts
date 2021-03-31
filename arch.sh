@@ -462,8 +462,8 @@ sudo tlmgr update --all
 # and for atp-plugin, you need psutil from python
 sudo pip install psutil
 
-# Install htop for monitoring the system load, CPU, memory etc.
-sudo pacman -S htop
+# Install bottom for monitoring the system load, CPU, memory etc.
+yay bottom
 
 # Install bluetooth (No, don't! It interferes with wifi, apparently.)
 sudo pacman -S bluez bluez-utils rfkill
