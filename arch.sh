@@ -1516,6 +1516,10 @@ yay sweethome3d
 
 # 2d/3d CAD
 yay freecad
+
+# Programmable  CAD
+yay openscad
+
 # Update everything
 yaourt -Syua
 yaourt -Syua --noconfirm
