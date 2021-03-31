@@ -1513,6 +1513,9 @@ sudo pacman -S kitty
 
 # 2d/3d home room designer
 yay sweethome3d
+
+# 2d/3d CAD
+yay freecad
 # Update everything
 yaourt -Syua
 yaourt -Syua --noconfirm
