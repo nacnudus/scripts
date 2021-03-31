@@ -1520,6 +1520,10 @@ yay freecad
 # Programmable  CAD
 yay openscad
 
+# Encrypted on-trend instant messenger
+yay signal-desktop
+sudo pacman -S pastel
+
 # Update everything
 yaourt -Syua
 yaourt -Syua --noconfirm
