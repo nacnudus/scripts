@@ -1524,6 +1524,15 @@ yay openscad
 yay signal-desktop
 sudo pacman -S pastel
 
+# Better cat
+sudo pacman -S bat
+bat --config-file
+bat --generate-config-file
+yay bat-extras-git
+
+# Better git diffs
+yay git-delta-bin
+
 # Update everything
 yaourt -Syua
 yaourt -Syua --noconfirm
